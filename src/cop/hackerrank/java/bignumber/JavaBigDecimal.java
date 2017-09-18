@@ -1,9 +1,9 @@
 package cop.hackerrank.java.bignumber;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Scanner;
-import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * @author Oleg Cherednik
@@ -20,39 +20,16 @@ public class JavaBigDecimal {
 
         sc.close();
 
-        class Data implements Comparable<Data> {
-            final int pos;
-            final String str;
-            final BigDecimal val;
-
-            public Data(int pos, String str) {
-                this.pos = pos;
-                this.str = str;
-                val = new BigDecimal(str);
-            }
-
+        Arrays.sort(s, new Comparator<String>() {
             @Override
-            public int compareTo(Data data) {
-                int res = data.val.compareTo(val);
-                return res != 0 ? res : Integer.compare(pos, data.pos);
+            public int compare(String a, String b) {
+                if (a == null)
+                    return 1;
+                if (b == null)
+                    return -1;
+                return new BigDecimal(b).compareTo(new BigDecimal(a));
             }
-
-            @Override
-            public String toString() {
-                return str;
-            }
-        }
-
-        Set<Data> set = new TreeSet<>();
-
-        for (int i = 0; i < s.length; i++)
-            if (s[i] != null)
-                set.add(new Data(i, s[i]));
-
-        int j = 0;
-
-        for (Data data : set)
-            s[j++] = data.str;
+        });
 
         for (int i = 0; i < n; i++)
             System.out.println(s[i]);
