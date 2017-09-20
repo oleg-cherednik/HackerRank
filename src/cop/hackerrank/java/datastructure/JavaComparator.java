@@ -65,23 +65,23 @@ public class JavaComparator {
         for (int i = 0; i < player.length; i++)
             System.out.printf("%s %s\n", player[i].name, player[i].score);
     }
-}
 
-class Player {
-    String name;
-    int score;
+    static class Player {
+        String name;
+        int score;
 
-    Player(String name, int score) {
-        this.name = name;
-        this.score = score;
+        Player(String name, int score) {
+            this.name = name;
+            this.score = score;
+        }
     }
-}
 
-class Checker implements Comparator<Player> {
+    static class Checker implements Comparator<Player> {
 
-    @Override
-    public int compare(Player o1, Player o2) {
-        int res = Integer.compare(o2.score, o1.score);
-        return res == 0 ? o1.name.compareTo(o2.name) : res;
+        @Override
+        public int compare(Player o1, Player o2) {
+            int res = Integer.compare(o2.score, o1.score);
+            return res == 0 ? o1.name.compareTo(o2.name) : res;
+        }
     }
 }

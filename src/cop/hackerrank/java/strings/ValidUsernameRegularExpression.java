@@ -23,10 +23,10 @@ public class ValidUsernameRegularExpression {
         }
     }
 
+    static class UseranmeValidator {
+
+        public static final String regularExpression = null;
+    }
 
 }
 
-class UseranmeValidator {
-
-    public static final String regularExpression = null;
-}

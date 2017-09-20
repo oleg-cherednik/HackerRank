@@ -15,8 +15,10 @@ public class JavaRegex {
             System.out.println(IP.matches(new MyRegex().pattern));
         }
     }
+
+    static class MyRegex {
+        final String pattern = "^(?<one>0?\\d\\d?|1\\d{2}|2[0-4]\\d|25[0-5])\\.(?<two>0?\\d\\d?|1\\d{2}|2[0-4]\\d|25[0-5])\\.(?<three>0?\\d\\d?|1\\d{2}|2[0-4]\\d|25[0-5])\\.(?<four>0?\\d\\d?|1\\d{2}|2[0-4]\\d|25[0-5])$";
+    }
 }
 
-class MyRegex {
-    final String pattern = "^(?<one>0?\\d\\d?|1\\d{2}|2[0-4]\\d|25[0-5])\\.(?<two>0?\\d\\d?|1\\d{2}|2[0-4]\\d|25[0-5])\\.(?<three>0?\\d\\d?|1\\d{2}|2[0-4]\\d|25[0-5])\\.(?<four>0?\\d\\d?|1\\d{2}|2[0-4]\\d|25[0-5])$";
-}
+

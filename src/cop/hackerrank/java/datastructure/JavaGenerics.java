@@ -30,11 +30,11 @@ public class JavaGenerics {
         myPrinter.printArray(intArray);
         myPrinter.printArray(stringArray);
     }
-}
 
-class Printer {
-    public <T> void printArray(T[] arr) {
-        for (T val : arr)
-            System.out.println(val);
+    static class Printer {
+        public <T> void printArray(T[] arr) {
+            for (T val : arr)
+                System.out.println(val);
+        }
     }
 }
