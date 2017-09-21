@@ -95,7 +95,7 @@ public class ValidUsernameRegularExpression {
 
     static class UseranmeValidator {
 
-        public static final String regularExpression = "[A-Za-z][\\w\\d_]{7,29}";
+        public static final String regularExpression = "[A-Za-z]\\w{7,29}";
     }
 
 }
