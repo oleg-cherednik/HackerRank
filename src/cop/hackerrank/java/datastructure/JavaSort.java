@@ -24,7 +24,7 @@ import java.util.Scanner;
  * <li>2 <= N <= 1000</li>
  * <li>0 <= ID <= 100000</li>
  * <li>5 <= |Name| <= 30</li>
- * <li>) <= CGPA <= 4.00</li>
+ * <li>0 <= CGPA <= 4.00</li>
  * </ul>
  * The name contains only lowercase English letters. The ID contains only integer numbers without leading zeros. The <tt>CGPA</tt> will contain, at
  * most, 2 digits after the decimal point.
