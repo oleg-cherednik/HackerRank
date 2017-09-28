@@ -3,12 +3,12 @@ Query the *Name* of any student in **STUDENTS** who scored higher than 75 *Marks
 ### Input Format
 The **STUDENTS** table is described as follows:
 
-![STUDENTS Table](image1.jpg)
+![STUDENTS Table](image1.png)
 
 The *Name* column only contains uppercase (`A`-`Z`) and lowercase (`a`-`z`) letters.
 ### Sample Input
 
-![STUDENTS Table](image2.jpg)
+![STUDENTS Table](image2.png)
 ### Sample Output
 ```
 Ashley
