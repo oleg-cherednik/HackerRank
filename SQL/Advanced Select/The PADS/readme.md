@@ -1,25 +1,39 @@
-﻿# Type of Triangle
-Write a query identifying the *type* of each record in the **TRIANGLES** table using its three side lengths. Output one of the following statements for each record in the table:
- - *Equilateral*: It's a triangle with 3 sides of equal length.
- - *Isosceles*: It's a triangle with 2 sides of equal length.
- - *Scalene*: It's a triangle with 3 sides of differing lengths.
- - *Not A Triangle*: The given values of *A*, *B*, and *C* don't form a triangle.
+﻿# The PADS
+Generate the following two result sets:
+ * Query an *alphabetically ordered* list of all names in **OCCUPATIONS**, immediately followed by the first letter of each profession as a parenthetical (i.e.: enclosed in parentheses). For example: `AnActorName(A)`, `ADoctorName(D)`, `AProfessorName(P)`, and `ASingerName(S)`.
+ * Query the number of ocurrences of each occupation in **OCCUPATIONS**. Sort the occurrences in *ascending order*, and output them in the following format:
+ ```
+ There are a total of [occupation_count] [occupation]s.
+ ``` 
+ where `[occupation_count]` is the number of occurrences of an occupation in *OCCUPATIONS* and `[occupation]` is the *lowercase* occupation name. If more than one *Occupation* has the same `[occupation_count]`, they should be ordered alphabetically.
+**Note**: There will be at least two entries in the table for each type of occupation.
 ### Input Format
-The **TRIANGLES** table is described as follows:
+The **OCCUPATIONS** table is described as follows:
 
-![TRIANGLES Table](image1.png)
+![OCCUPATIONS Table](image1.png)
 
-Each row in the table denotes the lengths of each of a triangle's three sides.
+*Occupation* will only contain one of the following values: **Doctor**, **Professor**, **Singer** or **Actor**.
 ### Sample Input
+An **OCCUPATIONS** table that contains the following records:
 
-![Employee Table](image2.png)
+![OCCUPATIONS Table](image2.png)
 ### Sample Output
 ```
-Isosceles
-Equilateral
-Scalene
-Not A Triangle
+Ashely(P)
+Christeen(P)
+Jane(A)
+Jenny(D)
+Julia(A)
+Ketty(P)
+Maria(A)
+Meera(S)
+Priya(S)
+Samantha(D)
+There are a total of 2 doctors.
+There are a total of 2 singers.
+There are a total of 3 actors.
+There are a total of 3 professors.
 ```
-Values in the tuple (20, 20, 30) form an Isosceles triangle, because A ≡ B.  
-Values in the tuple (20, 20, 20) form an Equilateral triangle, because A ≡ B ≡ C. Values in the tuple (20, 21, 22) form a Scalene triangle, because A ≠ B ≠ C.  
-Values in the tuple (13, 14, 30) cannot form a triangle because the combined value of sides A and B is not larger than that of side C.
+### Explanation
+The results of the first query are formatted to the problem description's specifications.   
+The results of the second query are ascendingly ordered first by number of names corresponding to each profession (2 ≤ 2 ≤ 3 ≤ 3), and then alphabetically by profession (doctor ≤ singer, and actor ≤ professor).
