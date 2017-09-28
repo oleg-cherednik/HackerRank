@@ -1,8 +1,9 @@
-select
-case
-    when A + B <= C or B + C <= A or A + C <= B then 'Not A Triangle'
-    when A = B and B = C and A = C then 'Equilateral'
-	when A = B or B = C or A = C then 'Isosceles'
-    else 'Scalene'
-end
-from triangles;
+select val
+from (
+	select 'a' k, concat(name, '(', left(occupation, 1), ')') val from occupations
+    union
+    select 'b' k, concat('There are a total of ', count(occupation), ' ', lower(occupation), 's.') total
+	from occupations
+    group by occupation
+) as a
+order by k asc, val asc
