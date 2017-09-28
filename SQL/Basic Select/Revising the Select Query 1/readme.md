@@ -3,4 +3,4 @@ Query all columns for all American cities in **CITY** with populations larger th
 ### Input Format
 The **CITY** table is described as follows:
 
-![CITY Table](image.png)
+![CITY Table](image.jpg)
