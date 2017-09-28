@@ -17,12 +17,8 @@ Todd
 Joe
 ```
 ### Explanation
-*Angela* has been an employee for 1 month and earns $3443 per month.
-
-*Michael* has been an employee for 6 months and earns $2017 per month.
-
-*Todd* has been an employee for 5 months and earns $3396 per month.
-
-*Joe* has been an employee for 9 months and earns $3573 per month.
-
+*Angela* has been an employee for 1 month and earns $3443 per month.  
+*Michael* has been an employee for 6 months and earns $2017 per month.  
+*Todd* has been an employee for 5 months and earns $3396 per month.  
+*Joe* has been an employee for 9 months and earns $3573 per month.  
 We order our output by ascending *employee_id*.
