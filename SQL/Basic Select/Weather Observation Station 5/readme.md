@@ -17,4 +17,5 @@ PQRS 4
 When ordered alphabetically, the *CITY* names are listed as *ABC*, *DEF*, *PQRS*, and *WXY*, with the respective lengths 3,3,4 and 3. The longest-named city is obviously *PQRS*, but there are 3 options for shortest-named city; we choose *ABC*, because it comes first alphabetically.
 
 **Note**
+
 **You can write two separate queries to get the desired output. It need not be a single query.**
