@@ -30,15 +30,19 @@ The following tables contain company data:
 *Company* Table:
 
 ![Company table](company.png)
+
 *Lead_Manager* Table:
 
 ![Lead_Manager table](lead_manager.png)
+
 *Senior_Manager* Table:
 
 ![Senior_Manager table](sennnior_manager.png)
+
 *Manager* Table:
 
 ![Manager table](manager.png)
+
 *Employee* Table:
 
 ![Employee table](employee.png)
