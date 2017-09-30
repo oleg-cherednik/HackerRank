@@ -23,26 +23,33 @@ The following tables contain company data:
  
    ![Manager table](table_manager.png)
  * *Employee*: The *employee_code* is the code of the employee, the *manager_code* is the code of its manager, the *senior_manager_code* is the code of its senior manager, the *lead_manager_code* is the code of its lead manager, and the *company_code* is the code of the working company.
+ 
    ![Employee table](table_employee.png)
 ---
+### Sample Input
+*Company* Table:
 
- 
- 
- 
- 
- senior_manager
-![BST Table](image2.png)
+![Company table](company.png)
+*Lead_Manager* Table:
+
+![Lead_Manager table](lead_manager.png)
+*Senior_Manager* Table:
+
+![Senior_Manager table](sennnior_manager.png)
+*Manager* Table:
+
+![Manager table](manager.png)
+*Employee* Table:
+
+![Employee table](employee.png)
 ### Sample Output
 ```
-1 Leaf
-2 Inner
-3 Leaf
-5 Root
-6 Leaf
-8 Inner
-9 Leaf
+C1 Monika 1 2 1 2
+C2 Samantha 1 1 2 2
 ```
 ### Explanation
-The *Binary Tree* below illustrates the sample:
+In company *C1*, the only lead manager is *LM1*. There are two senior managers, *SM1* and *SM2*, under *LM1*. There is one manager, *M1*, under senior manager *SM1*. There are two employees, *E1* and *E2*, under manager *M1*.
+
+In company *C2*, the only lead manager is *LM2*. There is one senior manager, *SM3*, under *LM2*. There are two managers, *M2* and *M3*, under senior manager *SM3*. There is one employee, *E3*, under manager *M2*, and another employee, *E4*, under manager, *M3*.
 
 ![BST Table](image3.png)
