@@ -37,7 +37,7 @@ The following tables contain company data:
 
 *Senior_Manager* Table:
 
-![Senior_Manager table](sennnior_manager.png)
+![Senior_Manager table](senior_manager.png)
 
 *Manager* Table:
 
