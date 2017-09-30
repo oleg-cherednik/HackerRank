@@ -12,12 +12,25 @@ Given the table schemas below, write a query to print the *company_code*, *found
 The following tables contain company data:
  * *Company*: The *company_code* is the code of the company and *founder* is the founder of the company.
 
-   ![Company table](company.png)
+   ![Company table](table_company.png)
  * *Lead_Manager*: The *lead_manager_code* is the code of the lead manager, and the *company_code* is the code of the working company.   
  
-   ![Lead_Manager table](lead_manager.png)
+   ![Lead_Manager table](table_lead_manager.png)
+ * *Senior_Manager*: The *senior_manager_code* is the code of the senior manager, the *lead_manager_code* is the code of its lead manager, and the *company_code* is the code of the working company.
+   
+   ![Senior_Manager table](table_senior_manager.png)
+ * *Manager*: The *manager_code* is the code of the manager, the *senior_manager_code* is the code of its senior manager, the *lead_manager_code* is the code of its lead manager, and the *company_code* is the code of the working company.
+ 
+   ![Manager table](table_manager.png)
+ * *Employee*: The *employee_code* is the code of the employee, the *manager_code* is the code of its manager, the *senior_manager_code* is the code of its senior manager, the *lead_manager_code* is the code of its lead manager, and the *company_code* is the code of the working company.
+   ![Employee table](table_employee.png)
+---
 
-
+ 
+ 
+ 
+ 
+ senior_manager
 ![BST Table](image2.png)
 ### Sample Output
 ```
