@@ -7,4 +7,18 @@ The **EMPLOYEES** table is described as follows:
 
 ![EMPLOYEES Table](employees.png)
 
-**Note:* *Salary* is measured in dollars per month and its value is < 10<sup>5</sup>.
+**Note:** *Salary* is measured in dollars per month and its value is < 10<sup>5</sup>.
+### Sample Input
+
+![EMPLOYEES Table](input.png)
+### Sample Output
+```
+2061
+```
+### Explanation
+The table below shows the salaries *without zeroes* as they were entered by Samantha:
+
+![EMPLOYEES Table](explanation.png)
+
+Samantha computes an average salary of `98.0`. The *actual average salary* is `2159.00`.
+The resulting error between the two calculations is `2159.0 - 98.0 = 2061.00` which, when rounded to the next integer, is `2061`.
