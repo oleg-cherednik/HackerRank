@@ -1,1 +1,1 @@
-select max(population) - min(population) from city
+select ceil(avg(salary) - avg(replace(salary, '0', ''))) from employees
