@@ -1,12 +1,10 @@
-package cop.hackerrank.java.strings;
-
 import java.util.Scanner;
 
 /**
  * @author Oleg Cherednik
  * @since 14.09.2017
  */
-public class JavaRegex {
+public class Solution {
     public static void main(String... args) {
         Scanner in = new Scanner(System.in);
 

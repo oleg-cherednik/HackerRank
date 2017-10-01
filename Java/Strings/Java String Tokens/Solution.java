@@ -1,5 +1,3 @@
-package cop.hackerrank.java.strings;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,7 +6,7 @@ import java.util.Scanner;
  * @author Oleg Cherednik
  * @since 13.09.2017
  */
-public class JavaStringTokens {
+public class Solution {
     public static void main(String... args) {
         Scanner scan = new Scanner(System.in);
         String s = scan.nextLine();

@@ -1,5 +1,3 @@
-package cop.hackerrank.java.strings;
-
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
@@ -8,7 +6,7 @@ import java.util.TreeSet;
  * @author Oleg Cherednik
  * @since 13.09.2017
  */
-public class JavaSubstringComparisons {
+public class Solution {
     public static String getSmallestAndLargest(String s, int k) {
         Set<String> set = new TreeSet<>();
 

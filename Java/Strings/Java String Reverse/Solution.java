@@ -1,12 +1,10 @@
-package cop.hackerrank.java.strings;
-
 import java.util.Scanner;
 
 /**
  * @author Oleg Cherednik
  * @since 13.09.2017
  */
-public class JavaStringReverse {
+public class Solution {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);

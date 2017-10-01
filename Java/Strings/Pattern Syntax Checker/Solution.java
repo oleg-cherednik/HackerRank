@@ -1,5 +1,3 @@
-package cop.hackerrank.java.strings;
-
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -8,7 +6,7 @@ import java.util.regex.PatternSyntaxException;
  * @author Oleg Cherednik
  * @since 14.09.2017
  */
-public class PatternSyntaxChecker {
+public class Solution {
     public static void main(String... args) {
         Scanner in = new Scanner(System.in);
         int testCases = Integer.parseInt(in.nextLine());

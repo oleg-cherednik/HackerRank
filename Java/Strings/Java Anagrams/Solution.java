@@ -1,5 +1,3 @@
-package cop.hackerrank.java.strings;
-
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -7,7 +5,7 @@ import java.util.Scanner;
  * @author Oleg Cherednik
  * @since 13.09.2017
  */
-public class JavaAnagrams {
+public class Solution {
     static boolean isAnagram(String a, String b) {
         if (a.length() != b.length())
             return false;
