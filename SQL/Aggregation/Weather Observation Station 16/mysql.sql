@@ -1,0 +1,1 @@
+select round(lat_n, 4) from station where lat_n > 38.778 order by lat_n asc limit 1
