@@ -11,16 +11,13 @@ public class Solution {
         Scanner scan = new Scanner(System.in);
         int N = scan.nextInt();
 
-        Pattern pattern = Pattern.compile("(?i)hackerrank");
+        Pattern pattern = Pattern.compile("^\\d+\\s(C|CPP|JAVA|PYTHON|PERL|PHP|RUBY|CSHARP|HASKELL|CLOJURE|BASH|SCALA|ERLANG|CLISP|LUA|"
+                + "BRAINFUCK|JAVASCRIPT|GO|D|OCAML|R|PASCAL|SBCL|DART|GROOVY|OBJECTIVEC)$");
         scan.nextLine();
 
-        int total = 0;
-
         for (int i = 0; i < N; i++)
-            if (pattern.matcher(scan.nextLine()).find())
-                total++;
+            System.out.println(pattern.matcher(scan.nextLine()).find() ? "VALID" : "INVALID");
 
-        System.out.println(total);
         scan.close();
     }
 }
