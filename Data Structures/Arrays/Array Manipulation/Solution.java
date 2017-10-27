@@ -10,24 +10,31 @@ public class Solution {
         int n = in.nextInt();
         int m = in.nextInt();
 
-        int[] arr = new int[n];
+        long[] arr = new long[n];
 
         for (int i = 0; i < m; i++) {
             int a = in.nextInt();
             int b = in.nextInt();
             int k = in.nextInt();
 
-            for (int j = a - 1; j <= b - 1; j++)
-                arr[j] += k;
+            if (k > 0) {
+                arr[a - 1] += k;
+
+                if (b < arr.length)
+                    arr[b] -= k;
+            }
         }
 
-        int max = 0;
+        in.close();
 
-        for (int i = 0; i < n; i++)
-            max = Math.max(arr[i], max);
+        long max = arr[0];
+        long cur = arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+            cur += arr[i];
+            max = cur > max ? cur : max;
+        }
 
         System.out.println(max);
-
-        in.close();
     }
 }
