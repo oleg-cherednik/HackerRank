@@ -4,19 +4,15 @@
  */
 public class Solution {
     int FindMergeNode(Node headA, Node headB) {
-        while(headA != null) {
-            Node node = headB;
+        Node it1 = headA;
+        Node it2 = headB;
 
-            while(node != null) {
-                if(headA == node)
-                    return node.data;
-                node = node.next;
-            }
-
-            headA = headA.next;
+        while (it1 != it2) {
+            it1 = it1.next != null ? it1.next : headB;
+            it2 = it2.next != null ? it2.next : headA;
         }
 
-        return -1;
+        return it1.data;
     }
 
     class Node {
