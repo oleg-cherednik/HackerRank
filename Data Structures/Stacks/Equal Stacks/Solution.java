@@ -33,7 +33,10 @@ public class Solution {
         }
 
         for (int h2_i = n2 - 1; h2_i >= 0; h2_i--) {
-            sum2.add(sum = h2_i == n2 - 1 ? h2[h2_i] : (sum + h2[h2_i]));
+            sum = h2_i == n2 - 1 ? h2[h2_i] : (sum + h2[h2_i]);
+
+            if (sum1.contains(sum))
+                sum2.add(sum);
         }
 
         int h3[] = new int[n3];
@@ -45,9 +48,8 @@ public class Solution {
         for (int h3_i = n3 - 1; h3_i >= 0; h3_i--) {
             sum = h3_i == n3 - 1 ? h3[h3_i] : (sum + h3[h3_i]);
 
-            if (sum1.contains(sum) && sum2.contains(sum))
+            if (sum2.contains(sum))
                 max = sum;
-
         }
 
         System.out.println(max);
