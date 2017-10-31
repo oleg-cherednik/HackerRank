@@ -1,3 +1,5 @@
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
@@ -8,28 +10,42 @@ public class Solution {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int N = scan.nextInt();
-        scan.nextLine();
 
-        long a;
-        long b = -1;
-        long max = 0;
+        int[] arr = new int[N];
 
-        for (int i = 0; i < N; i++) {
-            a = b;
-            b = scan.nextLong();
+        for (int i = 0; i < arr.length; i++)
+            arr[i] = scan.nextInt();
 
-            if (a > 0) {
-                long res = ((a & b) ^ (a | b)) & (a ^ b);
-                if (res == 262143 || res == 262141) {
-                    System.out.println(res);
-                    System.out.println("a:" + a + ", b:" + b);
+        Deque<Integer> stack = new LinkedList<>();
+
+        int max = 0;
+        stack.push(0);
+
+        for (int i = 1; i < arr.length; i++) {
+            int a = arr[stack.element()];
+            int b = arr[i];
+
+            if (a == b)
+                continue;
+
+            if (a < b) {
+                max = Math.max(max, sum(a, b));
+            } else {
+                while (!stack.isEmpty() && arr[stack.element()] > b) {
+                    max = Math.max(max, sum(arr[stack.pop()], b));
                 }
-                max = Math.max(max, res);
+
+                if (!stack.isEmpty())
+                    max = Math.max(max, sum(arr[stack.element()], b));
             }
+
+            stack.push(i);
         }
 
-        scan.close();
-
         System.out.println(max);
+    }
+
+    private static int sum(int a, int b) {
+        return ((a & b) ^ (a | b)) & (a ^ b);
     }
 }
