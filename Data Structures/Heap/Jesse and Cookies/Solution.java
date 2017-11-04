@@ -31,6 +31,5 @@ public class Solution {
 
         System.out.print(queue.peek() < K ? -1 : res);
     }
-
 }
 
