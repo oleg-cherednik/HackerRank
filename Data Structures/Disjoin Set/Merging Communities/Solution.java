@@ -12,15 +12,15 @@ public class Solution {
             int Q = scan.nextInt();
             scan.nextLine();
 
-            UnionFind graph = new UnionFind(N + 1);
+            UnionFind unionFind = new UnionFind(N + 1);
 
             for (int i = 0; i < Q; i++) {
                 String cmd = scan.next();
 
                 if ("Q".equals(cmd))
-                    System.out.println(graph.total(scan.nextInt()));
+                    System.out.println(unionFind.total(scan.nextInt()));
                 else if ("M".equals(cmd))
-                    graph.union(scan.nextInt(), scan.nextInt());
+                    unionFind.union(scan.nextInt(), scan.nextInt());
             }
         }
     }
