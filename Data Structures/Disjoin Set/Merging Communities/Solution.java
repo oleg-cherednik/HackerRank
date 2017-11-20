@@ -18,7 +18,7 @@ public class Solution {
                 String cmd = scan.next();
 
                 if ("Q".equals(cmd))
-                    System.out.println(unionFind.total(scan.nextInt()));
+                    System.out.println(unionFind.size(scan.nextInt()));
                 else if ("M".equals(cmd))
                     unionFind.union(scan.nextInt(), scan.nextInt());
             }
@@ -39,7 +39,7 @@ public class Solution {
             }
         }
 
-        public int total(int p) {
+        public int size(int p) {
             return sz[find(p)];
         }
 
@@ -59,11 +59,9 @@ public class Solution {
             if (sz[i] < sz[j]) {
                 id[i] = j;
                 sz[j] += sz[i];
-                sz[i] = sz[j];
             } else {
                 id[j] = i;
                 sz[i] += sz[j];
-                sz[j] = sz[i];
             }
         }
     }
