@@ -3,7 +3,7 @@ import java.util.Queue;
 
 /**
  * @author Oleg Cherednik
- * @since 02.12.2017
+ * @since 03.12.2017
  */
 public class Solution {
     class Node {
