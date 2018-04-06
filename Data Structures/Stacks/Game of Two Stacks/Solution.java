@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -5,42 +6,46 @@ import java.util.Scanner;
  * @since 29.10.2017
  */
 public class Solution {
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int g = in.nextInt();
-        for (int a0 = 0; a0 < g; a0++) {
-            int n = in.nextInt();
-            int m = in.nextInt();
-            int x = in.nextInt();
-            int[] a = new int[n];
-            for (int a_i = 0; a_i < n; a_i++) {
-                a[a_i] = in.nextInt();
-            }
-            int[] b = new int[m];
-            for (int b_i = 0; b_i < m; b_i++) {
-                b[b_i] = in.nextInt();
-            }
 
-            int sum = 0;
-            int score = 0;
-            int i = 0;
-            int j = 0;
+    static int twoStacks(int x, int[] a, int[] b) {
+        return 1;
+    }
 
-            while (true) {
-                if (a[i] <= b[j]) {
-                    if (sum + a[i] > x)
-                        break;
-                    sum += a[i++];
-                    score++;
-                } else if (a[i] > b[j]) {
-                    if (sum + b[j] > x)
-                        break;
-                    sum += b[j++];
-                    score++;
+    public static void main(String[] args) throws IOException {
+        try (Scanner scanner = new Scanner(System.in)) {
+            int g = Integer.parseInt(scanner.nextLine().trim());
+
+            for (int gItr = 0; gItr < g; gItr++) {
+                String[] nmx = scanner.nextLine().split(" ");
+
+                int n = Integer.parseInt(nmx[0].trim());
+
+                int m = Integer.parseInt(nmx[1].trim());
+
+                int x = Integer.parseInt(nmx[2].trim());
+
+                int[] a = new int[n];
+
+                String[] aItems = scanner.nextLine().split(" ");
+
+                for (int aItr = 0; aItr < n; aItr++) {
+                    int aItem = Integer.parseInt(aItems[aItr].trim());
+                    a[aItr] = aItem;
                 }
-            }
 
-            System.out.println(score);
+                int[] b = new int[m];
+
+                String[] bItems = scanner.nextLine().split(" ");
+
+                for (int bItr = 0; bItr < m; bItr++) {
+                    int bItem = Integer.parseInt(bItems[bItr].trim());
+                    b[bItr] = bItem;
+                }
+
+                int result = twoStacks(x, a, b);
+
+                System.out.println(result);
+            }
         }
     }
 }
