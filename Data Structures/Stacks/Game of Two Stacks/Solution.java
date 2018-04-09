@@ -3,12 +3,52 @@ import java.util.Scanner;
 
 /**
  * @author Oleg Cherednik
- * @since 29.10.2017
+ * @since 09.04.2018
  */
 public class Solution {
 
+    private static class InitData {
+
+        private int score;
+        private int sum;
+
+        public static InitData calc(int[] arr, int x) {
+            InitData initData = new InitData();
+
+            for (int val : arr) {
+                if (initData.sum + val > x)
+                    break;
+                initData.score++;
+                initData.sum += val;
+            }
+
+            return initData;
+        }
+    }
+
     static int twoStacks(int x, int[] a, int[] b) {
-        return 1;
+        InitData initA = InitData.calc(a, x);
+        InitData initB = InitData.calc(b, x);
+
+        if(initA.sum + initB.sum <= x)
+            return initA.score + initB.score;
+
+        return score(x, 0, 0, a, b, 0, 0);
+    }
+
+    private static int score(int x, int sum, int score, int[] a, int[] b, int i, int j) {
+
+        int res = 0;
+
+        int aa = i < a.length ? a[i] : Integer.MAX_VALUE;
+        int bb = j < b.length ? b[j] : Integer.MAX_VALUE;
+
+        if (i < a.length && aa <= bb && sum + a[i] <= x)
+            res = Math.max(res, score(x, sum + a[i], 1, a, b, i + 1, j));
+        else if (j < b.length && bb <= aa && sum + b[j] <= x)
+            res = Math.max(res, score(x, sum + b[j], 1, a, b, i, j + 1));
+
+        return score + res;
     }
 
     public static void main(String[] args) throws IOException {
