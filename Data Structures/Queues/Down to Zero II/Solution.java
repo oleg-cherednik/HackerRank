@@ -1,25 +1,21 @@
+import java.util.Scanner;
+
 /**
  * @author Oleg Cherednik
- * @since 20.04.2018
+ * @since 21.04.2018
  */
 public class Solution {
 
     public static void main(String[] args) {
-//        Set<Integer> aa = new TreeSet<>();
-//        Iterator<Integer> aaa = aa.iterator();
-//        Scanner scan = new Scanner(System.in);
-//        int q = Integer.parseInt(scan.nextLine().trim());
-//
-//        for (int qItr = 0; qItr < q; qItr++) {
-//            int n = Integer.parseInt(scan.nextLine().trim());
-//            System.out.println(downToZero(n));
-//        }
-//
-//        scan.close();
+        Scanner scan = new Scanner(System.in);
+        int q = Integer.parseInt(scan.nextLine().trim());
 
-//        System.out.println(downToZero(18));
-//        System.out.println(downToZero(966514));
-        System.out.println(downToZero(812849));
+        for (int qItr = 0; qItr < q; qItr++) {
+            int n = Integer.parseInt(scan.nextLine().trim());
+            System.out.println(downToZero(n));
+        }
+
+        scan.close();
     }
 
     private static final int[] ARR = new int[1000001];
