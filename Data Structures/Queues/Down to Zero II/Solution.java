@@ -25,10 +25,7 @@ public class Solution {
     private static final int[] nums = new int[1000001];
 
     static {
-        int max = nums.length;
-
-        //Initialize array
-        for (int i = 0; i < max; ++i)
+        for (int i = 0; i < nums.length; ++i)
             nums[i] = -1;
 
         nums[0] = 0;
@@ -36,13 +33,14 @@ public class Solution {
         nums[2] = 2;
         nums[3] = 3;
 
-        //Precompute
-        for (int i = 1; i < max; ++i) {
-            if (nums[i] == -1 || nums[i] > (nums[i - 1] + 1))
-                nums[i] = nums[i - 1] + 1;
-            for (int j = 1; j <= i && j * i < max; ++j)
+        for (int i = 1; i < nums.length; i++) {
+            nums[i] = nums[i] == -1 ? nums[i - 1] + 1 : nums[i];
+            nums[i] = Math.min(nums[i], nums[i - 1] + 1);
+
+            for (int j = 1; j <= i && j * i < nums.length; j++) {
                 if (nums[j * i] == -1 || (nums[i] + 1) < nums[j * i])
                     nums[j * i] = nums[i] + 1;
+            }
         }
     }
 
