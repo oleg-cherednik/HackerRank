@@ -22,30 +22,26 @@ public class Solution {
         System.out.println(downToZero(812849));
     }
 
-    private static final int[] nums = new int[1000001];
+    private static final int[] ARR = new int[1000001];
 
     static {
-        for (int i = 0; i < nums.length; ++i)
-            nums[i] = -1;
+        ARR[0] = 0;
+        ARR[1] = 1;
+        ARR[2] = 2;
+        ARR[3] = 3;
 
-        nums[0] = 0;
-        nums[1] = 1;
-        nums[2] = 2;
-        nums[3] = 3;
+        for (int i = 1; i < ARR.length; i++) {
+            ARR[i] = ARR[i] == 0 ? ARR[i - 1] + 1 : ARR[i];
+            ARR[i] = Math.min(ARR[i], ARR[i - 1] + 1);
 
-        for (int i = 1; i < nums.length; i++) {
-            nums[i] = nums[i] == -1 ? nums[i - 1] + 1 : nums[i];
-            nums[i] = Math.min(nums[i], nums[i - 1] + 1);
-
-            for (int j = 1; j <= i && j * i < nums.length; j++) {
-                if (nums[j * i] == -1 || (nums[i] + 1) < nums[j * i])
-                    nums[j * i] = nums[i] + 1;
-            }
+            for (int j = 1; j <= i && i * j < ARR.length; j++)
+                if (ARR[i * j] == 0 || (ARR[i] + 1) < ARR[i * j])
+                    ARR[i * j] = ARR[i] + 1;
         }
     }
 
     static int downToZero(int n) {
-        return nums[n];
+        return ARR[n];
     }
 
 }
