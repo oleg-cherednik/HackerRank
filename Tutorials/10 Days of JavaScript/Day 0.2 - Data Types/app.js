@@ -46,7 +46,9 @@ function performOperation(secondInteger, secondDecimal, secondString) {
 }
 
 function main() {
-    const parameterVariable = readLine();
+    const secondInteger = readLine();
+    const secondDecimal = readLine();
+    const secondString = readLine();
 
-    greeting(parameterVariable);
+    performOperation(secondInteger, secondDecimal, secondString);
 }

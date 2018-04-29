@@ -47,7 +47,9 @@ function getPerimeter(length, width) {
 }
 
 function main() {
-    const parameterVariable = readLine();
+    const length = +(readLine());
+    const width = +(readLine());
 
-    greeting(parameterVariable);
+    console.log(getArea(length, width));
+    console.log(getPerimeter(length, width));
 }
