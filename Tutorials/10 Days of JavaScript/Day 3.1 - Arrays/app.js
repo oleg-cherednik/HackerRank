@@ -28,18 +28,21 @@ function readLine() {
  *   @return {Number} The second largest number in the array.
  **/
 function getSecondLargest(nums) {
-    nums.sort();
+    if(nums.length === 0)
+        return 0;
 
-    let val = -1;
+    let max = nums[0];
+    let secondMax = max;
 
-    for(let i = nums.length - 1; i >= 0; i--) {
-        if(val < 0)
-            val = nums[i];
-        else if(val !== nums[i])
-            return nums[i];
+    for(let i = 0; i < nums.length; i++) {
+        if(nums[i] > max) {
+            secondMax = max;
+            max = nums[i];
+        } else if(nums[i] < max && nums[i] > secondMax)
+            secondMax = nums[i];
     }
 
-    return val;
+    return secondMax;
 }
 
 function main() {
