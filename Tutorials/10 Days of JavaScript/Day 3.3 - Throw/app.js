@@ -45,9 +45,8 @@ function main() {
 
         try {
             console.log(isPositive(a));
+        } catch (e) {
+            console.log(e.message);
         }
     }
-    const nums = readLine().split(' ').map(Number);
-
-    console.log(getSecondLargest(nums));
 }
