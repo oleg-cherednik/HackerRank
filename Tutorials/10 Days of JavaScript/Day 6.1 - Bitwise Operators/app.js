@@ -22,11 +22,11 @@ function readLine() {
 }
 
 /*
-*	Return the largest value of any a & b < k in S (where a < b).
-*
-*	n: Set S is a sequence of distinct integers from 1 to n (i.e., {1, 2, ..., n}).
-*	k: An integer.
-*/
+ *	Return the largest value of any a & b < k in S (where a < b).
+ *
+ *	n: Set S is a sequence of distinct integers from 1 to n (i.e., {1, 2, ..., n}).
+ *	k: An integer.
+ */
 function getMaxLessThanK(n, k) {
     let max = 0;
 
