@@ -1,3 +1,7 @@
+/**
+ * @author Oleg Cherednik
+ * @since 12.05.2018
+ */
 class Model {
     constructor() {
         this.clear();

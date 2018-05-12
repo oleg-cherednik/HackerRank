@@ -1,3 +1,7 @@
+/**
+ * @author Oleg Cherednik
+ * @since 09.05.2018
+ */
 class Rotate {
     constructor(values) {
         this.values = values

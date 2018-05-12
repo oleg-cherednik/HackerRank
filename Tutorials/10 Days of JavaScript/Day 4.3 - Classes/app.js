@@ -1,3 +1,7 @@
+/**
+ * @author Oleg Cherednik
+ * @since 02.05.2018
+ */
 /*
  * Implement a Polygon class with the following properties:
  * 1. A constructor that takes an array of integer side lengths.

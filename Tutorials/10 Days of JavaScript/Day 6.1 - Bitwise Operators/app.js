@@ -1,3 +1,7 @@
+/**
+ * @author Oleg Cherednik
+ * @since 07.05.2018
+ */
 'use strict';
 
 process.stdin.resume();

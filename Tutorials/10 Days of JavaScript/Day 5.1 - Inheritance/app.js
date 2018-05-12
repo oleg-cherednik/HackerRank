@@ -1,3 +1,7 @@
+/**
+ * @author Oleg Cherednik
+ * @since 02.05.2018
+ */
 class Rectangle {
     constructor(w, h) {
         this.w = w;
