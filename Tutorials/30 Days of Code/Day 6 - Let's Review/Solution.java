@@ -19,9 +19,8 @@ public class Solution {
                 StringBuilder even = new StringBuilder(str.length());
                 StringBuilder odd = new StringBuilder(str.length());
 
-                for (int j = 0; j < str.length(); j++) {
+                for (int j = 0; j < str.length(); j++)
                     (j % 2 == 0 ? even : odd).append(str.charAt(j));
-                }
 
                 System.out.println(even + " " + odd);
             }
