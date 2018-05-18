@@ -11,11 +11,7 @@ import java.util.TreeMap;
 public class Solution {
 
     private static double mean(int[] arr) {
-        int sum = 0;
-
-        for (int val : arr)
-            sum += val;
-
+        int sum = Arrays.stream(arr).sum();
         return (double)sum / arr.length;
     }
 
