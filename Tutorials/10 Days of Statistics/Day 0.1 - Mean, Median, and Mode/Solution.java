@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -50,9 +51,9 @@ public class Solution {
             for (int i = 0; i < N; i++)
                 arr[i] = scan.nextInt();
 
-            System.out.printf("%.1f\n", mean(arr));
-            System.out.printf("%.1f\n", median(arr));
-            System.out.printf("%d\n", mode(arr));
+            System.out.printf(Locale.US, "%.1f\n", mean(arr));
+            System.out.printf(Locale.US, "%.1f\n", median(arr));
+            System.out.printf(Locale.US, "%d\n", mode(arr));
         }
     }
 }

@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
@@ -28,7 +29,7 @@ public class Solution {
             for (int i = 0; i < N; i++)
                 W[i] = scan.nextInt();
 
-            System.out.printf("%.1f\n", weightedMean(X, W));
+            System.out.printf(Locale.US, "%.1f\n", weightedMean(X, W));
         }
     }
 }
