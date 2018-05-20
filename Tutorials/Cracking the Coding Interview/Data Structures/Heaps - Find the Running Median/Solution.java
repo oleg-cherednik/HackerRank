@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 /**
  * @author Oleg Cherednik
- * @since 18.05.2018
+ * @since 20.05.2018
  */
 public class Solution {
 
@@ -123,14 +123,14 @@ public class Solution {
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
         int[] a = new int[n];
-        Tree tree = new Tree();
+        MedianHeap heap = new MedianHeap(n);
 
         for (int i = 0; i < n; i++) {
             int aItem = scanner.nextInt();
             scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
             a[i] = aItem;
-            tree.add(aItem);
-            System.out.println(i + ": " + tree.median());
+            heap.add(aItem);
+            System.out.println(heap.median());
         }
 
         scanner.close();
