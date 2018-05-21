@@ -13,15 +13,32 @@ public class Solution {
         private final Node root = new Node('\0');
 
         public void add(String contact) {
-            add(contact.toLowerCase(), 0, root);
+//            add(contact.toLowerCase(), 0, root);
+            root.add(contact);
         }
 
-        private static void add(String contact, int pos, Node node) {
-            if (pos < contact.length())
-                add(contact, pos + 1, node.getOrCreate(contact.charAt(pos)));
-            else
-                node.last = true;
-        }
+//        private static void add(String contact, int pos, Node node) {
+//            String common = node.common(contact);
+//
+//            if(common == null) {
+//                if(node.str == null)
+//                    node.str = contact;
+//                else {
+//
+//                }
+//
+//            } else {
+//
+//            }
+//
+//
+//            if (pos < contact.length())
+//                add(contact, pos + 1, node.getOrCreate(contact.charAt(pos)));
+//            else
+//                node.last = true;
+
+
+//        }
 
         public int find(String contact) {
             Node node = find(contact, 0, root);
@@ -58,9 +75,15 @@ public class Solution {
 
         private static final class Node {
 
-            private final char ch;
             private final Map<Character, Node> map = new HashMap<>();
+
+            private String str;
+            private char ch;
             private boolean last;
+
+            public Node(String str) {
+                this.str = str;
+            }
 
             public Node(char ch) {
                 this.ch = ch;
@@ -78,6 +101,50 @@ public class Solution {
                 if (!isExists(ch))
                     map.put(ch, new Node(ch));
                 return get(ch);
+            }
+
+            public Node add(String str) {
+                if (str.equals(this.str)) {
+                    last = true;
+                    return this;
+                }
+
+                String common = common(str);
+
+                if (common == null) {
+                    if (this.str == null)
+                        this.str = str;
+                    else {
+                        int a = 0;
+                        a++;
+                    }
+                } else {
+                    String suffix = str.substring(common.length());
+
+                    if (this.str.equals(common)) {
+                        map.put(suffix.charAt(0), new Node())
+                        int a = 0;
+                        a++;
+
+                    } else {
+                        int a = 0;
+                        a++;
+                    }
+
+                }
+
+                return null;
+            }
+
+            public String common(String str) {
+                if (this.str == null)
+                    return null;
+
+                for (int i = 0, min = Math.min(str.length(), this.str.length()); i < min; i++)
+                    if (str.charAt(i) != this.str.charAt(i))
+                        return i == 0 ? null : str.substring(0, i);
+
+                return str.length() < this.str.length() ? str : this.str;
             }
 
             @Override
