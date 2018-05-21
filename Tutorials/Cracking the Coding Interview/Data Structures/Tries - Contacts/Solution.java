@@ -112,9 +112,10 @@ public class Solution {
                 String common = common(str);
 
                 if (common == null) {
-                    if (this.str == null)
+                    if (this.str == null) {
                         this.str = str;
-                    else {
+                        this.last = true;
+                    } else {
                         int a = 0;
                         a++;
                     }
@@ -122,10 +123,10 @@ public class Solution {
                     String suffix = str.substring(common.length());
 
                     if (this.str.equals(common)) {
-                        map.put(suffix.charAt(0), new Node())
-                        int a = 0;
-                        a++;
-
+                        if(map.containsKey(suffix.charAt(0)))
+                            map.get(suffix.charAt(0)).add(suffix.substring(0));
+                        else
+                            map.put(suffix.charAt(0), new Node(suffix.substring(0)));
                     } else {
                         int a = 0;
                         a++;
