@@ -114,7 +114,7 @@ public class Solution {
                 if (common == null) {
                     if (this.str == null) {
                         this.str = str;
-                        this.last = true;
+                        last = true;
                     } else {
                         int a = 0;
                         a++;
@@ -124,10 +124,20 @@ public class Solution {
 
                     if (this.str.equals(common)) {
                         if(map.containsKey(suffix.charAt(0)))
-                            map.get(suffix.charAt(0)).add(suffix.substring(0));
-                        else
-                            map.put(suffix.charAt(0), new Node(suffix.substring(0)));
+                            map.get(suffix.charAt(0)).add(suffix);
+                        else {
+                            map.put(suffix.charAt(0), new Node(suffix));
+                        }
                     } else {
+                        String suffix1 = this.str.substring(common.length());
+                        this.str = common;
+                        Node node = new Node(suffix1);
+                        node.last = last;
+                        node.map.putAll(map);
+                        map.clear();
+                        add(suffix1);
+
+
                         int a = 0;
                         a++;
                     }
