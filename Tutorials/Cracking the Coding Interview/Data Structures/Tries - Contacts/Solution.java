@@ -40,20 +40,12 @@ public class Solution {
 
             String str = contact.substring(pos);
             String common = node.common(str);
+            boolean hasMore = str.length() > common.length();
 
-            if (node.str.equals(common)) {
-                if (str.length() > common.length()) {
-                    Node next = find(contact, node.str.length() + pos, node.map.get(str.substring(common.length()).charAt(0)));
+            if (hasMore && node.str.equals(common))
+                return find(contact, node.str.length() + pos, node.map.get(str.substring(common.length()).charAt(0)));
 
-                    if (next != null)
-                        return next;
-                    return null;
-                }
-
-                return node;
-            }
-
-            return str.length() > common.length() ? null : node;
+            return hasMore ? null : node;
         }
 
         private static final class Node {
@@ -98,11 +90,10 @@ public class Solution {
             }
 
             private Node addChildNode(String str) {
-                char ch = str.charAt(0);
-                Node node = map.get(ch);
+                Node node = map.get(str.charAt(0));
 
                 if (node == null)
-                    map.put(ch, node = new Node(str));
+                    map.put(str.charAt(0), node = new Node(str));
 
                 return node.add(str);
             }
@@ -113,11 +104,6 @@ public class Solution {
                         return i == 0 ? "" : str.substring(0, i);
 
                 return str.length() < this.str.length() ? str : this.str;
-            }
-
-            @Override
-            public String toString() {
-                return str + (last ? "$" : "");
             }
         }
     }
