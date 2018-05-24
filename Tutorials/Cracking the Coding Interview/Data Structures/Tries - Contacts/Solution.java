@@ -53,21 +53,22 @@ find hak
          */
 
         private static Node find(String contact, int pos, Node node) {
-            if (node.str == null)
-                return find(contact, pos, node.map.get(contact.charAt(pos)));
+            if (node.str == null) {
+                char ch = contact.charAt(0);
+                return node.map.containsKey(ch) ? find(contact, pos, node.map.get(ch)) : null;
+            }
 
             String str = contact.substring(pos);
 
-            if(str.equals(node.str))
+            if (str.equals(node.str))
                 return node;
-            if(str.startsWith(node.str)) {
+            if (str.startsWith(node.str)) {
                 char ch = str.substring(node.str.length()).charAt(0);
                 Node next = find(contact, node.str.length() + pos, node.map.get(ch));
                 return next != null ? next : node;
             }
 
             return node;
-
 
 
 //            while (true) { ///
