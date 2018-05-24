@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * @author Oleg Cherednik
- * @since 18.05.2018
+ * @since 24.05.2018
  */
 public class Solution {
 
@@ -21,15 +21,7 @@ public class Solution {
         }
 
         private static int dfs(Node node) {
-            if (node == null)
-                return 0;
-
-            int total = node.last ? 1 : 0;
-
-            for (Node n : node.map.values())
-                total += dfs(n);
-
-            return total;
+            return node != null ? (node.last ? 1 : 0) + node.map.values().stream().map(SuffixTree::dfs).mapToInt(cur -> cur).sum() : 0;
         }
 
         private static Node find(String contact, int pos, Node node) {
@@ -51,7 +43,6 @@ public class Solution {
         private static final class Node {
 
             private final Map<Character, Node> map = new HashMap<>();
-
             private String str;
             private boolean last;
 
