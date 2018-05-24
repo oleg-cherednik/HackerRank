@@ -70,7 +70,7 @@ find hak
 
 
 
-//            while (true) {
+//            while (true) { ///
 //                if (node == null)
 //                    return null;
 //                if (pos == contact.length())
