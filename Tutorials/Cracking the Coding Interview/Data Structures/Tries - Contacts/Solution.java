@@ -17,13 +17,7 @@ public class Solution {
         }
 
         public int find(String contact) {
-            Node node = find(contact, 0, root);
-            int total = 0;
-
-            if (node != null)
-                total = dfs(node);
-
-            return total;
+            return dfs(find(contact, 0, root));
         }
 
         private static int dfs(Node node) {
@@ -38,52 +32,28 @@ public class Solution {
             return total;
         }
 
-        /*
-        9
-add hack
-add hackerrank
-add hackaton
-add harmony
-add harriet
-add marriet
-add marvel
-find hac
-find hak
-
-         */
-
         private static Node find(String contact, int pos, Node node) {
-            if (node.str == null) {
-                char ch = contact.charAt(0);
-                return node.map.containsKey(ch) ? find(contact, pos, node.map.get(ch)) : null;
-            }
+            if (node == null)
+                return null;
+            if (node.str == null)
+                return find(contact, pos, node.map.get(contact.charAt(0)));
 
             String str = contact.substring(pos);
+            String common = node.common(str);
 
-            if (str.equals(node.str))
+            if (node.str.equals(common)) {
+                if (str.length() > common.length()) {
+                    Node next = find(contact, node.str.length() + pos, node.map.get(str.substring(common.length()).charAt(0)));
+
+                    if (next != null)
+                        return next;
+                    return null;
+                }
+
                 return node;
-            if (str.startsWith(node.str)) {
-                char ch = str.substring(node.str.length()).charAt(0);
-                Node next = find(contact, node.str.length() + pos, node.map.get(ch));
-                return next != null ? next : node;
             }
 
-            return node;
-
-
-//            while (true) { ///
-//                if (node == null)
-//                    return null;
-//                if (pos == contact.length())
-//                    return node;
-//                if(node.str == null)
-//                    node = node.map.get(contact.charAt(pos));
-//                else if(contact.substring(pos).startsWith(node.str))
-//                    node = node.map
-//
-//                    pos++;
-//                }
-//            }
+            return str.length() > common.length() ? null : node;
         }
 
         private static final class Node {
