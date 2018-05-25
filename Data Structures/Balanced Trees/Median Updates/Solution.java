@@ -7,6 +7,7 @@ import java.util.Scanner;
  * @since 20.02.2018
  */
 public class Solution {
+    // TODO see HEAP: Find the Running Median
     private static final class AblTree {
         private final Map<Integer, Integer> map = new HashMap<>();
 
