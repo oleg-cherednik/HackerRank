@@ -3,7 +3,9 @@
  * @since 09.12.2017
  */
 public class Solution {
+
     class Node {
+
         int data;
         Node left;
         Node right;
@@ -16,7 +18,7 @@ public class Solution {
     private static boolean checkBST(Node node, int min, int max) {
         if (node == null)
             return true;
-        if (node.data < min || node.data > max)
+        if (node.data <= min || node.data >= max)
             return false;
         return checkBST(node.left, min, node.data) && checkBST(node.right, node.data, max);
     }
