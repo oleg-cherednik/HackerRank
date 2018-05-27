@@ -27,11 +27,9 @@ public class Solution {
 
     public static void main(String[] args) {
         int s = scanner.nextInt();
-        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
         for (int sItr = 0; sItr < s; sItr++) {
             int n = scanner.nextInt();
-            scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
             System.out.println(maxWays(n));
         }
 

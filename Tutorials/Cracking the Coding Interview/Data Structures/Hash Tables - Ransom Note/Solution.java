@@ -39,7 +39,6 @@ public class Solution {
         String[] magazine = new String[m];
 
         String[] magazineItems = scanner.nextLine().split(" ");
-//        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
         for (int i = 0; i < m; i++) {
             String magazineItem = magazineItems[i];
@@ -49,7 +48,6 @@ public class Solution {
         String[] ransom = new String[n];
 
         String[] ransomItems = scanner.nextLine().split(" ");
-//        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
         for (int i = 0; i < n; i++) {
             String ransomItem = ransomItems[i];

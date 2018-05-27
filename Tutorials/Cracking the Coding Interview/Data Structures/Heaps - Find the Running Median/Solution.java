@@ -9,52 +9,50 @@ import java.util.Scanner;
  */
 public class Solution {
 
-    private static final class MedianHeap {
+private static final class MedianHeap {
 
-        private final Queue<Integer> max;
-        private final Queue<Integer> min;
+    private final Queue<Integer> max;
+    private final Queue<Integer> min;
 
-        public MedianHeap(int size) {
-            final Comparator<Integer> comparator = Integer::compare;
-            max = new PriorityQueue<>(size, comparator.reversed());
-            min = new PriorityQueue<>(size, comparator);
-        }
+    public MedianHeap(int size) {
+        final Comparator<Integer> comparator = Integer::compare;
+        max = new PriorityQueue<>(size, comparator.reversed());
+        min = new PriorityQueue<>(size, comparator);
+    }
 
-        public void add(int val) {
-            if (!min.isEmpty() && val > min.element()) {
-                min.add(val);
+    public void add(int val) {
+        if (!min.isEmpty() && val > min.element()) {
+            min.add(val);
 
-                while (min.size() - max.size() > 0) {
-                    max.add(min.remove());
-                }
-            } else {
-                max.add(val);
+            while (min.size() - max.size() > 0) {
+                max.add(min.remove());
+            }
+        } else {
+            max.add(val);
 
-                while (max.size() - min.size() > 1) {
-                    min.add(max.remove());
-                }
+            while (max.size() - min.size() > 1) {
+                min.add(max.remove());
             }
         }
-
-        public double median() {
-            if (max.isEmpty())
-                return Double.NaN;
-            return max.size() == min.size() ? (max.element() + min.element()) / 2. : (double)max.element();
-        }
     }
+
+    public double median() {
+        if (max.isEmpty())
+            return Double.NaN;
+        return max.size() == min.size() ? (max.element() + min.element()) / 2. : (double)max.element();
+    }
+}
 
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         int n = scanner.nextInt();
-        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
         int[] a = new int[n];
         MedianHeap heap = new MedianHeap(n);
 
         for (int i = 0; i < n; i++) {
             int aItem = scanner.nextInt();
-            scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
             a[i] = aItem;
             heap.add(aItem);
             System.out.println(heap.median());

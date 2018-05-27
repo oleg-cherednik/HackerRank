@@ -19,11 +19,9 @@ private static boolean isPrime(int n) {
 
     public static void main(String[] args) {
         int p = scanner.nextInt();
-        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
         for (int pItr = 0; pItr < p; pItr++) {
             int n = scanner.nextInt();
-            scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
             System.out.println(isPrime(n) ? "Prime" : "Not prime");
         }
 

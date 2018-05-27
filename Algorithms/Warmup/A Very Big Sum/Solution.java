@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -7,53 +8,26 @@ import java.util.Scanner;
  */
 public class Solution {
 
-    static int[] solve(int[] a, int[] b) {
-        int[] res = new int[2];
-
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] > b[i])
-                res[0]++;
-            else if (a[i] < b[i])
-                res[1]++;
-        }
-
-        return res;
+    static long aVeryBigSum(long[] ar) {
+        return Arrays.stream(ar).sum();
     }
 
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
-        int[] a = new int[3];
+        int arCount = scanner.nextInt();
 
-        String[] aItems = scanner.nextLine().split(" ");
-        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+        long[] ar = new long[arCount];
 
-        for (int i = 0; i < 3; i++) {
-            int aItem = Integer.parseInt(aItems[i]);
-            a[i] = aItem;
+        String[] arItems = scanner.nextLine().split(" ");
+
+        for (int i = 0; i < arCount; i++) {
+            long arItem = Long.parseLong(arItems[i]);
+            ar[i] = arItem;
         }
 
-        int[] b = new int[3];
-
-        String[] bItems = scanner.nextLine().split(" ");
-        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-
-        for (int i = 0; i < 3; i++) {
-            int bItem = Integer.parseInt(bItems[i]);
-            b[i] = bItem;
-        }
-
-        int[] result = solve(a, b);
-
-        for (int i = 0; i < result.length; i++) {
-            System.out.print(result[i]);
-
-            if (i != result.length - 1) {
-                System.out.print(" ");
-            }
-        }
-
-        System.out.println();
+        long result = aVeryBigSum(ar);
+        System.out.println(String.valueOf(result));
 
         scanner.close();
     }
