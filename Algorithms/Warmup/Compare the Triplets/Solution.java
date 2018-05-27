@@ -26,6 +26,7 @@ public class Solution {
         int[] a = new int[3];
 
         String[] aItems = scanner.nextLine().split(" ");
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
         for (int i = 0; i < 3; i++) {
             int aItem = Integer.parseInt(aItems[i]);
@@ -35,6 +36,7 @@ public class Solution {
         int[] b = new int[3];
 
         String[] bItems = scanner.nextLine().split(" ");
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
         for (int i = 0; i < 3; i++) {
             int bItem = Integer.parseInt(bItems[i]);

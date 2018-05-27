@@ -35,10 +35,8 @@ public class Solution {
         }
 
         public void addEdge(int v, int w) {
-            if (!map.containsKey(v))
-                map.put(v, new HashSet<>());
-            if (!map.containsKey(w))
-                map.put(w, new HashSet<>());
+            map.putIfAbsent(v, new HashSet<>());
+            map.putIfAbsent(w, new HashSet<>());
 
             map.get(v).add(w);
             map.get(w).add(v);
