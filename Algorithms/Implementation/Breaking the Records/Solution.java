@@ -7,8 +7,21 @@ import java.util.Scanner;
 public class Solution {
 
     static int[] breakingRecords(int[] score) {
+        int min = score[0];
+        int max = score[0];
+        int[] res = new int[2];
 
+        for (int val : score) {
+            if (val < min) {
+                res[1]++;
+                min = val;
+            } else if (val > max) {
+                res[0]++;
+                max = val;
+            }
+        }
 
+        return res;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
