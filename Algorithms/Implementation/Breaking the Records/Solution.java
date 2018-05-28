@@ -7,17 +7,16 @@ import java.util.Scanner;
 public class Solution {
 
     static int[] breakingRecords(int[] score) {
-        int min = score[0];
-        int max = score[0];
+        int[] arr = { score[0], score[0] };
         int[] res = new int[2];
 
         for (int val : score) {
-            if (val < min) {
+            if (val < arr[1]) {
                 res[1]++;
-                min = val;
-            } else if (val > max) {
+                arr[1] = val;
+            } else if (val > arr[0]) {
                 res[0]++;
-                max = val;
+                arr[0] = val;
             }
         }
 
