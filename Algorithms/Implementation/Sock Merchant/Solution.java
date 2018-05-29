@@ -1,5 +1,8 @@
-import java.util.List;
+import java.util.Arrays;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * @author Oleg Cherednik
@@ -8,10 +11,13 @@ import java.util.Scanner;
 public class Solution {
 
     static int sockMerchant(int n, int[] ar) {
-        List<Integer> res;
+        Map<Integer, Long> map = Arrays.stream(ar).boxed().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-
-
+        return map.values().stream()
+                  .filter(amount -> amount > 1)
+                  .map(amount -> (int)(amount / 2))
+                  .mapToInt(Integer::intValue)
+                  .sum();
     }
 
     private static final Scanner scanner = new Scanner(System.in);
