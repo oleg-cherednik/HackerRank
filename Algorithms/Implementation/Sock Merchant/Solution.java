@@ -1,8 +1,6 @@
-import java.util.Arrays;
-import java.util.Map;
+import java.util.HashSet;
 import java.util.Scanner;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.Set;
 
 /**
  * @author Oleg Cherednik
@@ -11,13 +9,17 @@ import java.util.stream.Collectors;
 public class Solution {
 
     static int sockMerchant(int n, int[] ar) {
-        Map<Integer, Long> map = Arrays.stream(ar).boxed().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        Set<Integer> colors = new HashSet<>();
+        int pairs = 0;
 
-        return map.values().stream()
-                  .filter(amount -> amount > 1)
-                  .map(amount -> (int)(amount / 2))
-                  .mapToInt(Integer::intValue)
-                  .sum();
+        for (int color : ar) {
+            if (colors.remove(color))
+                pairs++;
+            else
+                colors.add(color);
+        }
+
+        return pairs;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
