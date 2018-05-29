@@ -15,12 +15,10 @@ public class Solution {
         for (int i = 0; i < n; i++) {
             String name = in.next();
             int phone = in.nextInt();
-            // Write code here
             phoneBook.put(name, phone);
         }
         while (in.hasNext()) {
             String s = in.next();
-            // Write code here
             System.out.println(phoneBook.containsKey(s) ? s + '=' + phoneBook.get(s) : "Not found");
         }
         in.close();
