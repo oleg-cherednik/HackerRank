@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Solution {
 
     static int pageCount(int n, int p) {
-        return Math.min(p / 2, (n - p + (n % 2 == 0 ? 1 : 0)) / 2);
+        return Math.min(p / 2, n / 2 - p / 2);
     }
 
     private static final Scanner scanner = new Scanner(System.in);
