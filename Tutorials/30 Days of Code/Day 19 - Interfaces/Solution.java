@@ -1,5 +1,3 @@
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
@@ -7,47 +5,33 @@ import java.util.Scanner;
  * @since 01.06.2018
  */
 public class Solution {
-    private final Deque<Character> queue = new LinkedList<>();
-    private final Deque<Character> stack = new LinkedList<>();
-
-    void pushCharacter(char ch) {
-        stack.push(ch);
-    }
-
-    void enqueueCharacter(char ch) {
-        queue.add(ch);
-    }
-
-    char popCharacter() {
-        return stack.pop();
-    }
-
-    char dequeueCharacter() {
-        return queue.remove();
-    }
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        String input = scan.nextLine();
+        int n = scan.nextInt();
         scan.close();
 
-        char[] s = input.toCharArray();
+        AdvancedArithmetic myCalculator = new Calculator();
+        int sum = myCalculator.divisorSum(n);
+        System.out.println("I implemented: " + myCalculator.getClass().getInterfaces()[0].getName());
+        System.out.println(sum);
+    }
+}
 
-        Solution p = new Solution();
+interface AdvancedArithmetic {
 
-        for (char c : s) {
-            p.pushCharacter(c);
-            p.enqueueCharacter(c);
-        }
+    int divisorSum(int n);
+}
 
-        boolean isPalindrome = true;
-        for (int i = 0; i < s.length / 2; i++) {
-            if (p.popCharacter() != p.dequeueCharacter()) {
-                isPalindrome = false;
-                break;
-            }
-        }
+class Calculator implements AdvancedArithmetic {
 
-        System.out.println("The word, " + input + ", is " + ((!isPalindrome) ? "not a palindrome." : "a palindrome."));
+    public int divisorSum(int n) {
+        int sum = 0;
+
+        for (int i = 1; i <= n; i++)
+            if (n % i == 0)
+                sum += i;
+
+        return sum;
     }
 }
