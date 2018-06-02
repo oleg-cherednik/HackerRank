@@ -10,16 +10,18 @@ public class Solution {
     static int pickingNumbers(int[] a) {
         Arrays.sort(a);
 
-        int res = 0;
+        int res = a.length > 0 ? 1 : 0;
 
-        for (int i = 0; i < a.length - res; i++) {
-            int j = i + 1;
+        for (int i = 0, k = 1, j = 1; j < a.length; j++) {
+            if (a[j] - a[i] > 1) {
+                i = k == i ? j : k;
+                j = i;
+            } else {
+                res = Math.max(res, j - i + 1);
 
-            while (j < a.length && a[j] - a[i] <= 1) {
-                j++;
+                if (a[j] != a[k])
+                    k = j;
             }
-
-            res = Math.max(res, j - i);
         }
 
         return res;
