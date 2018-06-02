@@ -7,6 +7,8 @@ import java.util.Scanner;
 public class Solution {
 
     static int utopianTree(int n) {
+//        return ~(~1 << (n >> 1)) << n % 2;
+
         int height = 1;
 
         for (int i = 0; i < n; i++) {
