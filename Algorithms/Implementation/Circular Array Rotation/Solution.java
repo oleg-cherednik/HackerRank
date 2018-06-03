@@ -7,27 +7,12 @@ import java.util.Scanner;
 public class Solution {
 
     static int[] circularArrayRotation(int[] a, int[] m, int k) {
-        k = k > a.length ? k % a.length : k;
-
-        for(int i = 0, j = a.length - 1; i < j; i++, j--)
-            swap(a, i, j);
-        for(int i = 0, j = k - 1; i < j; i++, j--)
-            swap(a, i, j);
-        for(int i = k, j = a.length - 1; i < j; i++, j--)
-            swap(a, i, j);
-
         int[] res = new int[m.length];
 
-        for(int i = 0; i < res.length; i++)
-            res[i] = a[m[i]];
+        for (int i = 0; i < res.length; i++)
+            res[i] = a[(a.length - (k % a.length) + m[i]) % a.length];
 
         return res;
-    }
-
-    private static void swap(int[] arr, int i, int j) {
-        int tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
