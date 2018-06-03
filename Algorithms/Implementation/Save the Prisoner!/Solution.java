@@ -1,21 +1,21 @@
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Set;
 
 /**
  * @author Oleg Cherednik
- * @since 29.05.2018
+ * @since 03.06.2018
  */
 public class Solution {
 
     static int saveThePrisoner(int n, int m, int s) {
-
-
+        return (m + s - 1) % n == 0 ? n : (m + s - 1) % n;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        System.out.println(saveThePrisoner(4, 8, 3));
+        System.out.println(saveThePrisoner(4, 4, 1));
+        System.out.println(saveThePrisoner(352926151, 380324688, 94730870));
         int t = scanner.nextInt();
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
