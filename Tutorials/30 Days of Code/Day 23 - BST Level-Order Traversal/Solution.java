@@ -43,10 +43,9 @@ public class Solution {
         Scanner sc = new Scanner(System.in);
         int T = sc.nextInt();
         Node root = null;
-        while (T > 0) {
+        while (T-- > 0) {
             int data = sc.nextInt();
             root = insert(root, data);
-            T--;
         }
         levelOrder(root);
     }
