@@ -2,13 +2,21 @@ import java.util.Scanner;
 
 /**
  * @author Oleg Cherednik
- * @since 03.06.2018
+ * @since 07.06.2018
  */
 public class Solution {
 
     static int[] permutationEquation(int[] p) {
+        int[] res = new int[p.length];
+        int[] arr = new int[p.length];
 
+        for (int i = 0; i < p.length; i++)
+            arr[p[i] - 1] = i;
 
+        for (int i = 0; i < p.length; i++)
+            res[i] = arr[arr[i]] + 1;
+
+        return res;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
