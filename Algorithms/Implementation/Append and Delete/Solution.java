@@ -2,21 +2,24 @@ import java.util.Scanner;
 
 /**
  * @author Oleg Cherednik
- * @since 07.06.2018
+ * @since 10.06.2018
  */
 public class Solution {
 
-    static String appendAndDelete(String s, String t, int k) {
-        int max = Math.max(s.length(), t.length());
-        int min = Math.min(s.length(), t.length());
-        int i = 0;
+    private static String appendAndDelete(String s, String t, int k) {
+        int sum = s.length() + t.length();
+        int length = 0;
 
-        while (i < min && s.charAt(i) == t.charAt(i)) {
-            i++;
-        }
+        for (int i = 0, min = Math.min(s.length(), t.length()); i < min && s.charAt(i) == t.charAt(i); i++)
+            length++;
 
-        int total = i < max ? Math.abs(s.length() - t.length()) + 2 * (min - i) : 0;
-        return total <= k && (k - total) % 2 == 0 ? "Yes" : "No";
+        length *= 2;
+
+        if (sum - length > k)
+            return "No";
+        if ((sum - length) % 2 == k % 2)
+            return "Yes";
+        return sum - k < 0 ? "Yes" : "No";
     }
 
     private static final Scanner scanner = new Scanner(System.in);
