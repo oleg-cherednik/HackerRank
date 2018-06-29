@@ -1,39 +1,47 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
  * @author Oleg Cherednik
- * @since 27.05.2018
+ * @since 29.06.2018
  */
 public class Solution {
 
-    static int[] gradingStudents(int[] grades) {
-        for (int i = 0; i < grades.length; i++)
-            if (grades[i] >= 38 && grades[i] % 5 >= 3)
-                grades[i] = grades[i] + 5 - grades[i] % 5;
+    static int jumpingOnClouds(int[] c, int k) {
+        int e = 100;
+        int i = 0;
 
-        return grades;
+        do {
+            i = (i + k) % c.length;
+            e -= c[i] == 0 ? 1 : 3;
+        } while (e > 0 && i != 0);
+
+        return e;
     }
 
-    private static final Scanner scan = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
-        int n = Integer.parseInt(scan.nextLine().trim());
+    public static void main(String[] args) throws IOException {
+        String[] nk = scanner.nextLine().split(" ");
 
-        int[] grades = new int[n];
+        int n = Integer.parseInt(nk[0]);
 
-        for (int gradesItr = 0; gradesItr < n; gradesItr++) {
-            int gradesItem = Integer.parseInt(scan.nextLine().trim());
-            grades[gradesItr] = gradesItem;
+        int k = Integer.parseInt(nk[1]);
+
+        int[] c = new int[n];
+
+        String[] cItems = scanner.nextLine().split(" ");
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        for (int i = 0; i < n; i++) {
+            int cItem = Integer.parseInt(cItems[i]);
+            c[i] = cItem;
         }
 
-        int[] result = gradingStudents(grades);
+        int result = jumpingOnClouds(c, k);
 
-        for (int resultItr = 0; resultItr < result.length; resultItr++) {
-            System.out.print(String.valueOf(result[resultItr]));
+        System.out.println(String.valueOf(result));
 
-            if (resultItr != result.length - 1) {
-                System.out.println();
-            }
-        }
+        scanner.close();
     }
 }
