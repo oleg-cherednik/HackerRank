@@ -10,12 +10,11 @@ public class Solution {
         int res = 0;
 
         for (int i = 0; i < B.length - 1; i++) {
-            if (B[i] % 2 == 0)
-                continue;
-
-            B[i]++;
-            B[i + 1]++;
-            res += 2;
+            if (B[i] % 2 != 0) {
+                B[i]++;
+                B[i + 1]++;
+                res += 2;
+            }
         }
 
         return B[B.length - 1] % 2 == 0 ? res : -1;
