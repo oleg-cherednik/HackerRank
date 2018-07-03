@@ -6,16 +6,16 @@ import java.util.Scanner;
  */
 public class Solution {
 
-    static long strangeCounter(long t) {
-        int i = 1;
-        long s;
+static long strangeCounter(long t) {
+    long pow = 2;
+    long s;
 
-        while ((s = (3 * (1 - (long)Math.pow(2, i))) / -1) < t) {
-            i++;
-        }
-
-        return s - t + 1;
+    while ((s = 3 * pow - 3) < t) {
+        pow *= 2;
     }
+
+    return s - t + 1;
+}
 
     private static final Scanner scanner = new Scanner(System.in);
 
