@@ -8,11 +8,11 @@ public class Solution {
 
     static int chocolateFeast(int n, int c, int m) {
         int total = n / c;
-        int tmp = total;
+        int w = total;
 
-        while (tmp >= m) {
-            total += tmp / m;
-            tmp = tmp / m + tmp % m;
+        while (w >= m) {
+            total += w / m;
+            w = w / m + w % m;
         }
 
         return total;
