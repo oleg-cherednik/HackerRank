@@ -7,19 +7,16 @@ import java.util.Scanner;
 public class Solution {
 
     static long solve(long n) {
-        long res = 1;
+        if (n == 0)
+            return 1;
 
-        if (n != 0) {
-            int i = 0;
+        int i = 0;
 
-            do {
-                i += (n & 0x1) == 0 ? 1 : 0;
-            } while ((n >>= 1) > 0);
+        do {
+            i += (n & 0x1) == 0 ? 1 : 0;
+        } while ((n >>= 1) > 0);
 
-            res = (long)Math.pow(2, i);
-        }
-
-        return res;
+        return (long)Math.pow(2, i);
     }
 
     private static final Scanner scanner = new Scanner(System.in);
