@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -140,8 +141,10 @@ public class Solution {
         }
 
         String words = scanner.nextLine();
+        String[] mask = NORMALIZE_MASK.apply(crossword);
 
         String[] result = crosswordPuzzle(crossword, words);
+        APPLY_MASK.accept(result, mask);
 
         for (int i = 0; i < result.length; i++) {
             System.out.print(result[i]);
@@ -155,4 +158,41 @@ public class Solution {
 
         scanner.close();
     }
+
+    private static final Function<String[], String[]> NORMALIZE_MASK = crossword -> {
+        String[] mask = new String[crossword.length];
+
+        for (int row = 0; row < crossword.length; row++) {
+            String line = crossword[row];
+            StringBuilder buf1 = new StringBuilder(line.length());
+            StringBuilder buf2 = new StringBuilder(line.length());
+
+            for (int col = 0; col < line.length(); col++) {
+                if (line.charAt(col) == '-') {
+                    buf1.append('-');
+                    buf2.append('-');
+                } else {
+                    buf1.append('+');
+                    buf2.append(line.charAt(col));
+                }
+            }
+
+            crossword[row] = buf1.toString();
+            mask[row] = buf2.toString();
+        }
+
+        return mask;
+    };
+
+    private static final BiConsumer<String[], String[]> APPLY_MASK = (crossword, mask) -> {
+        for (int row = 0; row < crossword.length; row++) {
+            String line = crossword[row];
+            StringBuilder buf = new StringBuilder(line.length());
+
+            for (int col = 0; col < line.length(); col++)
+                buf.append(mask[row].charAt(col) == '-' ? line.charAt(col) : mask[row].charAt(col));
+
+            crossword[row] = buf.toString();
+        }
+    };
 }
