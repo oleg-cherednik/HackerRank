@@ -20,14 +20,12 @@ public class Solution {
     }
 
     private static boolean isMatch(String s, int i, long num) {
-        long nextNum = num + 1;
         boolean match = true;
 
         while (match && i < s.length()) {
-            int len = String.valueOf(nextNum).length();
-            match = nextNum == Long.parseLong(s.substring(i, Math.min(s.length(), i + len)));
+            int len = String.valueOf(++num).length();
+            match = num == Long.parseLong(s.substring(i, Math.min(s.length(), i + len)));
             i += len;
-            nextNum++;
         }
 
         return match;
