@@ -9,26 +9,28 @@ public class Solution {
     static void separateNumbers(String s) {
         for (int i = 1; i <= s.length() / 2; i++) {
             long num = Long.parseLong(s.substring(0, i));
-            int pos = i;
-            long nextNum = num + 1;
 
-            boolean match = true;
-
-            while (match && pos < s.length()) {
-                int len = String.valueOf(nextNum).length();
-                match = nextNum == Long.parseLong(s.substring(pos, Math.min(s.length(), pos + len)));
-                pos += len;
-                nextNum++;
+            if (isMatch(s, i, num)) {
+                System.out.println("YES " + num);
+                return;
             }
-
-            if (!match)
-                continue;
-
-            System.out.println("YES " + num);
-            return;
         }
 
         System.out.println("NO");
+    }
+
+    private static boolean isMatch(String s, int i, long num) {
+        long nextNum = num + 1;
+        boolean match = true;
+
+        while (match && i < s.length()) {
+            int len = String.valueOf(nextNum).length();
+            match = nextNum == Long.parseLong(s.substring(i, Math.min(s.length(), i + len)));
+            i += len;
+            nextNum++;
+        }
+
+        return match;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
