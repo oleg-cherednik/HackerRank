@@ -7,14 +7,8 @@ import java.util.Scanner;
 public class Solution {
 
     static String funnyString(String s) {
-        char[] arr = s.toCharArray();
-        int[] diff = new int[arr.length - 1];
-
-        for (int i = 0, j = i + 1; j < arr.length; i++, j++)
-            diff[i] = Math.abs(arr[j] - arr[i]);
-
-        for (int i = arr.length - 2, j = arr.length - 1, k = 0; i >= 0; i--, j--, k++)
-            if (Math.abs(arr[j] - arr[i]) != diff[k])
+        for (int i = 0, j = s.length() - 1; j > 0; i++, j--)
+            if (Math.abs(s.charAt(i + 1) - s.charAt(i)) != Math.abs(s.charAt(j) - s.charAt(j - 1)))
                 return "Not Funny";
 
         return "Funny";
