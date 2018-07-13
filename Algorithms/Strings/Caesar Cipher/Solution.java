@@ -11,16 +11,12 @@ public class Solution {
         StringBuilder buf = new StringBuilder(s.length());
 
         for (int i = 0; i < s.length(); i++) {
-            char ch = s.charAt(i);
+            char ch = Character.toLowerCase(s.charAt(i));
 
-            if (Character.isAlphabetic(ch)) {
-                boolean upperCase = Character.isUpperCase(ch);
-                ch = (char)(Character.toLowerCase(s.charAt(i)) + k);
-                ch = ch > 'z' ? (char)(ch - 'z' + 'a' - 1) : ch;
-                ch = upperCase ? Character.toUpperCase(ch) : ch;
-            }
+            if (Character.isAlphabetic(ch))
+                ch = (char)(ch + k > 'z' ? ch + k - 'z' + 'a' - 1 : ch + k);
 
-            buf.append(ch);
+            buf.append(Character.isUpperCase(s.charAt(i)) ? Character.toUpperCase(ch) : ch);
         }
 
         return buf.toString();
