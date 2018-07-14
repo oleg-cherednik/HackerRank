@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  * @author Oleg Cherednik
- * @since 13.07.2018
+ * @since 14.07.2018
  */
 public class Solution {
 
