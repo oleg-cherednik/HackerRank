@@ -12,20 +12,14 @@ import java.util.Set;
 public class Solution {
 
     static String[] weightedUniformStrings(String s, int[] queries) {
-        String[] groups = s.split("(?<=(.))(?!\\1)");
         Map<Character, String> map = new HashMap<>();
-
-        Arrays.stream(groups).forEach(
+        Arrays.stream(s.split("(?<=(.))(?!\\1)")).forEach(
                 group -> map.compute(group.charAt(0), (ch, existed) -> existed == null || group.length() > existed.length() ? group : existed));
 
         Set<Integer> weights = new HashSet<>();
-
         map.forEach((ch, group) -> {
-            int weight = ch - 'a' + 1;
-            int sum = 0;
-
-            for (int i = 0; i < group.length(); i++)
-                weights.add(sum += weight);
+            for (int i = 0, sum = 0; i < group.length(); i++)
+                weights.add(sum += ch - 'a' + 1);
         });
 
         String[] res = new String[queries.length];
