@@ -7,11 +7,11 @@ import java.util.Scanner;
 public class Solution {
 
     static int commonChild(String s1, String s2) {
-        int[][] arr = new int[s2.length() + 1][s1.length() + 1];
+        int[][] arr = new int[s1.length() + 1][s2.length() + 1];
 
-        for (int i = 0; i < s2.length(); i++)
-            for (int j = 0; j < s1.length(); j++)
-                arr[i + 1][j + 1] = s2.charAt(i) == s1.charAt(j) ? arr[i][j] + 1 : Math.max(arr[i][j + 1], arr[i + 1][j]);
+        for (int i = 0; i < s1.length(); i++)
+            for (int j = 0; j < s2.length(); j++)
+                arr[i + 1][j + 1] = s1.charAt(i) == s2.charAt(j) ? arr[i][j] + 1 : Math.max(arr[i][j + 1], arr[i + 1][j]);
 
         return arr[s2.length()][s1.length()];
     }
