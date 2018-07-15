@@ -28,7 +28,7 @@ public class Solution {
         }
 
         for (int i = 0, j = s.length() - 1; i < j && k > 1; i++, j--) {
-            if(arr[i] == '9')
+            if (arr[i] == '9')
                 continue;
 
             arr[i] = '9';
