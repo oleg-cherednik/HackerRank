@@ -5,7 +5,7 @@ import java.util.Scanner;
  * @author Oleg Cherednik
  * @since 15.07.2018
  */
-public class Solution {
+public class Main {
 
     public static void main (String[] args) throws java.lang.Exception {
         Scanner kb = new Scanner(System.in);
