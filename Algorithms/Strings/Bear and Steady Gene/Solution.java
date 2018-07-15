@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 /**
  * @author Oleg Cherednik
- * @since 14.07.2018
+ * @since 15.07.2018
  */
 public class Solution {
 
