@@ -5,7 +5,7 @@ import java.util.StringTokenizer;
  * @author Oleg Cherednik
  * @since 16.07.2018
  */
-public class Solution {
+public class Main {
 
     public static int month[];
 
