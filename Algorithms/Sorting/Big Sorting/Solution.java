@@ -21,7 +21,7 @@ public class Solution {
         String[] unsorted = new String[n];
 
         for (int i = 0; i < n; i++) {
-            String unsortedItem = scanner.next();   // nextLine() is too long
+            String unsortedItem = scanner.next();   // nextLine() is too slow
             unsorted[i] = unsortedItem;
         }
 
