@@ -1,6 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * @author Oleg Cherednik
@@ -8,53 +8,42 @@ import java.util.Scanner;
  */
 public class Solution {
 
-    static String[] countingSort(int[] num, String[] arr) {
+    static void countingSort(int[] num, String[] arr) {
         for (int i = 0; i < arr.length / 2; i++)
             arr[i] = "-";
 
-        List<List<String>> count = new ArrayList<>(100);
+        StringBuilder[] count = new StringBuilder[100];
 
-        for(int i = 0; i < 100; i++)
-            count.add(new ArrayList<>());
+        for (int i = 0; i < num.length; i++) {
+            StringBuilder buf = count[num[i]];
 
-        for(int i = 0; i < num.length; i++)
-            count.get(num[i]).add(arr[i]);
+            if (buf == null)
+                buf = count[num[i]] = new StringBuilder();
 
-        int i = 0;
-        String[] res = new String[arr.length];
-
-        for(List<String> tmp : count)
-            for(String str :  tmp)
-                res[i++] = str;
-
-        return res;
-    }
-
-    private static final Scanner scanner = new Scanner(System.in);
-
-    public static void main(String[] args) {
-        int n = scanner.nextInt();
-        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-
-        int[] num = new int[n];
-        String[] arr = new String[n];
-
-        for (int nItr = 0; nItr < n; nItr++) {
-            String[] xs = scanner.nextLine().split(" ");
-
-            int x = Integer.parseInt(xs[0]);
-
-            String s = xs[1];
-
-            num[nItr] = x;
-            arr[nItr] = s;
+            buf.append(i < arr.length / 2 ? "-" : arr[i]).append(' ');
         }
 
-        String[] res = countingSort(num, arr);
+        for (StringBuilder buf : count)
+            if (buf != null)
+                System.out.print(buf);
+    }
 
-        for(int i = 0; i < res.length; i++)
-            System.out.print(res[i] + ' ');
+    public static void main(String[] args) throws IOException {
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(Solution.class.getResourceAsStream("/input01.txt")))) {
+//        InputStream in = System.in;
+            int n = Integer.parseInt(in.readLine());
 
-        scanner.close();
+            int[] num = new int[n];
+            String[] arr = new String[n];
+
+            for (int nItr = 0; nItr < n; nItr++) {
+                String[] xs = in.readLine().split(" ");
+
+                num[nItr] = Integer.parseInt(xs[0]);
+                arr[nItr] = xs[1];
+            }
+
+            countingSort(num, arr);
+        }
     }
 }
