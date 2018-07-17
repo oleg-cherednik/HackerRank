@@ -8,10 +8,8 @@ import java.io.InputStreamReader;
  */
 public class Solution {
 
-    static void countingSort(int[] num, String[] arr) {
-        for (int i = 0; i < arr.length / 2; i++)
-            arr[i] = "-";
-
+    static String countingSort(int[] num, String[] arr) {
+        int capacity = 0;
         StringBuilder[] count = new StringBuilder[100];
 
         for (int i = 0; i < num.length; i++) {
@@ -20,12 +18,22 @@ public class Solution {
             if (buf == null)
                 buf = count[num[i]] = new StringBuilder();
 
-            buf.append(i < arr.length / 2 ? "-" : arr[i]).append(' ');
+            if (i < arr.length / 2) {
+                buf.append("- ");
+                capacity += 2;
+            } else {
+                buf.append(arr[i]).append(' ');
+                capacity += arr[i].length() + 1;
+            }
         }
+
+        StringBuilder res = new StringBuilder(capacity);
 
         for (StringBuilder buf : count)
             if (buf != null)
-                System.out.print(buf);
+                res.append(buf);
+
+        return res.toString();
     }
 
     public static void main(String[] args) throws IOException {
@@ -43,7 +51,8 @@ public class Solution {
                 arr[nItr] = xs[1];
             }
 
-            countingSort(num, arr);
+            String res = countingSort(num, arr);
+            System.out.println(res);
         }
     }
 }
