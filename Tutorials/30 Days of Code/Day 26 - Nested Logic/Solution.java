@@ -23,7 +23,7 @@ public class Solution {
             else if (actualYear == expectedYear) {
                 if (actualMonth > expectedMonth)
                     fine = 500 * (actualMonth - expectedMonth);
-                else if (actualDay > expectedDay)
+                else if (actualMonth == expectedMonth && actualDay > expectedDay)
                     fine = 15 * (actualDay - expectedDay);
             }
 
