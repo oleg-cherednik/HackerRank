@@ -1,5 +1,6 @@
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -9,8 +10,42 @@ import java.util.Scanner;
 public class Solution {
 
     static int lilysHomework(int[] arr) {
+        int res = Integer.MAX_VALUE;
+        int[] sorted = Arrays.copyOf(arr, arr.length);
+        Arrays.sort(sorted);
 
+        for (int k = 0; k < 2; k++) {
+            int swaps = 0;
 
+            if (k == 1)
+                for (int l = 0, m = sorted.length - 1; l < m; l++, m--)
+                    swap(sorted, l, m);
+
+            Map<Integer, Integer> map = new HashMap<>();
+
+            for (int i = 0; i < arr.length; i++)
+                map.put(arr[i], i);
+
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] == sorted[i])
+                    continue;
+
+                swaps++;
+                int j = map.get(sorted[i]);
+                map.put(arr[i], map.get(sorted[i]));
+                swap(arr, i, j);
+            }
+
+            res = Math.min(res, swaps);
+        }
+
+        return res;
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
