@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
 /**
  * @author Oleg Cherednik
@@ -36,23 +34,28 @@ public class Solution {
         return res.toString();
     }
 
-    public static void main(String[] args) throws IOException {
-        try (BufferedReader in = new BufferedReader(new InputStreamReader(Solution.class.getResourceAsStream("/input01.txt")))) {
-//        InputStream in = System.in;
-            int n = Integer.parseInt(in.readLine());
+    private static final Scanner scanner = new Scanner(System.in);
 
-            int[] num = new int[n];
-            String[] arr = new String[n];
+    public static void main(String[] args) {
+        int n = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-            for (int nItr = 0; nItr < n; nItr++) {
-                String[] xs = in.readLine().split(" ");
+        int[] num = new int[n];
+        String[] arr = new String[n];
 
-                num[nItr] = Integer.parseInt(xs[0]);
-                arr[nItr] = xs[1];
-            }
+        for (int nItr = 0; nItr < n; nItr++) {
+            String[] xs = scanner.nextLine().split(" ");
 
-            String res = countingSort(num, arr);
-            System.out.println(res);
+            int x = Integer.parseInt(xs[0]);
+
+            String s = xs[1];
+
+            num[nItr] = x;
+            arr[nItr] = s;
         }
+
+        System.out.println(countingSort(num, arr));
+
+        scanner.close();
     }
 }
