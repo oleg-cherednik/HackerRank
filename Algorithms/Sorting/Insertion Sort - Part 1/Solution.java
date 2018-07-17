@@ -9,19 +9,17 @@ public class Solution {
 
     static void insertionSort1(int n, int[] arr) {
         int i = arr.length - 1;
-        int x = arr[i--];
+        int x = arr[i];
+        int j = i - 1;
 
-        while (true) {
-            if (i < 0 || arr[i] < x) {
-                arr[i + 1] = x;
-                PRINT.accept(arr);
-                break;
-            } else {
-                arr[i + 1] = arr[i];
-                PRINT.accept(arr);
-                i--;
-            }
+        while (j >= 0 && arr[j] > x) {
+            arr[j + 1] = arr[j];
+            j -= 1;
+            PRINT.accept(arr);
         }
+
+        arr[j + 1] = x;
+        PRINT.accept(arr);
     }
 
     private static final Consumer<int[]> PRINT = arr -> {
