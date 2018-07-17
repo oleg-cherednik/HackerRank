@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -12,9 +10,9 @@ public class Solution {
     static int[] cutTheSticks(int[] arr) {
         Arrays.sort(arr);
 
-        List<Integer> tmp = new ArrayList<>();
+        int[] res = new int[(int)Arrays.stream(arr).distinct().count()];
 
-        for (int i = 0, k = 0; i < arr.length; i++, k = 0) {
+        for (int i = 0, k = 0, m = 0; i < arr.length; i++, k = 0) {
             if (arr[i] == 0)
                 continue;
 
@@ -27,10 +25,10 @@ public class Solution {
                 }
             }
 
-            tmp.add(k);
+            res[m++] = k;
         }
 
-        return tmp.stream().mapToInt(i -> i).toArray();
+        return res;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
