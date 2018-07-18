@@ -2,13 +2,20 @@ import java.util.Scanner;
 
 /**
  * @author Oleg Cherednik
- * @since 17.07.2018
+ * @since 18.07.2018
  */
 public class Solution {
 
-    static int taumBday(int b, int w, int bc, int wc, int z) {
+    static long taumBday(int b, int w, int bc, int wc, int z) {
+        long res = 0;
 
+        for (int i = 0; i < b; i++)
+            res += Math.min(bc, wc + z);
 
+        for (int i = 0; i < w; i++)
+            res += Math.min(wc, bc + z);
+
+        return res;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -32,7 +39,7 @@ public class Solution {
 
             int z = Integer.parseInt(bcWcz[2]);
 
-            int result = taumBday(b, w, bc, wc, z);
+            long result = taumBday(b, w, bc, wc, z);
             System.out.println(String.valueOf(result));
         }
 
