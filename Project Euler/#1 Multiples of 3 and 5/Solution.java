@@ -7,15 +7,12 @@ import java.util.Scanner;
 public class Solution {
 
     static long findSum(long n) {
-        long sum3 = sum(3, 3, (n - 1) / 3);
-        long sum5 = sum(5, 5, (n - 1) / 5);
-        long sum15 = sum(15, 15, (n - 1) / 15);
-
-        return sum3 + sum5 - sum15;
+        return sum(3, n) + sum(5, n) - sum(15, n);
     }
 
-    private static long sum(int a1, int d, long n) {
-        return (a1 * n * (n + 1)) / 2;
+    private static long sum(int a1, long n) {
+        long p = (n - 1) / a1;
+        return (a1 * p * (p + 1)) / 2;
     }
 
     public static void main(String[] args) {
