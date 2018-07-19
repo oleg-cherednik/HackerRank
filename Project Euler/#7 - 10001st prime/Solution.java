@@ -10,7 +10,7 @@ public class Solution {
 
     private static final Map<Integer, Boolean> PRIMES = new HashMap<>();
 
-    static int findPrime(long n) {
+    static int findPrime(int n) {
         for (int i = 1, pos = 0; ; i++) {
             if (isPrime(i))
                 if (++pos == n)
