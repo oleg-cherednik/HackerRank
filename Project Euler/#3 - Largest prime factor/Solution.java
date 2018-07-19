@@ -38,7 +38,7 @@ public class Solution {
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
         for (int a0 = 0; a0 < t; a0++) {
-            long n = Long.parseLong(in.next());
+            long n = in.nextLong();
             System.out.println(largestPrime(n));
         }
     }
