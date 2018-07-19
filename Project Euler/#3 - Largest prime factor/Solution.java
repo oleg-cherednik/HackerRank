@@ -6,7 +6,7 @@ import java.util.Scanner;
  */
 public class Solution {
 
-    static int largestPrime(long n) {
+    static long largestPrime(long n) {
         long res = n;
 
         while (true) {
@@ -18,7 +18,7 @@ public class Solution {
             res /= div;
         }
 
-        return (int)res;
+        return res;
     }
 
     private static long getDiv(long val) {
@@ -38,7 +38,7 @@ public class Solution {
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
         for (int a0 = 0; a0 < t; a0++) {
-            long n = in.nextLong();
+            long n = Long.parseLong(in.next());
             System.out.println(largestPrime(n));
         }
     }
