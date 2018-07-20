@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+/**
+ * @author Oleg Cherednik
+ * @since 20.07.2018
+ */
 int main() {
     int a, b;
     float c, d;
