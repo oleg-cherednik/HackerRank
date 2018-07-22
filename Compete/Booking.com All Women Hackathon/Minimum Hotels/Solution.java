@@ -1,7 +1,9 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
@@ -12,32 +14,43 @@ import static java.util.stream.Collectors.toList;
  */
 public class Solution {
 
-    static int solve(List<Integer> list1, List<Integer> list2) {
+    static int solve(List<Integer> customer, int k) {
+        Collections.sort(customer);
 
+        int res = 0;
+        int i = -1;
 
+        for (int cust : customer) {
+            if (i == -1 || cust > i) {
+                res++;
+                i = cust + 2 * k;
+            }
+        }
+
+        return res;
     }
 
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-        String[] nm = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
+        int t = Integer.parseInt(bufferedReader.readLine().trim());
 
+        IntStream.range(0, t).forEach(tItr -> {
+            try {
+                int customerCount = Integer.parseInt(bufferedReader.readLine().trim());
 
+                List<Integer> customer = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
+                                               .map(Integer::parseInt)
+                                               .collect(toList());
 
-        int n = Integer.parseInt(nm[0]);
+                int k = Integer.parseInt(bufferedReader.readLine().trim());
 
-        int m = Integer.parseInt(nm[1]);
-
-        List<Integer> list1 = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-                                    .map(Integer::parseInt)
-                                    .collect(toList());
-
-        List<Integer> list2 = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-                                    .map(Integer::parseInt)
-                                    .collect(toList());
-
-        int result = solve(list1, list2);
-        System.out.println(String.valueOf(result));
+                int result = solve(customer, k);
+                System.out.println(String.valueOf(result));
+            } catch(IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
         bufferedReader.close();
     }

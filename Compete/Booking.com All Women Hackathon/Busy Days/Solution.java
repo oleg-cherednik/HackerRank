@@ -1,105 +1,88 @@
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * @author Oleg Cherednik
- * @since 22.09.2017
+ * @since 21.07.2018
  */
 public class Solution {
-    public static void main(String... args) {
-        Scanner scan = new Scanner(System.in);
-        int n = scan.nextInt();
-        int m = scan.nextInt();
 
-        final class Node {
-            final int row;
-            final int col;
-            final int val;
-            int min = Integer.MAX_VALUE;
-            boolean visited;
+    static String solve(List<List<String>> reservations) {
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        ZonedDateTime start = zonedDateTime("2018-01-01", df);
+        int[] days = new int[daysBetween(start, zonedDateTime("2020-12-31", df).plusDays(1))];
 
-            Node(int row, int col, int val) {
-                this.row = row;
-                this.col = col;
-                this.val = val;
-            }
+        reservations.forEach(range -> {
+            Iterator<String> it = range.iterator();
+            ZonedDateTime d0 = zonedDateTime(it.next(), df);
+            ZonedDateTime d1 = zonedDateTime(it.next(), df);
 
-            public Node top(Node[]... a) {
-                return row > 0 ? a[row - 1][col] : null;
-            }
+            int offs = daysBetween(start, d0);
+            int total = daysBetween(d0, d1.plusDays(1));
 
-            public Node bottom(Node[]... a) {
-                return row < n - 1 ? a[row + 1][col] : null;
-            }
+            for (int i = 0; i < total; i++)
+                days[offs + i]++;
+        });
 
-            public Node left(Node[]... a) {
-                return col > 0 ? a[row][col - 1] : null;
-            }
+        int j = 0;
 
-            public Node right(Node[]... a) {
-                return col < m - 1 ? a[row][col + 1] : null;
-            }
+        for (int i = 0; i < days.length; i++)
+            if (days[i] > days[j])
+                j = i;
 
-            @Override
-            public String toString() {
-                return String.format("[%d:%d], v:%d, min:%d%s", row, col, val, min, visited ? " - visited" : "");
-            }
-        }
+        return df.format(start.plusDays(j));
+    }
 
-        Node[][] a = new Node[n][m];
+    private static ZonedDateTime zonedDateTime(String str, DateTimeFormatter df) {
+        return LocalDate.parse(str, df).atStartOfDay(ZoneOffset.UTC);
+    }
 
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < m; j++)
-                a[i][j] = new Node(i, j, scan.nextInt());
+    private static int daysBetween(ZonedDateTime date1, ZonedDateTime date2) {
+        return (int)Math.abs(Duration.between(date1, date2).toDays());
+    }
 
-        int q = scan.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(bufferedReader.readLine().trim());
 
-        for (int k = 0; k < q; k++) {
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < m; j++) {
-                    a[i][j].min = Integer.MAX_VALUE;
-                    a[i][j].visited = false;
-                }
-            }
+        IntStream.range(0, t).forEach(tItr -> {
+            try {
+                int n = Integer.parseInt(bufferedReader.readLine().trim());
 
-            int r1 = scan.nextInt();
-            int c1 = scan.nextInt();
-            int r2 = scan.nextInt();
-            int c2 = scan.nextInt();
+                List<List<String>> reservations = new ArrayList<>();
 
-            Node src = a[r1][c1];
-            Node dist = a[r2][c2];
-
-            src.min = src.val;
-
-            Queue<Node> queue = new PriorityQueue<>((n1, n2) -> {
-                int res = Integer.compare(n1.min, n2.min);
-                return res != 0 ? Integer.compare(n1.val, n2.val) : res;
-            });
-
-            queue.add(src);
-
-            // Dijkstra
-            while (!queue.isEmpty()) {
-                Node node = queue.remove();
-
-                if (node.visited)
-                    continue;
-
-                node.visited = true;
-
-                for (Node tmp : new Node[] { node.top(a), node.right(a), node.bottom(a), node.left(a) }) {
-                    if (tmp != null && !tmp.visited) {
-                        tmp.min = Math.min(tmp.min, node.min + tmp.val);
-                        queue.add(tmp);
+                IntStream.range(0, n).forEach(i -> {
+                    try {
+                        reservations.add(
+                                Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
+                                      .collect(toList())
+                        );
+                    } catch(IOException ex) {
+                        throw new RuntimeException(ex);
                     }
-                }
+                });
+
+                String result = solve(reservations);
+
+                System.out.println(result);
+            } catch(IOException ex) {
+                throw new RuntimeException(ex);
             }
+        });
 
-            System.out.println(dist.min);
-        }
-
-        scan.close();
+        bufferedReader.close();
     }
 }
