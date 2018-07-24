@@ -1,8 +1,6 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -30,28 +28,22 @@ public class Solution {
         return res;
     }
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-        int t = Integer.parseInt(bufferedReader.readLine().trim());
+        int t = Integer.parseInt(scanner.nextLine().trim());
 
         IntStream.range(0, t).forEach(tItr -> {
-            try {
-                int customerCount = Integer.parseInt(bufferedReader.readLine().trim());
+            int customerCount = Integer.parseInt(scanner.nextLine().trim());
 
-                List<Integer> customer = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-                                               .map(Integer::parseInt)
-                                               .collect(toList());
+            List<Integer> customer = Stream.of(scanner.nextLine().replaceAll("\\s+$", "").split(" "))
+                                           .map(Integer::parseInt)
+                                           .collect(toList());
 
-                int k = Integer.parseInt(bufferedReader.readLine().trim());
+            int k = Integer.parseInt(scanner.nextLine().trim());
 
-                int result = solve(customer, k);
-                System.out.println(String.valueOf(result));
-            } catch(IOException ex) {
-                throw new RuntimeException(ex);
-            }
+            int result = solve(customer, k);
+            System.out.println(String.valueOf(result));
         });
-
-        bufferedReader.close();
     }
 }
