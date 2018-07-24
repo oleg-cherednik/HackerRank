@@ -1,6 +1,3 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
@@ -9,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -54,35 +52,23 @@ public class Solution {
         return (int)Math.abs(Duration.between(date1, date2).toDays());
     }
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int t = Integer.parseInt(bufferedReader.readLine().trim());
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = Integer.parseInt(scanner.nextLine().trim());
 
         IntStream.range(0, t).forEach(tItr -> {
-            try {
-                int n = Integer.parseInt(bufferedReader.readLine().trim());
+            int n = Integer.parseInt(scanner.nextLine().trim());
 
-                List<List<String>> reservations = new ArrayList<>();
+            List<List<String>> reservations = new ArrayList<>();
 
-                IntStream.range(0, n).forEach(i -> {
-                    try {
-                        reservations.add(
-                                Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-                                      .collect(toList())
-                        );
-                    } catch(IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                });
+            IntStream.range(0, n).forEach(i -> {
+                reservations.add(Stream.of(scanner.nextLine().replaceAll("\\s+$", "").split(" ")).collect(toList())
+                );
+            });
 
-                String result = solve(reservations);
+            String result = solve(reservations);
 
-                System.out.println(result);
-            } catch(IOException ex) {
-                throw new RuntimeException(ex);
-            }
+            System.out.println(result);
         });
-
-        bufferedReader.close();
     }
 }
