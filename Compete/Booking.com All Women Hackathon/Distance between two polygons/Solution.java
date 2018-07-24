@@ -111,9 +111,9 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        String[] nm = scan.nextLine().replaceAll("\\s+$", "").split(" ");
+        String[] nm = scanner.nextLine().replaceAll("\\s+$", "").split(" ");
 
         int n = Integer.parseInt(nm[0]);
 
@@ -123,7 +123,7 @@ public class Solution {
 
         IntStream.range(0, n).forEach(i -> {
             p.add(
-                    Stream.of(scan.nextLine().replaceAll("\\s+$", "").split(" "))
+                    Stream.of(scanner.nextLine().replaceAll("\\s+$", "").split(" "))
                           .map(Integer::parseInt)
                           .collect(toList())
             );
@@ -133,7 +133,7 @@ public class Solution {
 
         IntStream.range(0, m).forEach(i -> {
             q.add(
-                    Stream.of(scan.nextLine().replaceAll("\\s+$", "").split(" "))
+                    Stream.of(scanner.nextLine().replaceAll("\\s+$", "").split(" "))
                           .map(Integer::parseInt)
                           .collect(toList())
             );
