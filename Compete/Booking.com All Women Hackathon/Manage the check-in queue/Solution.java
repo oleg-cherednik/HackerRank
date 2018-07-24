@@ -1,8 +1,6 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -35,10 +33,10 @@ public class Solution {
         return res;
     }
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-        String[] nm = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
+        String[] nm = scanner.nextLine().replaceAll("\\s+$", "").split(" ");
 
         int n = Integer.parseInt(nm[0]);
 
@@ -46,21 +44,13 @@ public class Solution {
 
         List<List<Integer>> desks = new ArrayList<>();
 
-        IntStream.range(0, n).forEach(i -> {
-            try {
-                desks.add(
-                        Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-                              .map(Integer::parseInt)
-                              .collect(toList())
-                );
-            } catch(IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
+        IntStream.range(0, n).forEach(i -> desks.add(
+                Stream.of(scanner.nextLine().replaceAll("\\s+$", "").split(" "))
+                      .map(Integer::parseInt)
+                      .collect(toList())
+        ));
 
         int result = solve(m, desks);
         System.out.println(String.valueOf(result));
-
-        bufferedReader.close();
     }
 }
