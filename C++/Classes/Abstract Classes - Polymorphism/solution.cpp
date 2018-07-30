@@ -33,53 +33,46 @@ protected:
 
 class LRUCache : public Cache {
 public:
-    LRUCache(int c) {
-        cp = c;
+    explicit LRUCache(int cp) {
+        this->cp = cp;
     }
 
-    void set(int k, int v) {
-        if (cp <= 0)return;
-        Node *N;
-        if (mp.empty()) {
-            N = new Node(k, v);
-            tail = head = N;
-            mp[k] = N;
-        } else if (mp.find(k) != mp.end()) {
-            auto p = mp[k];
-            p->value = v;
-            if (tail == p) {
+    void set(int key, int value) override {
+        if (cp <= 0)
+            return;
+
+        if (mp.empty())
+            mp[key] = tail = head = new Node(key, value);
+        else if (mp.find(key) != mp.end()) {
+            mp[key]->value = value;
+
+            if (tail == mp[key])
                 tail = tail->prev;
+
+            if (head != mp[key]) {
+                mp[key]->prev->next = mp[key]->next;
+                mp[key]->next = head;
+                head->prev = mp[key];
+                head = mp[key];
             }
-            if (head != p) {
-                p->prev->next = p->next;
-                p->next = head;
-                head->prev = p;
-                head = p;
-            }
-            if (tail == p) {
+
+            if (tail == mp[key])
                 tail = tail->prev;
-            }
         } else if (mp.size() < cp) {
-            N = new Node(NULL, head, k, v);
-            head->prev = N;
-            head = N;
-            mp[k] = N;
+            head->prev = new Node(nullptr, head, key, value);
+            head = head->prev;
+            mp[key] = head;
         } else {
-            auto t = tail;
+            auto node = tail;
             tail = tail->prev;
-            mp.erase(t->key);
-            N = new Node(NULL, head, k, v);
-            head = N;
-            mp[k] = N;
+            mp.erase(node->key);
+            mp[key] = head = new Node(nullptr, head, key, value);
         }
     }
 
-    int get(int k) {
-        auto p = mp.find(k);
-        if (p != mp.end()) {
-            return p->second->value;
-        }
-        return -1;
+    int get(int k) override {
+        auto it = mp.find(k);
+        return it != mp.end() ? it->second->value : -1;
     }
 };
 
