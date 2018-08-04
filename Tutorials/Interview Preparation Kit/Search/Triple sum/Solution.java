@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.function.BiFunction;
 
 /**
  * @author Oleg Cherednik
@@ -8,28 +9,22 @@ import java.util.Scanner;
 public class Solution {
 
     static long triplets(int[] a, int[] b, int[] c) {
-        b = Arrays.stream(b).distinct().toArray();
-        a = Arrays.stream(a).distinct().sorted().toArray();
-        c = Arrays.stream(c).distinct().sorted().toArray();
+        final BiFunction<int[], Long, Integer> count = (arr, v) -> {
+            int res = 0;
 
-        long res = 0;
+            for (int i = 0; i < arr.length && arr[i] <= v; i++)
+                res++;
 
-        for (int bb : b) {
-            long pa = count(a, bb);
-            long pc = count(c, bb);
-            res += pa * pc;
-        }
+            return res;
+        };
 
-        return res;
-    }
+        int[] aa = Arrays.stream(a).distinct().sorted().toArray();
+        int[] cc = Arrays.stream(c).distinct().sorted().toArray();
 
-    private static int count(int[] arr, int v) {
-        int res = 0;
-
-        for (int i = 0; i < arr.length && arr[i] <= v; i++)
-            res++;
-
-        return res;
+        return Arrays.stream(b).distinct()
+                     .mapToLong(v -> v)
+                     .map(v -> (long)count.apply(aa, v) * count.apply(cc, v))
+                     .sum();
     }
 
     private static final Scanner scanner = new Scanner(System.in);
