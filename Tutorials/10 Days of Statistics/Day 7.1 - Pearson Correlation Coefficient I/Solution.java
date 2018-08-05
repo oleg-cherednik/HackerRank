@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -8,6 +9,8 @@ public class Solution {
 
     public static void main(String[] args) {
         try (Scanner scan = new Scanner(System.in)) {
+            scan.useLocale(Locale.US);
+
             int size = scan.nextInt();
             double[] xs = new double[size];
             double[] ys = new double[size];
@@ -32,22 +35,22 @@ public class Solution {
         return numerator / (xs.length * standardDeviation(xs, xMean) * standardDeviation(ys, yMean));
     }
 
-    private static double mean(double[] array) {
+    private static double mean(double[] arr) {
         double sum = 0;
 
-        for (double num : array)
+        for (double num : arr)
             sum += num;
 
-        return sum / array.length;
+        return sum / arr.length;
     }
 
-    private static double standardDeviation(double[] array, double mean) {
+    private static double standardDeviation(double[] arr, double mean) {
         double sum = 0;
 
-        for (double num : array)
+        for (double num : arr)
             sum += Math.pow(num - mean, 2);
 
-        return Math.sqrt(sum / array.length);
+        return Math.sqrt(sum / arr.length);
     }
 
 }
