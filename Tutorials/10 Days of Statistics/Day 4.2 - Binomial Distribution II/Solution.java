@@ -1,3 +1,6 @@
+import java.util.Locale;
+import java.util.Scanner;
+
 /**
  * @author Oleg Cherednik
  * @since 05.08.2018
@@ -5,36 +8,28 @@
 public class Solution {
 
     public static void main(String[] args) {
-        double p = 0.12;
-        int n = 10;
+        try (Scanner scan = new Scanner(System.in)) {
+            double p = scan.nextDouble() / 100;
+            int n = scan.nextInt();
+            double res = 0;
 
-        /* "No more than 2 rejects" */
-        double result = 0;
-        for (int x = 0; x <= 2; x++) {
-            result += binomial(n, x, p);
+            for (int i = 0; i <= 2; i++)
+                res += binomial(n, i, p);
+
+            System.out.format(Locale.US, "%.3f\n", res);
+            System.out.format(Locale.US, "%.3f\n", 1 - binomial(n, 0, p) - binomial(n, 1, p));
         }
-        System.out.format("%.3f%n", result);
-
-        /* "At least 2 rejects" */
-        result = 1 - binomial(n, 0, p) - binomial(n, 1, p);
-        System.out.format("%.3f%n", result);
     }
 
-    private static Double binomial(int n, int x, double p) {
-        if (p < 0 || p > 1 || n < 0 || x < 0 || x > n) {
-            return null;
-        }
-        return combinations(n, x) * Math.pow(p, x) * Math.pow(1 - p, n - x);
+    private static double binomial(int n, int i, double p) {
+        return p < 0 || p > 1 || n < 0 || i < 0 || i > n ? 0 : combinations(n, i) * Math.pow(p, i) * Math.pow(1 - p, n - i);
     }
 
-    private static Long combinations(int n, int x) {
-        if (n < 0 || x < 0 || x > n) {
-            return null;
-        }
-        return fact(n) / (fact(x) * fact(n - x));
+    private static long combinations(int n, int i) {
+        return n < 0 || i < 0 || i > n ? 1 : fact(n) / (fact(i) * fact(n - i));
     }
 
-    private static long fact(int val) {
-        return val == 0 || val == 1 ? 1 : val * fact(val - 1);
+    private static long fact(int n) {
+        return n == 0 || n == 1 ? 1 : n * fact(n - 1);
     }
 }
