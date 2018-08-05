@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -12,7 +13,7 @@ public class Solution {
             int denominator = scan.nextInt();
             int n = scan.nextInt();
             double p = numerator / denominator;
-            System.out.format("%.3f\n", Math.pow(1 - p, n - 1) * p);
+            System.out.format(Locale.US, "%.3f\n", Math.pow(1 - p, n - 1) * p);
         }
     }
 }

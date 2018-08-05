@@ -9,15 +9,14 @@ public class Solution {
 
     public static void main(String[] args) {
         try (Scanner scan = new Scanner(System.in)) {
-            double a = scan.nextDouble();
-            double b = scan.nextDouble();
-            double ans = 0.0;
-
-            for (int i = 3; i <= 6; i++)
-                ans += fact(6) / (fact(i) * fact(6 - i)) * Math.pow(a / (a + b), i) * Math.pow(b / (a + b), 6 - i);
-
-            System.out.format(Locale.US, "%.3f\n", ans);
+            double lambda = scan.nextDouble();
+            int k = scan.nextInt();
+            System.out.format(Locale.US, "%.3f\n", poisson(k, lambda));
         }
+    }
+
+    private static double poisson(int k, double lambda) {
+        return (Math.pow(lambda, k) * Math.pow(Math.E, -1 * lambda)) / fact(k);
     }
 
     private static long fact(int n) {

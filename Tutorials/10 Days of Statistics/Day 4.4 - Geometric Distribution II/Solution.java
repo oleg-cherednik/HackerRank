@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -17,7 +18,7 @@ public class Solution {
             for (int i = 0; i < n; i++)
                 prob += Math.pow(q, i) * p;
 
-            System.out.printf("%.3f", prob);
+            System.out.printf(Locale.US, "%.3f", prob);
         }
     }
 }
