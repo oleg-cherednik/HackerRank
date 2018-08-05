@@ -9,20 +9,21 @@ public class Solution {
 
     public static void main(String[] args) {
         try (Scanner scan = new Scanner(System.in)) {
-            int maxWeight = scan.nextInt();
+            int ticketsLeft = scan.nextInt();
             int n = scan.nextInt();
-            int mean = scan.nextInt();
-            int std = scan.nextInt();
+            double mean = scan.nextDouble();
+            double std = scan.nextDouble();
 
+            /* Formulas are from problem's tutorial */
             double samplesMean = n * mean;
-            double samplesStd = Math.sqrt(n) * std;
+            double samplesSTD = Math.sqrt(n) * std;
 
-            System.out.format(Locale.US, "%.4f\n", cumulative(samplesMean, samplesStd, maxWeight));
+            System.out.format(Locale.US, "%.4f\n", cumulative(samplesMean, samplesSTD, ticketsLeft));
         }
     }
 
-    private static double cumulative(double mean, double std, int maxWeight) {
-        return 0.5 * (1 + erf((maxWeight - mean) / (std * 1.4142135623730951)));
+    public static double cumulative(double mean, double std, double x) {
+        return 0.5 * (1 + erf((x - mean) / (std * 1.4142135623730951)));
     }
 
     /*
