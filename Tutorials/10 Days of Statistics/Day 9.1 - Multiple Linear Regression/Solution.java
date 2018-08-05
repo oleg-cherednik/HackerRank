@@ -88,38 +88,31 @@ public class Solution {
         return (z);
     }
 
-    /**
-     * Solves the linear system A z=y using Gauss-Seidel iteration. This implementation is not robust to
-     * scaling and convergence issues.
-     */
-    public static double[] solve(double[][] A, double y[], double tol) {
-        int n = y.length;
-        double[] z = new double[n];
-        for (int i = 0; i < n; i++) {
-            z[i] = Math.random() - 0.5;//Random initialisation
-        }
-        double epsilon = 0;
-        double curr = 0;
-        for (int k = 0; k < 10000; k++) {
-            //z=mult(A,z);
-            epsilon = 0;
-            for (int i = 0; i < n; i++) {
-                curr = z[i];
-                z[i] = 0;
-                for (int j = 0; j < n; j++) {
-                    if (j != i) {
-                        z[i] += A[i][j] * z[j];
-                    }
-                }
-                //z[i]+=-y[i];
-                z[i] = (y[i] - z[i]) / A[i][i];
-                epsilon += Math.abs(curr - z[i]);
+    private static double[] solve(double[][] A, double y[], double tol) {
+        double[] z = new double[y.length];
+
+        for (int i = 0; i < y.length; i++)
+            z[i] = Math.random() - 0.5;
+
+        for (int i = 0; i < 10000; i++) {
+            double epsilon = 0;
+
+            for (int j = 0; j < y.length; j++) {
+                double tmp = z[j];
+                z[j] = 0;
+
+                for (int k = 0; k < y.length; k++)
+                    if (k != j)
+                        z[j] += A[j][k] * z[k];
+
+                z[j] = (y[j] - z[j]) / A[j][j];
+                epsilon += Math.abs(tmp - z[j]);
             }
-            if (epsilon < tol) {
-                //System.out.println("converged at k="+k);
+
+            if (epsilon < tol)
                 break;
-            }
         }
+
         return z;
     }
 
