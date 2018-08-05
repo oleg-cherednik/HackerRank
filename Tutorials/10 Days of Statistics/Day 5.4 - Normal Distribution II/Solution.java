@@ -1,4 +1,4 @@
-import java.text.DecimalFormat;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -8,37 +8,30 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        DecimalFormat df = new DecimalFormat("###.##");
+        try (Scanner scan = new Scanner(System.in)) {
+            int mean = scan.nextInt();
+            int standardDeviation = scan.nextInt();
+            int x1 = scan.nextInt();
+            int x2 = scan.nextInt();
 
-        double mean = 70;
-        double stdev = 10;
-
-        System.out.println(df.format((1 - normal(80, mean, stdev)) * 100)); //greater than 80
-        System.out.println(df.format((1 - normal(60, mean, stdev)) * 100)); //greater than equal to 60
-        System.out.println(df.format(normal(60, mean, stdev) * 100)); //less than 60
+            System.out.format(Locale.US, "%.2f\n", (1 - normal(x1, mean, standardDeviation)) * 100);
+            System.out.format(Locale.US, "%.2f\n", (1 - normal(x2, mean, standardDeviation)) * 100);
+            System.out.format(Locale.US, "%.2f\n", normal(x2, mean, standardDeviation) * 100);
+        }
     }
 
-    public static double normal(double x, double mean, double stdev) {
-        return 0.5 * (1 + erf((x - mean) / (1.4142135623730951 * stdev)));
+    public static double normal(int x, int mean, int standardDeviation) {
+        return 0.5 * (1 + erf((x - mean) / (1.4142135623730951 * standardDeviation)));
     }
 
     public static double erf(double z) {
         double t = 1.0 / (1.0 + 0.5 * Math.abs(z));
 
         // use Horner's method
-        double ans = 1 - t * Math.exp(-z * z - 1.26551223 +
-                t * (1.00002368 +
-                        t * (0.37409196 +
-                                t * (0.09678418 +
-                                        t * (-0.18628806 +
-                                                t * (0.27886807 +
-                                                        t * (-1.13520398 +
-                                                                t * (1.48851587 +
-                                                                        t * (-0.82215223 +
-                                                                                t * (0.17087277))))))))));
-        if (z >= 0) return ans;
-        else return -ans;
+        double ans = 1 - t * Math.exp(-z * z - 1.26551223 + t * (1.00002368 + t * (0.37409196 + t * (0.09678418 + t * (-0.18628806
+                + t * (0.27886807 + t * (-1.13520398 + t * (1.48851587 + t * (-0.82215223 + t * 0.17087277)))))))));
+
+        return z >= 0 ? ans : -ans;
     }
 
 }
