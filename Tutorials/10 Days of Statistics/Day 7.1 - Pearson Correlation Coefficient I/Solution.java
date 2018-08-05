@@ -22,20 +22,20 @@ public class Solution {
         System.out.println(pearson(xs, ys));
     }
 
-    /* Calculates Pearson coefficient */
     private static Double pearson(double[] xs, double[] ys) {
         if (xs == null || ys == null || xs.length != ys.length) {
             return null;
         }
-        double xMean = getMean(xs);
-        double yMean = getMean(xs);
+
+        final double xMean = getMean(xs);
+        final double yMean = getMean(ys);
         int n = xs.length;
 
         double numerator = 0;
         for (int i = 0; i < xs.length; i++) {
             numerator += (xs[i] - xMean) * (ys[i] - yMean);
         }
-        return numerator / (n * standardDeviation(xs) * standardDeviation(ys));
+        return numerator / (n * standardDeviation(xs, xMean) * standardDeviation(ys, yMean));
     }
 
     private static Double getMean(double[] array) {
@@ -49,17 +49,13 @@ public class Solution {
         return total / array.length;
     }
 
-    private static Double standardDeviation(double[] array) {
-        if (array == null) {
-            return null;
-        }
-        double mean = getMean(array);
+    private static double standardDeviation(double[] array, double mean) {
         double sum = 0;
-        for (double x : array) {
+
+        for (double x : array)
             sum += Math.pow(x - mean, 2);
-        }
-        double variance = sum / array.length;
-        return Math.sqrt(variance);
+
+        return Math.sqrt(sum / array.length);
     }
 
 }
