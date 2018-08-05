@@ -19,7 +19,7 @@ public class Solution {
         }
     }
 
-    private static int fact(int val) {
-        return val == 0 || val == 1 ? 1 : val * fact(val - 1);
+    private static long fact(int n) {
+        return n == 0 || n == 1 ? 1 : n * fact(n - 1);
     }
 }
