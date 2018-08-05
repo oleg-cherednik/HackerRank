@@ -7,53 +7,45 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        /* Read and save input */
-        Scanner scan = new Scanner(System.in);
-        int size = scan.nextInt();
-        double[] xs = new double[size];
-        double[] ys = new double[size];
-        for (int i = 0; i < size; i++) {
-            xs[i] = scan.nextDouble();
-        }
-        for (int i = 0; i < size; i++) {
-            ys[i] = scan.nextDouble();
-        }
+        try (Scanner scan = new Scanner(System.in)) {
+            int size = scan.nextInt();
+            double[] xs = new double[size];
+            double[] ys = new double[size];
 
-        System.out.println(pearson(xs, ys));
+            for (int i = 0; i < size; i++)
+                xs[i] = scan.nextDouble();
+            for (int i = 0; i < size; i++)
+                ys[i] = scan.nextDouble();
+
+            System.out.println(pearson(xs, ys));
+        }
     }
 
-    private static Double pearson(double[] xs, double[] ys) {
-        if (xs == null || ys == null || xs.length != ys.length) {
-            return null;
-        }
-
-        final double xMean = getMean(xs);
-        final double yMean = getMean(ys);
-        int n = xs.length;
-
+    private static double pearson(double[] xs, double[] ys) {
+        final double xMean = mean(xs);
+        final double yMean = mean(ys);
         double numerator = 0;
-        for (int i = 0; i < xs.length; i++) {
+
+        for (int i = 0; i < xs.length; i++)
             numerator += (xs[i] - xMean) * (ys[i] - yMean);
-        }
-        return numerator / (n * standardDeviation(xs, xMean) * standardDeviation(ys, yMean));
+
+        return numerator / (xs.length * standardDeviation(xs, xMean) * standardDeviation(ys, yMean));
     }
 
-    private static Double getMean(double[] array) {
-        if (array == null) {
-            return null;
-        }
-        double total = 0;
-        for (double num : array) {
-            total += num;
-        }
-        return total / array.length;
+    private static double mean(double[] array) {
+        double sum = 0;
+
+        for (double num : array)
+            sum += num;
+
+        return sum / array.length;
     }
 
     private static double standardDeviation(double[] array, double mean) {
         double sum = 0;
 
-        for (double x : array)
-            sum += Math.pow(x - mean, 2);
+        for (double num : array)
+            sum += Math.pow(num - mean, 2);
 
         return Math.sqrt(sum / array.length);
     }
