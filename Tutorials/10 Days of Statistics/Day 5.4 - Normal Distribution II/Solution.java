@@ -1,4 +1,4 @@
-import java.util.Locale;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 /**
@@ -6,17 +6,6 @@ import java.util.Scanner;
  * @since 05.08.2018
  */
 public class Solution {
-
-    public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            double mean = 70;
-            double stdev = 10;
-
-            System.out.format(Locale.US, "%.3f\n", (1 - normal(80, mean, stdev)) * 100);
-            System.out.format(Locale.US, "%.3f\n", (1 - normal(60, mean, stdev)) * 100);
-            System.out.format(Locale.US, "%.3f\n", normal(60, mean, stdev) * 100);
-        }
-    }
 
     public static double erf(double z) {
         double t = 1.0 / (1.0 + 0.5 * Math.abs(z));
@@ -40,6 +29,18 @@ public class Solution {
         double normal = 0;
         normal = 0.5 * (1 + erf((x - mean) / (Math.sqrt(2) * stdev)));
         return normal;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat("###.##");
+
+        double mean = 70;
+        double stdev = 10;
+
+        System.out.println(df.format((1 - normal(80, mean, stdev)) * 100)); //greater than 80
+        System.out.println(df.format((1 - normal(60, mean, stdev)) * 100)); //greater than equal to 60
+        System.out.println(df.format(normal(60, mean, stdev) * 100)); //less than 60
     }
 
 }
