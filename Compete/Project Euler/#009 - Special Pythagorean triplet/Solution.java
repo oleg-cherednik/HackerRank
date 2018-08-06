@@ -7,25 +7,14 @@ import java.util.Scanner;
 public class Solution {
 
     private static int findMaxPythagoreanTriplet(int n) {
-        if (n < 3)
-            return -1;
-
         int max = -1;
 
-        for (int c = Math.max(1, n - 1); c >= 1; c--) {
-            int c2 = c * c;
+        for (int a = 1; a <= n / 3; a++) {
+            int c = (a * a / (2 * n - 2 * a)) + n / 2 - a / 2;
+            int b = n - a - c;
 
-            for (int b = Math.max(1, c - 1); b >= 1; b--) {
-                int b2 = b * b;
-                int a2 = c2 - b2;
-
-                if (a2 < b2) {
-                    int a = (int)Math.sqrt(a2);
-
-                    if (a * a == a2 && a + b + c == n)
-                        max = Math.max(max, a * b * c);
-                }
-            }
+            if (a * a + b * b == c * c && a < b && b < c)
+                max = a * b * c;
         }
 
         return max;
