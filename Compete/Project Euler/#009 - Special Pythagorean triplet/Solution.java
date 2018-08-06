@@ -10,8 +10,8 @@ public class Solution {
         int max = -1;
 
         for (int a = 1; a <= n / 3; a++) {
-            int c = (a * a / (2 * n - 2 * a)) + n / 2 - a / 2;
-            int b = n - a - c;
+            int b = (2 * a * n - n * n) / (2 * a - 2 * n);
+            int c = n - b - a;
 
             if (a * a + b * b == c * c && a < b && b < c)
                 max = a * b * c;
