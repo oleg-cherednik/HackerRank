@@ -48,16 +48,12 @@ public class Solution {
         map.put(1000000000L, "Billion");
     }
 
-    private static void parts(long n, long mul, Deque<Long> queue) {
+    private static Deque<Long> parts(long n, long mul, Deque<Long> queue) {
         if (n >= 1000) {
             parts(n / 1000, mul * 1000, queue);
 
-            if (n % 1000 > 0) {
+            if (n % 1000 > 0)
                 parts(n % 1000, mul, queue);
-
-                if (mul > 1)
-                    queue.add(mul);
-            }
         } else if (n <= 20) {
             queue.add(n);
 
@@ -82,15 +78,14 @@ public class Solution {
             if (mul > 1)
                 queue.add(mul);
         }
+
+        return queue;
     }
 
     private static String numberToWords(long n) {
-        Deque<Long> queue = new LinkedList<>();
-        parts(n, 1, queue);
-
-        return queue.stream()
-                    .map(map::get)
-                    .collect(Collectors.joining(" "));
+        return parts(n, 1, new LinkedList<>()).stream()
+                                              .map(map::get)
+                                              .collect(Collectors.joining(" "));
     }
 
     public static void main(String[] args) {
