@@ -1,4 +1,3 @@
-import java.math.BigInteger;
 import java.util.Scanner;
 
 /**
@@ -7,21 +6,10 @@ import java.util.Scanner;
  */
 public class Solution {
 
+    private static final double GOLDEN_RATION_PHI = 1.61803;
+
     static long findFibonacci(int N) {
-        BigInteger a = BigInteger.ONE;
-        BigInteger b = BigInteger.ONE;
-        int i = 3;
-
-        for (; i <= 5000; i++) {
-            BigInteger c = a.add(b);
-            a = b;
-            b = c;
-
-            if (c.toString().length() == N)
-                return i;
-        }
-
-        return -1;
+        return (long)Math.ceil((Math.log(10) * (N - 1) + Math.log(5) / 2) / Math.log(GOLDEN_RATION_PHI));
     }
 
     public static void main(String[] args) {
