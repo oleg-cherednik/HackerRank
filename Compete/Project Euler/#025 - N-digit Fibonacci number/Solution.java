@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.function.IntFunction;
 
 /**
  * @author Oleg Cherednik
@@ -6,38 +7,33 @@ import java.util.Scanner;
  */
 public class Solution {
 
-    private static int numberOfDigits(int n) {
-        if (n == 1)
-            return 1;
+    private static final double GOLDEN_RATIO_PHI = (1 + Math.sqrt(5)) / 2;
+    private static final double LOG_10_PHI = Math.log10(GOLDEN_RATIO_PHI);
+    private static final double LOG_10_5_DIV_2 = Math.log10(5) / 2;
+    private static final IntFunction<Integer> DIGIT_NUMBER = val -> val == 1 ? 1 : (int)Math.ceil(val * LOG_10_PHI - LOG_10_5_DIV_2);
 
-        double ans = (n * Math.log10(1.6180339887498948)) - ((Math.log10(5)) / 2);
-        return (int)Math.ceil(ans);
+    private static int numberOfDigits(int N) {
+        int low = 0;
+        int high = 25000;
+
+        while (low < high) {
+            int mid = (low + high) / 2;
+
+            if (DIGIT_NUMBER.apply(mid) >= N)
+                high = mid;
+            else
+                low = mid + 1;
+        }
+
+        return (low + high) / 2;
     }
 
     public static void main(String... args) {
         try (Scanner scan = new Scanner(System.in)) {
             int T = scan.nextInt();
 
-            for (int j = 0; j < T; j++) {
-                int n = scan.nextInt();
-                int low = 0;
-                int high = 25000;
-                int mid = 0, mid_n = 0;
-
-                while (low < high) {
-                    mid = (low + high) / 2;
-                    mid_n = numberOfDigits(mid);
-
-                    if (mid_n >= n)
-                        high = mid;
-                    else
-                        low = mid + 1;
-
-                }
-
-
-                System.out.println((low + high) / 2);
-            }
+            for (int i = 0; i < T; i++)
+                System.out.println(numberOfDigits(scan.nextInt()));
         }
     }
 
