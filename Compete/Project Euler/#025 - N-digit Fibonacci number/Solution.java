@@ -10,7 +10,7 @@ public class Solution {
     private static final double GOLDEN_RATIO_PHI = (1 + Math.sqrt(5)) / 2;
     private static final double LOG_10_PHI = Math.log10(GOLDEN_RATIO_PHI);
     private static final double LOG_10_5_DIV_2 = Math.log10(5) / 2;
-    private static final IntFunction<Integer> DIGIT_NUMBER = val -> val == 1 ? 1 : (int)Math.ceil(val * LOG_10_PHI - LOG_10_5_DIV_2);
+    private static final IntFunction<Integer> DIGIT_NUMBER = n -> n == 1 ? 1 : (int)Math.ceil(n * LOG_10_PHI - LOG_10_5_DIV_2);
 
     private static int numberOfDigits(int N) {
         int low = 0;
