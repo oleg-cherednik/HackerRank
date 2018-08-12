@@ -1,5 +1,3 @@
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -8,62 +6,30 @@ import java.util.Scanner;
  */
 public class Solution {
 
-    private static final Map<Long, char[]> MAP = new HashMap<>();
-    private static final String STR = "abcdefghijklm";
+    private static long fact(long n) {
+        if (n == 0)
+            return 1;
+        return n * fact(n - 1);
+    }
 
-    // 13! = 6227020800
     private static String lexicographicPermutation(long n) {
-        if (MAP.isEmpty())
-            MAP.put(1L, STR.toCharArray());
+        final String B = "abcdefghijklm";
+        char[] A = B.toCharArray();
+        int l = B.length();
 
-        long key = MAP.keySet().stream()
-                      .filter(k -> k <= n)
-                      .mapToLong(i -> i)
-                      .max()
-                      .orElse(-1);
-
-        if (key != n) {
-            char[] arr = new String(MAP.get(key)).toCharArray();
-
-            do {
-                key++;
-
-                if (!next(arr))
-                    break;
-
-                if(key >= 6227020800L / 2 && key <= 6227020800L / 2 + 50)
-                    System.out.println("----------------- " + key + " - " + new String(arr));
-            } while (key < n);
-
-            MAP.put(key, arr);
-        }
-
-        return new String(MAP.get(n));
-    }
-
-    private static boolean next(char[] arr) {
-        for (int i = arr.length - 2, j = arr.length; i >= 0; i--, j = arr.length) {
-            if (arr[i] >= arr[i + 1])
-                continue;
-
-            while (arr[--j] < arr[i]) {
+        n--;
+        for (int i = 0; i < l - 1; ++i) {
+            long f = fact(l - 1 - i);
+            long p = i + n / f;
+            n %= f;
+            for (int j = i + 1; j <= p; ++j) {
+                char temp = A[i];
+                A[i] = A[j];
+                A[j] = temp;
             }
-
-            swap(arr, i, j);
-
-            for (int k = i + 1, l = arr.length - 1; l > k; --l, ++k)
-                swap(arr, k, l);
-
-            return true;
         }
 
-        return false;
-    }
-
-    private static void swap(char[] arr, int i, int j) {
-        char tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
+        return new String(A);
     }
 
     public static void main(String... args) {
