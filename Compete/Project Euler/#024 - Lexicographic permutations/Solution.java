@@ -6,30 +6,27 @@ import java.util.Scanner;
  */
 public class Solution {
 
-    private static long fact(long n) {
-        if (n == 0)
-            return 1;
-        return n * fact(n - 1);
-    }
+    private static final String STR = "abcdefghijklm";
+    private static final long[] FACT = { 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800, 39916800, 479001600 };
 
     private static String lexicographicPermutation(long n) {
-        final String B = "abcdefghijklm";
-        char[] A = B.toCharArray();
-        int l = B.length();
-
         n--;
-        for (int i = 0; i < l - 1; ++i) {
-            long f = fact(l - 1 - i);
-            long p = i + n / f;
-            n %= f;
+        char[] arr = STR.toCharArray();
+
+        for (int i = 0; i < arr.length - 1; ++i) {
+            long fact = FACT[arr.length - i - 2];
+            long p = i + n / fact;
+
+            n %= fact;
+
             for (int j = i + 1; j <= p; ++j) {
-                char temp = A[i];
-                A[i] = A[j];
-                A[j] = temp;
+                char tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
             }
         }
 
-        return new String(A);
+        return new String(arr);
     }
 
     public static void main(String... args) {
