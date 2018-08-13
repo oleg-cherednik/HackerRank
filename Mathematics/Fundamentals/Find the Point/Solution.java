@@ -7,22 +7,11 @@ import java.util.Scanner;
 public class Solution {
 
     static int[] findPoint(int px, int py, int qx, int qy) {
-        int rx;
-        int ry;
-
         int dx = Math.abs(qx - px);
         int dy = Math.abs(qy - py);
 
-        if (dx == 0) {
-            rx = px;
-            ry = qy >= py ? qy + dy : qy - dy;
-        } else if (qx > px) {
-            rx = qx + dx;
-            ry = qy >= py ? qy + dy : qy - dy;
-        } else {
-            rx = qx - dx;
-            ry = qy >= py ? qy + dy : qy - dy;
-        }
+        int rx = qx == px ? px : qx > px ? qx + dx : qx - dx;
+        int ry = qy >= py ? qy + dy : qy - dy;
 
         return new int[] { rx, ry };
     }
