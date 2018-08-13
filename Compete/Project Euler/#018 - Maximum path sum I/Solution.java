@@ -7,23 +7,11 @@ import java.util.Scanner;
 public class Solution {
 
     private static int findMaxSum(int[][] data) {
-        int res = 0;
+        for (int row = data.length - 2; row >= 0; row--)
+            for (int col = 0; col < data[row].length; col++)
+                data[row][col] += Math.max(data[row + 1][col], data[row + 1][col + 1]);
 
-        for (int row = 1; row < data.length; row++) {
-            for (int col = 0; col < data[row].length; col++) {
-                if (data[row][col] == 0)
-                    continue;
-
-                int prv1 = col > 0 ? data[row - 1][col - 1] : 0;
-                int prv2 = col < data.length - 1 ? data[row - 1][col + 1] : 0;
-                data[row][col] += Math.max(prv1, prv2);
-
-                if (row == data.length - 1)
-                    res = Math.max(res, data[row][col]);
-            }
-        }
-
-        return res;
+        return data[0][0];
     }
 
     public static void main(String... args) {
@@ -33,11 +21,14 @@ public class Solution {
             for (int i = 0; i < T; i++) {
                 int N = scan.nextInt();
                 int cols = 2 * N - 1;
-                int[][] data = new int[N][cols];
+                int[][] data = new int[N][];
 
-                for (int row = 0, j = cols / 2; row < N; row++, j--)
-                    for (int col = j, k = 0; k <= row; col += 2, k++)
+                for (int row = 0, j = cols / 2; row < N; row++, j--) {
+                    data[row] = new int[row + 1];
+
+                    for (int col = 0; col < data[row].length; col++)
                         data[row][col] = scan.nextInt();
+                }
 
                 System.out.println(findMaxSum(data));
             }
