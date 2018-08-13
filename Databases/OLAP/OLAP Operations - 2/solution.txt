@@ -1,0 +1,4 @@
+Question:
+This OLAP Operation rotates the data, and delivers an alternative to the original presentation.
+
+Answer: pivot
