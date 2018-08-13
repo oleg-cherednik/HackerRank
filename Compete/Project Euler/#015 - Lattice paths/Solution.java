@@ -23,7 +23,6 @@ public class Solution {
             for (int i = 0; i < T; i++) {
                 int N = scan.nextInt();
                 int M = scan.nextInt();
-
                 System.out.println(latticePath(N, M));
             }
         }
