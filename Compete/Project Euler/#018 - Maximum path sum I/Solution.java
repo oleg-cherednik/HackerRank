@@ -35,14 +35,9 @@ public class Solution {
                 int cols = 2 * N - 1;
                 int[][] data = new int[N][cols];
 
-                scan.nextLine();
-
-                for (int row = 0, j = cols / 2; row < N; row++, j--) {
-                    String[] nums = scan.nextLine().split(" ");
-
+                for (int row = 0, j = cols / 2; row < N; row++, j--)
                     for (int col = j, k = 0; k <= row; col += 2, k++)
-                        data[row][col] = Integer.parseInt(nums[k]);
-                }
+                        data[row][col] = scan.nextInt();
 
                 System.out.println(findMaxSum(data));
             }
