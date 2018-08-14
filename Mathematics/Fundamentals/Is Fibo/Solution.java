@@ -18,12 +18,13 @@ public class Solution {
             return val;
 
         BigInteger two = TWO;
-        BigInteger y;
+        BigInteger res = val.divide(two);
 
-        for (y = val.divide(two); y.compareTo(val.divide(y)) > 0; y = val.divide(y).add(y).divide(two)) {
+        while (res.compareTo(val.divide(res)) > 0) {
+            res = val.divide(res).add(res).divide(two);
         }
 
-        return y;
+        return res;
     };
 
     private static final Predicate<BigInteger> IS_SQRT = val -> {
