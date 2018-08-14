@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 /**
  * @author Oleg Cherednik
- * @since 14.08.2018
+ * @since 15.08.2018
  */
 public class Solution {
 
     private static final int[] STEPS = new int[5_000_001];
+    private static final int[] RES = new int[5_000_001];
 
     static {
         Map<Long, Integer> map = new HashMap<>();
@@ -23,13 +24,9 @@ public class Solution {
             int steps = 0;
 
             while (j != 1) {
-                try {
-                    if (j < STEPS.length && STEPS[(int)j] > 0) {
-                        steps += STEPS[(int)j];
-                        break;
-                    }
-                } catch(Throwable e) {
-                    e.printStackTrace();
+                if (j < STEPS.length && STEPS[(int)j] > 0) {
+                    steps += STEPS[(int)j];
+                    break;
                 }
 
                 j = j % 2 == 0 ? j / 2 : (3 * j + 1);
@@ -44,18 +41,12 @@ public class Solution {
                     STEPS[entry.getKey().intValue()] = steps - entry.getValue();
         }
 
-//        for (int i = 0, max = 0; i < ARR.length; i++)
-//            ARR[i] = max = Math.max(max, ARR[i]);
+        for (int i = 0, j = 0; i < STEPS.length; i++)
+            RES[i] = STEPS[i] >= STEPS[j] ? j = i : j;
     }
 
     static int longestCollatz(int N) {
-        int j = N;
-
-        for (int i = N - 1; i >= 0; i--)
-            if (STEPS[i] > STEPS[j])
-                j = i;
-
-        return j;
+        return RES[N];
     }
 
     public static void main(String[] args) {
