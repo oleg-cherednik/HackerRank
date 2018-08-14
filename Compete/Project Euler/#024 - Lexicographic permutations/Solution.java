@@ -13,20 +13,23 @@ public class Solution {
         n--;
         char[] arr = STR.toCharArray();
 
-        for (int i = 0; i < arr.length - 1; ++i) {
+        for (int i = 0; i < arr.length - 1; i++) {
             long fact = FACT[arr.length - i - 2];
             long p = i + n / fact;
 
             n %= fact;
 
-            for (int j = i + 1; j <= p; ++j) {
-                char tmp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = tmp;
-            }
+            for (int j = i + 1; j <= p; j++)
+                swap(arr, i, j);
         }
 
         return new String(arr);
+    }
+
+    private static void swap(char[] arr, int i, int j) {
+        char tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
     }
 
     public static void main(String... args) {
