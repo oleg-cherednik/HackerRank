@@ -9,22 +9,21 @@ import java.util.Scanner;
 public class Solution {
 
     static int findPrime(int n) {
-        for (int i = 1, pos = 0; ; i++) {
+        for (int i = 1, pos = 0; ; i++)
             if (isPrime(i))
                 if (++pos == n)
                     return i;
-        }
     }
 
     private static final Map<Integer, Boolean> PRIMES = new HashMap<>();
 
     private static boolean isPrime(int val) {
         return PRIMES.computeIfAbsent(val, v -> {
-            if (val < 2)
+            if (v < 2)
                 return false;
 
-            for (int i = 2, sqrt = (int)Math.sqrt(val); i <= sqrt; i++)
-                if (val % i == 0)
+            for (int i = 2, sqrt = (int)Math.sqrt(v); i <= sqrt; i++)
+                if (v % i == 0)
                     return false;
 
             return true;
