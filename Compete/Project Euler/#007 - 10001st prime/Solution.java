@@ -8,8 +8,6 @@ import java.util.Scanner;
  */
 public class Solution {
 
-    private static final Map<Integer, Boolean> PRIMES = new HashMap<>();
-
     static int findPrime(int n) {
         for (int i = 1, pos = 0; ; i++) {
             if (isPrime(i))
@@ -18,25 +16,19 @@ public class Solution {
         }
     }
 
+    private static final Map<Integer, Boolean> PRIMES = new HashMap<>();
+
     private static boolean isPrime(int val) {
-        if (val < 2)
-            return false;
+        return PRIMES.computeIfAbsent(val, v -> {
+            if (val < 2)
+                return false;
 
-        if (PRIMES.containsKey(val))
-            return PRIMES.get(val);
+            for (int i = 2, sqrt = (int)Math.sqrt(val); i <= sqrt; i++)
+                if (val % i == 0)
+                    return false;
 
-        boolean prime = true;
-        int sqrt = (int)Math.sqrt(val);
-
-        for (int i = 2; i <= sqrt; i++) {
-            if (val % i == 0) {
-                prime = false;
-                break;
-            }
-        }
-
-        PRIMES.put(val, prime);
-        return prime;
+            return true;
+        });
     }
 
     public static void main(String[] args) {
