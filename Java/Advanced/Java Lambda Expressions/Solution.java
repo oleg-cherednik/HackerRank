@@ -8,6 +8,7 @@ import java.util.StringTokenizer;
  * @since 01.10.2017
  */
 public class Solution {
+
     public static void main(String... args) throws IOException {
         MyMath ob = new MyMath();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -39,10 +40,12 @@ public class Solution {
 }
 
 interface PerformOperation {
+
     boolean check(int a);
 }
 
 class MyMath {
+
     public static boolean checker(PerformOperation p, int num) {
         return p.check(num);
     }
@@ -52,14 +55,12 @@ class MyMath {
     }
 
     public PerformOperation isPrime() {
-        return a -> {
-            if (a == 0 || a == 1)
+        return val -> {
+            if (val < 2)
                 return false;
 
-            int sqrt = (int)Math.sqrt(a);
-
-            for (int i = 2; i <= sqrt; i++)
-                if (a % i == 0)
+            for (int i = 2, sqrt = (int)Math.sqrt(val); i <= sqrt; i++)
+                if (val % i == 0)
                     return false;
 
             return true;
