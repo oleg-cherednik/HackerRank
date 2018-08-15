@@ -1,63 +1,69 @@
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.function.IntFunction;
 
 /**
  * @author Oleg Cherednik
- * @since 09.08.2018
+ * @since 15.08.2018
  */
 public class Solution {
 
-    private static Hashtable<Integer, Integer> dict;
+    private static final Map<Integer, Integer> MAP = new HashMap<>();
+    private static final IntFunction<Integer> GET_TRIANGLE = value -> Math.floorDiv(value * (value + 1), 2);
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        dict = new Hashtable<>();
-        int tc = sc.nextInt();
-        for (int i_tc = 0; i_tc < tc; i_tc++) {
-            int n = sc.nextInt();
-            int number = 1;
-            int triangle = getTriangle(number);
-            int divisorCount = numberOfDivisors(triangle);
-            dict.put(number, divisorCount);
-            while (divisorCount <= n) {
-                number += 1;
-                triangle = getTriangle(number);
-                divisorCount = numberOfDivisors(triangle);
-                dict.put(triangle, divisorCount);
-            }
-            System.out.println(triangle);
+    private static int getHighlyDivisibleTriangularNumber(int N) {
+        int num = 1;
+        int triangle = GET_TRIANGLE.apply(num);
+        int count = numberOfDivisors(triangle);
+        MAP.put(num, count);
+
+        while (count <= N) {
+            num++;
+            triangle = GET_TRIANGLE.apply(num);
+            count = numberOfDivisors(triangle);
+            MAP.put(triangle, count);
         }
+
+        return triangle;
     }
 
     private static int numberOfDivisors(int triangle) {
-        if (dict.containsKey(triangle)) {
-            return dict.get(triangle);
-        } else {
-            int tempTriangle = triangle;
-            int primePowerCount = 1, count = 0;
-            while (triangle % 2 == 0) {
-                triangle = Math.floorDiv(triangle, 2);
-                count += 1;
+        return MAP.computeIfAbsent(triangle, tmp -> {
+            int primePowerCount = 1;
+            int count = 0;
+
+            while (tmp % 2 == 0) {
+                tmp = Math.floorDiv(tmp, 2);
+                count++;
             }
-            primePowerCount *= (count + 1);
-            for (int i = 3; i <= Math.sqrt(triangle); i++) {
+
+            primePowerCount *= count + 1;
+
+            for (int i = 3; i <= Math.sqrt(tmp); i++) {
                 count = 0;
-                while (triangle % i == 0) {
-                    count += 1;
-                    triangle = Math.floorDiv(triangle, i);
+
+                while (tmp % i == 0) {
+                    count++;
+                    tmp = Math.floorDiv(tmp, i);
                 }
-                primePowerCount *= (count + 1);
+
+                primePowerCount *= count + 1;
             }
-            if (triangle > 2) {
-                primePowerCount *= 2;
-            }
-            dict.put(tempTriangle, primePowerCount);
-            return dict.get(tempTriangle);
-        }
+
+            return tmp > 2 ? primePowerCount * 2 : primePowerCount;
+        });
     }
 
-    private static int getTriangle(int number) {
-        return Math.floorDiv(number * (number + 1), 2);
+    public static void main(String[] args) {
+        try (Scanner scan = new Scanner(System.in)) {
+            int T = scan.nextInt();
+
+            for (int i = 0; i < T; i++) {
+                int N = scan.nextInt();
+                System.out.println(getHighlyDivisibleTriangularNumber(N));
+            }
+        }
     }
 
 }
