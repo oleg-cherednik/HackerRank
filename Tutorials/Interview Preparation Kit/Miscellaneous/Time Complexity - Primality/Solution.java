@@ -6,14 +6,16 @@ import java.util.Scanner;
  */
 public class Solution {
 
-private static boolean isPrime(int n) {
-    if (n < 2)
-        return false;
-    for (int i = 2, max = (int)Math.sqrt(n); i <= max; i++)
-        if (n % i == 0)
+    private static boolean isPrime(int val) {
+        if (val < 2)
             return false;
-    return true;
-}
+
+        for (int i = 2, sqrt = (int)Math.sqrt(val); i <= sqrt; i++)
+            if (val % i == 0)
+                return false;
+
+        return true;
+    }
 
     private static final Scanner scanner = new Scanner(System.in);
 
