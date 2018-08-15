@@ -27,9 +27,7 @@ public class Solution {
         if (val < 2)
             return false;
 
-        int sqrt = (int)Math.sqrt(val);
-
-        for (int i = 2; i <= sqrt; i++)
+        for (int i = 2, sqrt = (int)Math.sqrt(val); i <= sqrt; i++)
             if (val % i == 0)
                 return false;
 
