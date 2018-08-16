@@ -4,6 +4,8 @@ import java.util.Scanner;
 import java.util.function.LongFunction;
 
 /**
+ * http://codeforces.com/blog/entry/21202
+ *
  * @author Oleg Cherednik
  * @since 15.08.2018
  */
