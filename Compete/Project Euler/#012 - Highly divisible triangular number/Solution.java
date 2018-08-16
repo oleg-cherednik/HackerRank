@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.function.IntFunction;
+import java.util.function.LongFunction;
 
 /**
  * @author Oleg Cherednik
@@ -9,12 +9,12 @@ import java.util.function.IntFunction;
  */
 public class Solution {
 
-    private static final Map<Integer, Integer> MAP = new HashMap<>();
-    private static final IntFunction<Integer> GET_TRIANGLE = value -> Math.floorDiv(value * (value + 1), 2);
+    private static final Map<Long, Integer> MAP = new HashMap<>();
+    private static final LongFunction<Long> GET_TRIANGLE = value -> Math.floorDiv(value * (value + 1), 2);
 
-    private static int getHighlyDivisibleTriangularNumber(int N) {
-        int num = 1;
-        int triangle = GET_TRIANGLE.apply(num);
+    private static long getHighlyDivisibleTriangularNumber(int N) {
+        long num = 1;
+        long triangle = GET_TRIANGLE.apply(num);
         int count = numberOfDivisors(triangle);
         MAP.put(num, count);
 
@@ -28,9 +28,9 @@ public class Solution {
         return triangle;
     }
 
-    private static int numberOfDivisors(int triangle) {
+    private static int numberOfDivisors(long triangle) {
         return MAP.computeIfAbsent(triangle, tmp -> {
-            int primePowerCount = 1;
+            int divCount = 1;
             int count = 0;
 
             while (tmp % 2 == 0) {
@@ -38,9 +38,9 @@ public class Solution {
                 count++;
             }
 
-            primePowerCount *= count + 1;
+            divCount *= count + 1;
 
-            for (int i = 3; i <= Math.sqrt(tmp); i++) {
+            for (int i = 3, sqrt = (int)Math.sqrt(tmp); i <= sqrt; i++) {
                 count = 0;
 
                 while (tmp % i == 0) {
@@ -48,10 +48,10 @@ public class Solution {
                     tmp = Math.floorDiv(tmp, i);
                 }
 
-                primePowerCount *= count + 1;
+                divCount *= count + 1;
             }
 
-            return tmp > 2 ? primePowerCount * 2 : primePowerCount;
+            return tmp > 2 ? divCount * 2 : divCount;
         });
     }
 
