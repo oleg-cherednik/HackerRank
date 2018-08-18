@@ -2,6 +2,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Locale;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * @author Oleg Cherednik
@@ -11,25 +13,30 @@ public class Solution {
     public static double normalizeMean(int[][] stocks, long[] sums) {
         double res = Double.MAX_VALUE;
 
-        for (int i = 0; i < stocks.length; i++) {
-            double mean = (double)sums[i] / stocks[i].length;
-            res = Math.min(res, diffSum(stocks, res, mean));
+        Map<Double, Integer> map = new TreeMap<>();
+
+        for (int i = 0; i < sums.length; i++)
+            map.put((double)sums[i] / stocks[i].length, i);
+
+        for (Map.Entry<Double, Integer> entry : map.entrySet()) {
+            double mean = entry.getKey();
+            double cur = diffSum(stocks, mean);
+
+            if (cur > res)
+                return res;
+
+            res = cur;
         }
 
         return res;
     }
 
-    private static double diffSum(int[][] stocks, double cur, double mean) {
+    private static double diffSum(int[][] stocks, double mean) {
         double res = 0;
 
-        for (int[] stock : stocks) {
-            for (int price : stock) {
+        for (int[] stock : stocks)
+            for (int price : stock)
                 res += Math.abs(price - mean);
-
-                if (res > cur)
-                    return cur;
-            }
-        }
 
         return res;
     }
