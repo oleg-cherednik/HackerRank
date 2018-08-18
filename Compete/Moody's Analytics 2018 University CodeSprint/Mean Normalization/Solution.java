@@ -2,23 +2,18 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Locale;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * @author Oleg Cherednik
  * @since 18.08.2018
  */
 public class Solution {
-    public static double normalizeMean(int[][] stocks, double[] means) {
+    public static double normalizeMean(int[][] stocks, Set<Double> means) {
         double res = Double.MAX_VALUE;
-        Map<Double, Integer> map = new TreeMap<>();
 
-        for (int i = 0; i < means.length; i++)
-            map.put(means[i], i);
-
-        for (Map.Entry<Double, Integer> entry : map.entrySet()) {
-            double mean = entry.getKey();
+        for (double mean : means) {
             double cur = diffSum(stocks, mean);
 
             if (cur > res)
@@ -44,7 +39,7 @@ public class Solution {
         try (BufferedReader in = new BufferedReader(new InputStreamReader(System.in))) {
             int n = Integer.parseInt(in.readLine());
             int[][] stocks = new int[n][];
-            double[] means = new double[n];
+            Set<Double> means = new TreeSet<>();
 
             for (int i = 0, start = 0; i < n; i++, start = 0) {
                 int m = Integer.parseInt(in.readLine());
@@ -61,7 +56,7 @@ public class Solution {
                     start = end + 1;
                 }
 
-                means[i] = (double)sum / m;
+                means.add((double)sum / m);
             }
 
             System.out.format(Locale.US, "%.12f", normalizeMean(stocks, means));
