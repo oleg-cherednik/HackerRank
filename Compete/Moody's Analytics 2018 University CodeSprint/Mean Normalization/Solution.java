@@ -10,13 +10,12 @@ import java.util.TreeMap;
  * @since 18.08.2018
  */
 public class Solution {
-    public static double normalizeMean(int[][] stocks, long[] sums) {
+    public static double normalizeMean(int[][] stocks, double[] means) {
         double res = Double.MAX_VALUE;
-
         Map<Double, Integer> map = new TreeMap<>();
 
-        for (int i = 0; i < sums.length; i++)
-            map.put((double)sums[i] / stocks[i].length, i);
+        for (int i = 0; i < means.length; i++)
+            map.put(means[i], i);
 
         for (Map.Entry<Double, Integer> entry : map.entrySet()) {
             double mean = entry.getKey();
@@ -45,7 +44,7 @@ public class Solution {
         try (BufferedReader in = new BufferedReader(new InputStreamReader(System.in))) {
             int n = Integer.parseInt(in.readLine());
             int[][] stocks = new int[n][];
-            long[] sums = new long[n];
+            double[] means = new double[n];
 
             for (int i = 0, start = 0; i < n; i++, start = 0) {
                 int m = Integer.parseInt(in.readLine());
@@ -62,10 +61,10 @@ public class Solution {
                     start = end + 1;
                 }
 
-                sums[i] = sum;
+                means[i] = (double)sum / m;
             }
 
-            System.out.format(Locale.US, "%.12f", normalizeMean(stocks, sums));
+            System.out.format(Locale.US, "%.12f", normalizeMean(stocks, means));
         }
     }
 
