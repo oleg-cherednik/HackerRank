@@ -1,4 +1,6 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * @author Oleg Cherednik
@@ -14,18 +16,21 @@ public class Solution {
         return sum < 0 ? 1 : 0;
     }
 
-    public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            int q = scan.nextInt();
+    public static void main(String[] args) throws IOException {
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(System.in))) {
+            int q = Integer.parseInt(in.readLine());
+            int[] actual = new int[10_000];
+            int[] estimated = new int[10_000];
 
             for (int i = 0; i < q; i++) {
-                int n = scan.nextInt();
-                int[] actual = new int[n];
-                int[] estimated = new int[n];
+                int n = Integer.parseInt(in.readLine());
 
                 for (int j = 0; j < n; j++) {
-                    actual[j] = scan.nextInt();
-                    estimated[j] = scan.nextInt();
+                    String str = in.readLine();
+                    int pos = str.indexOf(' ');
+
+                    actual[j] = Integer.parseInt(str.substring(0, pos));
+                    estimated[j] = Integer.parseInt(str.substring(pos + 1));
                 }
 
                 System.out.println(solve(n, actual, estimated));
