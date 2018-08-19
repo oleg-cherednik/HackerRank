@@ -4,33 +4,35 @@ import java.io.InputStreamReader;
 import java.util.Locale;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.function.DoubleFunction;
 
 /**
  * @author Oleg Cherednik
  * @since 18.08.2018
  */
 public class Solution {
-    public static double normalizeMean(int[][] stocks, Set<Double> means) {
+
+    public static double normalizeMean(int[][] stocks, double[] means) {
         double res = Double.MAX_VALUE;
 
+        final DoubleFunction<Double> diffSum = mean -> {
+            double res1 = 0;
+
+            for (int[] stock : stocks)
+                for (int price : stock)
+                    res1 += Math.abs(price - mean);
+
+            return res1;
+        };
+
         for (double mean : means) {
-            double cur = diffSum(stocks, mean);
+            double cur = diffSum.apply(mean);
 
             if (cur > res)
                 return res;
 
             res = cur;
         }
-
-        return res;
-    }
-
-    private static double diffSum(int[][] stocks, double mean) {
-        double res = 0;
-
-        for (int[] stock : stocks)
-            for (int price : stock)
-                res += Math.abs(price - mean);
 
         return res;
     }
@@ -59,7 +61,13 @@ public class Solution {
                 means.add((double)sum / m);
             }
 
-            System.out.format(Locale.US, "%.12f", normalizeMean(stocks, means));
+            int i = 0;
+            double[] arr = new double[means.size()];
+
+            for (double mean : means)
+                arr[i++] = mean;
+
+            System.out.format(Locale.US, "%.12f", normalizeMean(stocks, arr));
         }
     }
 
