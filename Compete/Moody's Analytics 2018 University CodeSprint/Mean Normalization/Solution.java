@@ -13,8 +13,6 @@ import java.util.function.DoubleFunction;
 public class Solution {
 
     public static double normalizeMean(int[][] stocks, double[] means) {
-        double res = Double.MAX_VALUE;
-
         final DoubleFunction<Double> diffSum = mean -> {
             double res1 = 0;
 
@@ -24,6 +22,8 @@ public class Solution {
 
             return res1;
         };
+
+        double res = Double.MAX_VALUE;
 
         for (double mean : means) {
             double cur = diffSum.apply(mean);
