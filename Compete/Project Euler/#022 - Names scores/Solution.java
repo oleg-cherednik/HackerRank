@@ -22,7 +22,6 @@ public class Solution {
     public static void main(String[] args) {
         try (Scanner scan = new Scanner(System.in)) {
             int N = scan.nextInt();
-
             Set<String> names = new TreeSet<>();
 
             for (int i = 0; i < N; i++)
@@ -36,7 +35,7 @@ public class Solution {
 
             int Q = scan.nextInt();
 
-            for (int j = 0; j < Q; i++)
+            for (i = 0; i < Q; i++)
                 System.out.println(getNameScore(scan.next().toLowerCase(), map));
         }
     }
