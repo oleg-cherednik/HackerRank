@@ -43,7 +43,7 @@ public class Solution {
         for (int i = 1, sqrt = (int)Math.sqrt(val); i <= sqrt; i++) {
             if (val % i == 0) {
                 sum += i;
-                sum += i > 1 ? val / i : 0;
+                sum += i > 1 && val / i != i ? val / i : 0;
             }
         }
 
