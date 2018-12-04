@@ -8,8 +8,23 @@ import java.util.stream.IntStream;
 public class Solution {
 
     static void decentNumber(int n) {
+        StringBuilder buf = new StringBuilder();
+
+        while (n > 0) {
+            if (n % 3 == 0) {
+                for (int i = 0; i < n; i++)
+                    buf.append('5');
+            } else if (n % 3 > 5) {
+                for (int i = 0; i < n / 3 * 3; i++)
+                    buf.append('5');
+            } else {
+
+            }
 
 
+        }
+
+        System.out.println(buf);
     }
 
     public static void main(String[] args) {
