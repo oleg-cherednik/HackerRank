@@ -1,42 +1,84 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
  * @author Oleg Cherednik
- * @since 05.08.2018
+ * @since 07.01.2019
  */
 public class Solution {
 
+    private static final class Group {
+
+        private final char ch;
+        private int length = 1;
+
+        private Group(char ch) {
+            this.ch = ch;
+        }
+    }
+
+
     static long substrCount(int n, String s) {
-        long res = s.length();
+        if (s.isEmpty())
+            return 0;
 
-        for(shmnmnmn vcc)
+        List<Group> groups = getGroups(s);
+        long res = 0;
 
+        for (int i = 0; i < groups.size(); i++) {
+            Group group = groups.get(i);
+            res += countSingleCharGroup(group.length);
 
+            if (i > 1) {
+                Group prvGroup = groups.get(i - 1);
 
-        for (int i = 2; i <= s.length(); i++)
-            for (int j = 0; j <= s.length() - i; j++)
-                res += isValid(s, j, j + i - 1) ? 1 : 0;
+                if (prvGroup.length == 1) {
+                    prvGroup = groups.get(i - 2);
+                    res += prvGroup.ch == group.ch ? Math.min(group.length, prvGroup.length) : 0;
+                }
+            }
+        }
 
         return res;
     }
 
-    private static boolean isValid(String s, int i, int j) {
-        char ch = s.charAt(i);
+    private static List<Group> getGroups(String str) {
+        List<Group> groups = new ArrayList<>();
+        char prv = '\0';
 
-        for (; i < j; i++, j--)
-            if (s.charAt(i) != ch || s.charAt(j) != ch)
-                return false;
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
 
-        return true;
+            if (i == 0 || ch != prv)
+                groups.add(new Group(ch));
+            else
+                groups.get(groups.size() - 1).length++;
+
+            prv = ch;
+        }
+
+        return groups;
+    }
+
+    private static long countSingleCharGroup(int total) {
+        long res = 0;
+
+        for (int i = 1; i <= total; i++)
+            res += i;
+
+        return res;
     }
 
     private static Scanner scanner;
 
     static {
         try {
-            scanner = new Scanner(new FileInputStream("e:/input.txt"));
+            // expected: 1272919
+            // actual:   1272467
+            scanner = new Scanner(new FileInputStream("h:/input02.txt"));
         } catch(FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -53,5 +95,7 @@ public class Solution {
         System.out.println(String.valueOf(result));
 
         scanner.close();
+//        String str = "aaaa";
+//        System.out.println(substrCount(str.length(), str));
     }
 }
