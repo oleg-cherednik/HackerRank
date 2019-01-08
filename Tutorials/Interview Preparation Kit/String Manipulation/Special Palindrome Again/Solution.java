@@ -20,7 +20,6 @@ public class Solution {
         }
     }
 
-
     static long substrCount(int n, String s) {
         if (s.isEmpty())
             return 0;
