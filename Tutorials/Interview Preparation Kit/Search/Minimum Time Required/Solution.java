@@ -23,12 +23,13 @@ public class Solution {
         do {
             day++;
 
-            for (Map.Entry<Long, Long> entry : map.entrySet()) {
-                if (day % entry.getKey() != 0)
-                    continue;
+            final long curDay = day;
 
-                currGoal += entry.getValue();
-            }
+            currGoal += map.entrySet().stream()
+                           .filter(entry -> curDay % entry.getKey() == 0)
+                           .map(Map.Entry::getValue)
+                           .mapToLong(val -> val)
+                           .sum();
         } while (currGoal < goal);
 
         return day;
@@ -38,8 +39,9 @@ public class Solution {
 
     static {
         try {
-            // 2 -82
-            scanner = new Scanner(new FileInputStream("h:/input02.txt"));
+            // 2 - 82
+            // 5 - 304844592
+            scanner = new Scanner(new FileInputStream("h:/input05.txt"));
         } catch(FileNotFoundException e) {
             e.printStackTrace();
         }
