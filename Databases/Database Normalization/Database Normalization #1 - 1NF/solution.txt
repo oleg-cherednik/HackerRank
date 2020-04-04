@@ -1,0 +1,24 @@
+PRODUCT
+*Product-ID*    *Colors*    *Price*
+1               Red,Green   15.0
+2               Blue        18.0
+3               Yellow,Pink 2.5
+-------------------------------------
+PRODUCT
+*Product-ID*    *Price*
+1               15.0
+2               18.0
+3               2.5
+
+PRODUCT_COLOR
+*Product-ID*    *Color-ID*
+1               Red
+1               Green
+2               Blue
+3               Yellow
+3               Pink
+------------------------------------------------------------------
+X = 3
+Y = 5
+Z = 2
+
