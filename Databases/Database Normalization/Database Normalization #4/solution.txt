@@ -1,0 +1,4 @@
+10
+
+1. The relation R (table) is in second normal form (2NF).
+2. Every non-prime attribute of R is non-transitively dependent on every key of R.
