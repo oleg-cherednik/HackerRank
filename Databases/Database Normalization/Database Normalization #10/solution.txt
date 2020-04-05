@@ -1,0 +1,37 @@
+N = 6
+----------------------------------------------------------
+
+Restaurant  Crust       Delivery Area
+-------------------------------------------
+X Pizza     Thick       Whitefield
+X Pizza     Thick       Greenville
+X Pizza     Thick       Capital
+X Pizza     Stuffed     Whitefield
+X Pizza     Stuffed     Greenville
+X Pizza     Stuffed     Capital
+Papa Pizza  Thin        Capital
+Papa Pizza  Stuffed     Capital
+F1 Pizza    Thick       Whitefield
+F1 Pizza    Thick       Greenville
+F1 Pizza    Thin        Whitefield
+F1 Pizza    Thin        Greenville
+
+----------------------------------------------------------
+
+Restaurant  Crust
+-------------------
+X Pizza     Thick
+X Pizza     Stuffed
+Papa Pizza  Thin
+Papa Pizza  Stuffed
+F1 Pizza    Thick
+F1 Pizza    Thin
+
+Restaurant  Delivery Area
+-------------------------
+X Pizza     Whitefield
+X Pizza     Greenville
+X Pizza     Capital
+Papa Pizza  Capital
+F1 Pizza    Whitefield
+F1 Pizza    Greenville
