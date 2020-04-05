@@ -27,11 +27,13 @@ class MapReduce:
 mapReducer = MapReduce()
 
 def mapper(record):
+    #Start writing the Map code here
     v1, v2 = record.split()
     mapReducer.emitIntermediate(v1, v2)
     mapReducer.emitIntermediate(v2, v1)
 
 def reducer(key, list_of_values):
+    #Start writing the Reduce code here
     mapReducer.emit([key, len(list_of_values)])
 
 if __name__ == '__main__':
