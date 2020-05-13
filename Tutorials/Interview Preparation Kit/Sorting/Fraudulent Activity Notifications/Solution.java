@@ -17,12 +17,13 @@ public class Solution {
         for (int i = -d, j = 0; j < expenditure.length; i++, j++) {
             int val = expenditure[j];
 
-            if (i >= 0 && expenditure[j] >= median * 2)
-                res++;
+            if (i >= 0) {
+                if (val >= median * 2)
+                    res++;
 
-            if (i >= 0)
                 if (!maxHeap.remove(expenditure[i]))
                     minHeap.remove(expenditure[i]);
+            }
 
             if (minHeap.size() == maxHeap.size()) {
                 if (val < median)
