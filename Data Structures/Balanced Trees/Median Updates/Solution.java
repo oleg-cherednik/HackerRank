@@ -74,7 +74,7 @@ public class Solution {
     }
 
     public static void main(String... args) {
-        try (Scanner scan = new Scanner(Solution.class.getResourceAsStream("in.txt"))) {
+        try (Scanner scan = new Scanner(System.in)) {
             int N = scan.nextInt();
             calc(N, scan);
         }
