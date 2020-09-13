@@ -6,7 +6,7 @@ import java.util.Scanner;
  */
 public class Solution {
 
-    private static final long[] SUM = new long[1000001];
+    private static final long[] SUM = new long[2000001];
 
     static {
         long sum = 0;
@@ -42,5 +42,9 @@ public class Solution {
             System.out.println(sumPrimes(n));
         }
     }
+
+//    public static void main(String... args) {
+//        System.out.println(sumPrimes(2_000_000));   // 142913828922
+//    }
 
 }
