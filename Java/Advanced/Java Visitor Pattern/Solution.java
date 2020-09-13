@@ -11,49 +11,49 @@ import java.util.Set;
  * @since 30.09.2017
  */
 public class Solution {
+
     public static Tree solve() {
-        try (Scanner scan = new Scanner(System.in)) {
-            int n = scan.nextInt();
-            int[] values = new int[n];
-            Color[] colors = new Color[n];
-            Map<Integer, Set<Integer>> map = new HashMap<>();
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+        int[] values = new int[n];
+        Color[] colors = new Color[n];
+        Map<Integer, Set<Integer>> map = new HashMap<>();
 
-            for (int index = 0; index < n; index++)
-                values[index] = scan.nextInt();
+        for (int index = 0; index < n; index++)
+            values[index] = scan.nextInt();
 
-            for (int index = 0; index < n; index++)
-                colors[index] = scan.nextInt() == 0 ? Color.RED : Color.GREEN;
+        for (int index = 0; index < n; index++)
+            colors[index] = scan.nextInt() == 0 ? Color.RED : Color.GREEN;
 
-            if (n == 1)
-                return new TreeLeaf(values[0], colors[0], 0);
+        if (n == 1)
+            return new TreeLeaf(values[0], colors[0], 0);
 
-            Tree root;
+        Tree root;
 
-            for (int i = 0; i < n - 1; i++) {
-                int u = scan.nextInt();
-                int v = scan.nextInt();
+        for (int i = 0; i < n - 1; i++) {
+            int u = scan.nextInt();
+            int v = scan.nextInt();
 
-                if (!map.containsKey(u))
-                    map.put(u, new HashSet<Integer>());
-                if (!map.containsKey(v))
-                    map.put(v, new HashSet<Integer>());
+            if (!map.containsKey(u))
+                map.put(u, new HashSet<Integer>());
+            if (!map.containsKey(v))
+                map.put(v, new HashSet<Integer>());
 
-                map.get(u).add(v);
-                map.get(v).add(u);
-            }
-
-            root = new TreeNode(values[0], colors[0], 0);
-            Set<Integer> rootEdges = map.get(1);
-            Iterator<Integer> it = rootEdges.iterator();
-
-            while (it.hasNext()) {
-                Integer nodeIdentifier = it.next();
-                map.get(nodeIdentifier).remove(1);
-                createEdge(root, nodeIdentifier, values, colors, map);
-            }
-
-            return root;
+            map.get(u).add(v);
+            map.get(v).add(u);
         }
+
+        root = new TreeNode(values[0], colors[0], 0);
+        Set<Integer> rootEdges = map.get(1);
+        Iterator<Integer> it = rootEdges.iterator();
+
+        while (it.hasNext()) {
+            Integer nodeIdentifier = it.next();
+            map.get(nodeIdentifier).remove(1);
+            createEdge(root, nodeIdentifier, values, colors, map);
+        }
+
+        return root;
     }
 
     private static void createEdge(Tree parentNode, Integer nodeIdentifier, int[] values, Color[] colors, Map<Integer, Set<Integer>> map) {
@@ -104,6 +104,7 @@ enum Color {
 }
 
 abstract class Tree {
+
     private int value;
     private Color color;
     private int depth;
@@ -130,6 +131,7 @@ abstract class Tree {
 }
 
 class TreeNode extends Tree {
+
     private ArrayList<Tree> children = new ArrayList<>();
 
     public TreeNode(int value, Color color, int depth) {
@@ -149,6 +151,7 @@ class TreeNode extends Tree {
 }
 
 class TreeLeaf extends Tree {
+
     public TreeLeaf(int value, Color color, int depth) {
         super(value, color, depth);
     }
@@ -159,6 +162,7 @@ class TreeLeaf extends Tree {
 }
 
 abstract class TreeVis {
+
     public abstract int getResult();
 
     public abstract void visitNode(TreeNode node);
@@ -167,6 +171,7 @@ abstract class TreeVis {
 }
 
 class SumInLeavesVisitor extends TreeVis {
+
     private int res;
 
     public int getResult() {
@@ -182,6 +187,7 @@ class SumInLeavesVisitor extends TreeVis {
 }
 
 class ProductOfRedNodesVisitor extends TreeVis {
+
     private static final int M = 1000000007;
     private long res = 1;
 
@@ -201,6 +207,7 @@ class ProductOfRedNodesVisitor extends TreeVis {
 }
 
 class FancyVisitor extends TreeVis {
+
     private int val1;
     private int val2;
 

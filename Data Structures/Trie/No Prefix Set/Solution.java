@@ -7,25 +7,24 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            int N = scan.nextInt();
-            scan.nextLine();
+        Scanner scan = new Scanner(System.in);
+        int N = scan.nextInt();
+        scan.nextLine();
 
-            Node root = new Node();
+        Node root = new Node();
 
-            for (int i = 0; i < N; i++) {
-                String str = scan.next();
+        for (int i = 0; i < N; i++) {
+            String str = scan.next();
 
-                if (add(root, str))
-                    continue;
+            if (add(root, str))
+                continue;
 
-                System.out.println("BAD SET");
-                System.out.println(str);
-                return;
-            }
-
-            System.out.println("GOOD SET");
+            System.out.println("BAD SET");
+            System.out.println(str);
+            return;
         }
+
+        System.out.println("GOOD SET");
     }
 
     private static boolean add(Node node, String str) {
@@ -51,6 +50,7 @@ public class Solution {
     }
 
     private static class Node {
+
         private Node[] children;
         private boolean end;
     }

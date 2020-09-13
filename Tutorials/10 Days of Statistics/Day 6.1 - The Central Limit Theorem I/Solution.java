@@ -8,17 +8,16 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            int maxWeight = scan.nextInt();
-            int n = scan.nextInt();
-            int mean = scan.nextInt();
-            int std = scan.nextInt();
+        Scanner scan = new Scanner(System.in);
+        int maxWeight = scan.nextInt();
+        int n = scan.nextInt();
+        int mean = scan.nextInt();
+        int std = scan.nextInt();
 
-            double samplesMean = n * mean;
-            double samplesStd = Math.sqrt(n) * std;
+        double samplesMean = n * mean;
+        double samplesStd = Math.sqrt(n) * std;
 
-            System.out.format(Locale.US, "%.4f\n", cumulative(samplesMean, samplesStd, maxWeight));
-        }
+        System.out.format(Locale.US, "%.4f\n", cumulative(samplesMean, samplesStd, maxWeight));
     }
 
     private static double cumulative(double mean, double std, int maxWeight) {

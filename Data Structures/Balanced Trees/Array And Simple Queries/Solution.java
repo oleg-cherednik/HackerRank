@@ -5,33 +5,34 @@ import java.util.Scanner;
  * @since 11.12.2017
  */
 public class Solution {
+
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            int N = scan.nextInt();
-            int M = scan.nextInt();
-            scan.nextLine();
+        Scanner scan = new Scanner(System.in);
+        int N = scan.nextInt();
+        int M = scan.nextInt();
+        scan.nextLine();
 
-            Data data = new Data(N);
+        Data data = new Data(N);
 
-            for (int k = 0; k < N; k++)
-                data.add(k + 1, scan.nextInt());
+        for (int k = 0; k < N; k++)
+            data.add(k + 1, scan.nextInt());
 
-            for (int k = 0; k < M; k++) {
-                int type = scan.nextInt();
-                int i = scan.nextInt();
-                int j = scan.nextInt();
+        for (int k = 0; k < M; k++) {
+            int type = scan.nextInt();
+            int i = scan.nextInt();
+            int j = scan.nextInt();
 
-                if (type == 1)
-                    data.moveFront(i, j);
-                else if (type == 2)
-                    data.moveBehind(i, j);
-            }
-
-            data.print();
+            if (type == 1)
+                data.moveFront(i, j);
+            else if (type == 2)
+                data.moveBehind(i, j);
         }
+
+        data.print();
     }
 
     private static final class Data {
+
         private final int[] arr;
 
         public Data(int total) {

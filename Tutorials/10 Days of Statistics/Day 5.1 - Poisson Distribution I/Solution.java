@@ -8,11 +8,10 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            double lambda = scan.nextDouble();
-            int k = scan.nextInt();
-            System.out.format(Locale.US, "%.3f\n", poisson(k, lambda));
-        }
+        Scanner scan = new Scanner(System.in);
+        double lambda = scan.nextDouble();
+        int k = scan.nextInt();
+        System.out.format(Locale.US, "%.3f\n", poisson(k, lambda));
     }
 
     private static double poisson(int k, double lambda) {

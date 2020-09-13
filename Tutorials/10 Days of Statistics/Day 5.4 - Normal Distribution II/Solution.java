@@ -8,16 +8,15 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            int mean = scan.nextInt();
-            int standardDeviation = scan.nextInt();
-            int x1 = scan.nextInt();
-            int x2 = scan.nextInt();
+        Scanner scan = new Scanner(System.in);
+        int mean = scan.nextInt();
+        int standardDeviation = scan.nextInt();
+        int x1 = scan.nextInt();
+        int x2 = scan.nextInt();
 
-            System.out.format(Locale.US, "%.2f\n", (1 - normal(x1, mean, standardDeviation)) * 100);
-            System.out.format(Locale.US, "%.2f\n", (1 - normal(x2, mean, standardDeviation)) * 100);
-            System.out.format(Locale.US, "%.2f\n", normal(x2, mean, standardDeviation) * 100);
-        }
+        System.out.format(Locale.US, "%.2f\n", (1 - normal(x1, mean, standardDeviation)) * 100);
+        System.out.format(Locale.US, "%.2f\n", (1 - normal(x2, mean, standardDeviation)) * 100);
+        System.out.format(Locale.US, "%.2f\n", normal(x2, mean, standardDeviation) * 100);
     }
 
     public static double normal(int x, int mean, int standardDeviation) {

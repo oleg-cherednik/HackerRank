@@ -8,17 +8,16 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            double p = scan.nextDouble() / 100;
-            int n = scan.nextInt();
-            double res = 0;
+        Scanner scan = new Scanner(System.in);
+        double p = scan.nextDouble() / 100;
+        int n = scan.nextInt();
+        double res = 0;
 
-            for (int i = 0; i <= 2; i++)
-                res += binomial(n, i, p);
+        for (int i = 0; i <= 2; i++)
+            res += binomial(n, i, p);
 
-            System.out.format(Locale.US, "%.3f\n", res);
-            System.out.format(Locale.US, "%.3f\n", 1 - binomial(n, 0, p) - binomial(n, 1, p));
-        }
+        System.out.format(Locale.US, "%.3f\n", res);
+        System.out.format(Locale.US, "%.3f\n", 1 - binomial(n, 0, p) - binomial(n, 1, p));
     }
 
     private static double binomial(int n, int i, double p) {

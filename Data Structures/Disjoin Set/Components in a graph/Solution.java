@@ -12,21 +12,21 @@ import java.util.TreeMap;
 public class Solution {
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            int N = scan.nextInt();
-            scan.nextLine();
+        Scanner scan = new Scanner(System.in);
+        int N = scan.nextInt();
+        scan.nextLine();
 
-            Graph graph = new Graph(2 * N);
+        Graph graph = new Graph(2 * N);
 
-            for (int i = 0; i < N; i++)
-                graph.addEdge(scan.nextInt(), scan.nextInt());
+        for (int i = 0; i < N; i++)
+            graph.addEdge(scan.nextInt(), scan.nextInt());
 
-            CC cc = new CC(graph);
-            System.out.printf("%d %d", cc.getMinCount(), cc.getMaxCount());
-        }
+        CC cc = new CC(graph);
+        System.out.printf("%d %d", cc.getMinCount(), cc.getMaxCount());
     }
 
     private static class Graph {
+
         private final int size;
         private final Map<Integer, Set<Integer>> map = new TreeMap<>();
 
@@ -44,6 +44,7 @@ public class Solution {
     }
 
     private static class CC {
+
         private final int[] cc;
         private final Map<Integer, Integer> map = new HashMap<>();
         private int count;

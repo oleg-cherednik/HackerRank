@@ -58,13 +58,12 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            int T = scan.nextInt();
+        Scanner scan = new Scanner(System.in);
+        int T = scan.nextInt();
 
-            for (int i = 0; i < T; i++) {
-                int N = scan.nextInt();
-                System.out.println(getHighlyDivisibleTriangularNumber(N));
-            }
+        for (int i = 0; i < T; i++) {
+            int N = scan.nextInt();
+            System.out.println(getHighlyDivisibleTriangularNumber(N));
         }
     }
 

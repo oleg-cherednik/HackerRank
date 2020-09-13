@@ -8,20 +8,19 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            scan.useLocale(Locale.US);
+        Scanner scan = new Scanner(System.in);
+        scan.useLocale(Locale.US);
 
-            int size = scan.nextInt();
-            double[] xs = new double[size];
-            double[] ys = new double[size];
+        int size = scan.nextInt();
+        double[] xs = new double[size];
+        double[] ys = new double[size];
 
-            for (int i = 0; i < size; i++)
-                xs[i] = scan.nextDouble();
-            for (int i = 0; i < size; i++)
-                ys[i] = scan.nextDouble();
+        for (int i = 0; i < size; i++)
+            xs[i] = scan.nextDouble();
+        for (int i = 0; i < size; i++)
+            ys[i] = scan.nextDouble();
 
-            System.out.println(pearson(xs, ys));
-        }
+        System.out.println(pearson(xs, ys));
     }
 
     private static double pearson(double[] xs, double[] ys) {

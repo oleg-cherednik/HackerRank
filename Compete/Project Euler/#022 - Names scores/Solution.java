@@ -20,23 +20,22 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            int N = scan.nextInt();
-            Set<String> names = new TreeSet<>();
+        Scanner scan = new Scanner(System.in);
+        int N = scan.nextInt();
+        Set<String> names = new TreeSet<>();
 
-            for (int i = 0; i < N; i++)
-                names.add(scan.next().toLowerCase());
+        for (int i = 0; i < N; i++)
+            names.add(scan.next().toLowerCase());
 
-            int i = 1;
-            Map<String, Integer> map = new HashMap<>();
+        int i = 1;
+        Map<String, Integer> map = new HashMap<>();
 
-            for (String name : names)
-                map.put(name, i++);
+        for (String name : names)
+            map.put(name, i++);
 
-            int Q = scan.nextInt();
+        int Q = scan.nextInt();
 
-            for (i = 0; i < Q; i++)
-                System.out.println(getNameScore(scan.next().toLowerCase(), map));
-        }
+        for (i = 0; i < Q; i++)
+            System.out.println(getNameScore(scan.next().toLowerCase(), map));
     }
 }

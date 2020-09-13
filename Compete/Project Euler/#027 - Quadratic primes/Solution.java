@@ -56,9 +56,8 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            int N = scan.nextInt();
-            findCoefficients(N);
-        }
+        Scanner scan = new Scanner(System.in);
+        int N = scan.nextInt();
+        findCoefficients(N);
     }
 }

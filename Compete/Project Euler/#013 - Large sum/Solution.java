@@ -17,16 +17,15 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            int N = scan.nextInt();
-            scan.nextLine();
-            String[] arr = new String[N];
+        Scanner scan = new Scanner(System.in);
+        int N = scan.nextInt();
+        scan.nextLine();
+        String[] arr = new String[N];
 
-            for (int i = 0; i < arr.length; i++)
-                arr[i] = scan.nextLine();
+        for (int i = 0; i < arr.length; i++)
+            arr[i] = scan.nextLine();
 
-            System.out.println(findFirstDigits(arr));
-        }
+        System.out.println(findFirstDigits(arr));
     }
 
 //    public static void main(String... args) {

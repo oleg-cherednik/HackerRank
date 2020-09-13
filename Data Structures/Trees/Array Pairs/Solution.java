@@ -9,7 +9,9 @@ import java.util.Scanner;
  * @since 04.12.2017
  */
 public class Solution {
+
     static class Node {
+
         final int data;
         Node left;
         Node right;
@@ -20,16 +22,15 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            Node root = readTree(scan);
-            int T = scan.nextInt();
+        Scanner scan = new Scanner(System.in);
+        Node root = readTree(scan);
+        int T = scan.nextInt();
 
-            for (int i = 0; i < T; i++) {
-                int K = scan.nextInt();
-                swap(root, K);
-                inOrder(root);
-                System.out.println();
-            }
+        for (int i = 0; i < T; i++) {
+            int K = scan.nextInt();
+            swap(root, K);
+            inOrder(root);
+            System.out.println();
         }
     }
 

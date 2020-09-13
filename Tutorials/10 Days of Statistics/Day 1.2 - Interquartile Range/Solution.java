@@ -34,20 +34,17 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+        int[] X = new int[n];
+        int[] F = new int[n];
 
-        try (Scanner scan = new Scanner(System.in)) {
-            int n = scan.nextInt();
-            int[] X = new int[n];
-            int[] F = new int[n];
+        for (int i = 0; i < n; i++)
+            X[i] = scan.nextInt();
 
-            for (int i = 0; i < n; i++)
-                X[i] = scan.nextInt();
+        for (int i = 0; i < n; i++)
+            F[i] = scan.nextInt();
 
-            for (int i = 0; i < n; i++)
-                F[i] = scan.nextInt();
-
-            System.out.println(interquartileRange(X, F));
-        }
+        System.out.println(interquartileRange(X, F));
     }
 }

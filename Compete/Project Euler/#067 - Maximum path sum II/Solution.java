@@ -15,23 +15,22 @@ public class Solution {
     }
 
     public static void main(String... args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            int T = scan.nextInt();
+        Scanner scan = new Scanner(System.in);
+        int T = scan.nextInt();
 
-            for (int i = 0; i < T; i++) {
-                int N = scan.nextInt();
-                int cols = 2 * N - 1;
-                int[][] data = new int[N][];
+        for (int i = 0; i < T; i++) {
+            int N = scan.nextInt();
+            int cols = 2 * N - 1;
+            int[][] data = new int[N][];
 
-                for (int row = 0, j = cols / 2; row < N; row++, j--) {
-                    data[row] = new int[row + 1];
+            for (int row = 0, j = cols / 2; row < N; row++, j--) {
+                data[row] = new int[row + 1];
 
-                    for (int col = 0; col < data[row].length; col++)
-                        data[row][col] = scan.nextInt();
-                }
-
-                System.out.println(findMaxSum(data));
+                for (int col = 0; col < data[row].length; col++)
+                    data[row][col] = scan.nextInt();
             }
+
+            System.out.println(findMaxSum(data));
         }
     }
 

@@ -8,17 +8,16 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            double p = (double)scan.nextInt() / scan.nextInt();
-            int n = scan.nextInt();
+        Scanner scan = new Scanner(System.in);
+        double p = (double)scan.nextInt() / scan.nextInt();
+        int n = scan.nextInt();
 
-            double q = 1 - p;
-            double prob = 0;
+        double q = 1 - p;
+        double prob = 0;
 
-            for (int i = 0; i < n; i++)
-                prob += Math.pow(q, i) * p;
+        for (int i = 0; i < n; i++)
+            prob += Math.pow(q, i) * p;
 
-            System.out.printf(Locale.US, "%.3f", prob);
-        }
+        System.out.printf(Locale.US, "%.3f", prob);
     }
 }

@@ -8,15 +8,14 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            double A = scan.nextDouble();
-            double B = scan.nextDouble();
+        Scanner scan = new Scanner(System.in);
+        double A = scan.nextDouble();
+        double B = scan.nextDouble();
 
-            double dailyCostA = 160 + 40 * (A + (A * A));
-            double dailyCostB = 128 + 40 * (B + (B * B));
+        double dailyCostA = 160 + 40 * (A + (A * A));
+        double dailyCostB = 128 + 40 * (B + (B * B));
 
-            System.out.format(Locale.US, "%.3f\n", dailyCostA);
-            System.out.format(Locale.US, "%.3f\n", dailyCostB);
-        }
+        System.out.format(Locale.US, "%.3f\n", dailyCostA);
+        System.out.format(Locale.US, "%.3f\n", dailyCostB);
     }
 }

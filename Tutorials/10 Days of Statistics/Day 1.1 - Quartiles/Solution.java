@@ -13,21 +13,18 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+        int[] X = new int[n];
 
-        try (Scanner scan = new Scanner(System.in)) {
-            int n = scan.nextInt();
-            int[] X = new int[n];
+        for (int i = 0; i < n; i++)
+            X[i] = scan.nextInt();
 
-            for (int i = 0; i < n; i++)
-                X[i] = scan.nextInt();
+        Arrays.sort(X);
 
-            Arrays.sort(X);
-
-            int m = X.length / 2;
-            System.out.println(median(Arrays.copyOfRange(X, 0, m)));
-            System.out.println(median(X));
-            System.out.println(median(Arrays.copyOfRange(X, X.length % 2 == 0 ? m : m + 1, X.length)));
-        }
+        int m = X.length / 2;
+        System.out.println(median(Arrays.copyOfRange(X, 0, m)));
+        System.out.println(median(X));
+        System.out.println(median(Arrays.copyOfRange(X, X.length % 2 == 0 ? m : m + 1, X.length)));
     }
 }

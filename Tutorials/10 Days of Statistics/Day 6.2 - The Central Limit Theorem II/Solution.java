@@ -8,18 +8,17 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            int ticketsLeft = scan.nextInt();
-            int n = scan.nextInt();
-            double mean = scan.nextDouble();
-            double std = scan.nextDouble();
+        Scanner scan = new Scanner(System.in);
+        int ticketsLeft = scan.nextInt();
+        int n = scan.nextInt();
+        double mean = scan.nextDouble();
+        double std = scan.nextDouble();
 
-            /* Formulas are from problem's tutorial */
-            double samplesMean = n * mean;
-            double samplesSTD = Math.sqrt(n) * std;
+        /* Formulas are from problem's tutorial */
+        double samplesMean = n * mean;
+        double samplesSTD = Math.sqrt(n) * std;
 
-            System.out.format(Locale.US, "%.4f\n", cumulative(samplesMean, samplesSTD, ticketsLeft));
-        }
+        System.out.format(Locale.US, "%.4f\n", cumulative(samplesMean, samplesSTD, ticketsLeft));
     }
 
     public static double cumulative(double mean, double std, double x) {

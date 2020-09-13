@@ -8,16 +8,15 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) throws IOException {
-        try (Scanner scan = new Scanner(System.in)) {
-            int ab_size = scan.nextInt();
-            int queries_size = scan.nextInt();
-            scan.nextLine();
+        Scanner scan = new Scanner(System.in);
+        int ab_size = scan.nextInt();
+        int queries_size = scan.nextInt();
+        scan.nextLine();
 
-            long[] a = strToNum(ab_size, scan.nextLine());
-            long[] b = strToNum(ab_size, scan.nextLine());
+        long[] a = strToNum(ab_size, scan.nextLine());
+        long[] b = strToNum(ab_size, scan.nextLine());
 
-            Result.changeBits(a, b, queries_size, scan);
-        }
+        Result.changeBits(a, b, queries_size, scan);
     }
 
     private static long[] strToNum(int ab_size, String str) {

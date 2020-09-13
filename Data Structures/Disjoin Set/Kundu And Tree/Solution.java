@@ -7,25 +7,25 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            int N = scan.nextInt();
-            int Q = scan.nextInt();
-            scan.nextLine();
+        Scanner scan = new Scanner(System.in);
+        int N = scan.nextInt();
+        int Q = scan.nextInt();
+        scan.nextLine();
 
-            UnionFind unionFind = new UnionFind(N + 1);
+        UnionFind unionFind = new UnionFind(N + 1);
 
-            for (int i = 0; i < Q; i++) {
-                String cmd = scan.next();
+        for (int i = 0; i < Q; i++) {
+            String cmd = scan.next();
 
-                if ("Q".equals(cmd))
-                    System.out.println(unionFind.size(scan.nextInt()));
-                else if ("M".equals(cmd))
-                    unionFind.union(scan.nextInt(), scan.nextInt());
-            }
+            if ("Q".equals(cmd))
+                System.out.println(unionFind.size(scan.nextInt()));
+            else if ("M".equals(cmd))
+                unionFind.union(scan.nextInt(), scan.nextInt());
         }
     }
 
     private static class UnionFind {
+
         private final int[] id;
         private final int[] sz;
 

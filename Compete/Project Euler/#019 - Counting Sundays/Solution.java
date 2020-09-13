@@ -41,19 +41,18 @@ public class Solution {
     }
 
     public static void main(String... args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            int T = scan.nextInt();
+        Scanner scan = new Scanner(System.in);
+        int T = scan.nextInt();
 
-            for (int i = 0; i < T; i++) {
-                long y1 = scan.nextLong();
-                int m1 = scan.nextInt();
-                int d1 = scan.nextInt();
-                long y2 = scan.nextLong();
-                int m2 = scan.nextInt();
-                int d2 = scan.nextInt();
+        for (int i = 0; i < T; i++) {
+            long y1 = scan.nextLong();
+            int m1 = scan.nextInt();
+            int d1 = scan.nextInt();
+            long y2 = scan.nextLong();
+            int m2 = scan.nextInt();
+            int d2 = scan.nextInt();
 
-                System.out.println(countSundays(y1, m1, d1, y2, m2, d2));
-            }
+            System.out.println(countSundays(y1, m1, d1, y2, m2, d2));
         }
     }
 

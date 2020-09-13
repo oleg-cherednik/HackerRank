@@ -37,23 +37,22 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            int n = Integer.parseInt(scan.nextLine().trim());
+        Scanner scan = new Scanner(System.in);
+        int n = Integer.parseInt(scan.nextLine().trim());
 
-            List<Integer> low = Stream.of(scan.nextLine().replaceAll("\\s+$", "").split(" "))
-                                      .map(Integer::parseInt)
-                                      .collect(toList());
+        List<Integer> low = Stream.of(scan.nextLine().replaceAll("\\s+$", "").split(" "))
+                                  .map(Integer::parseInt)
+                                  .collect(toList());
 
-            List<Integer> high = Stream.of(scan.nextLine().replaceAll("\\s+$", "").split(" "))
-                                       .map(Integer::parseInt)
-                                       .collect(toList());
+        List<Integer> high = Stream.of(scan.nextLine().replaceAll("\\s+$", "").split(" "))
+                                   .map(Integer::parseInt)
+                                   .collect(toList());
 
-            List<Integer> close = Stream.of(scan.nextLine().replaceAll("\\s+$", "").split(" "))
-                                        .map(Integer::parseInt)
-                                        .collect(toList());
+        List<Integer> close = Stream.of(scan.nextLine().replaceAll("\\s+$", "").split(" "))
+                                    .map(Integer::parseInt)
+                                    .collect(toList());
 
-            solve(low, high, close);
-        }
+        solve(low, high, close);
     }
 
 }

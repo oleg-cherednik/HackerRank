@@ -8,41 +8,40 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            scan.useLocale(Locale.US);
+        Scanner scan = new Scanner(System.in);
+        scan.useLocale(Locale.US);
 
-            int m = scan.nextInt();
-            int n = scan.nextInt();
-            double[] Y = new double[n];
-            double[][] X = new double[n][m + 1];
+        int m = scan.nextInt();
+        int n = scan.nextInt();
+        double[] Y = new double[n];
+        double[][] X = new double[n][m + 1];
 
-            for (int i = 0; i < n; i++) {
-                X[i][0] = 1;
+        for (int i = 0; i < n; i++) {
+            X[i][0] = 1;
 
-                for (int j = 0; j < m; j++)
-                    X[i][j + 1] = scan.nextDouble();
+            for (int j = 0; j < m; j++)
+                X[i][j + 1] = scan.nextDouble();
 
-                Y[i] = scan.nextDouble();
-            }
+            Y[i] = scan.nextDouble();
+        }
 
-            double[] b = solve(mult(transpose(X), X), mult(transpose(X), Y), 1e-8);
+        double[] b = solve(mult(transpose(X), X), mult(transpose(X), Y), 1e-8);
 
-            int q = scan.nextInt();
-            double[] obs = new double[m + 1];
+        int q = scan.nextInt();
+        double[] obs = new double[m + 1];
 
-            for (int i = 0; i < q; i++) {
-                obs[0] = 1;
+        for (int i = 0; i < q; i++) {
+            obs[0] = 1;
 
-                for (int j = 0; j < m; j++)
-                    obs[j + 1] = scan.nextDouble();
+            for (int j = 0; j < m; j++)
+                obs[j + 1] = scan.nextDouble();
 
-                double res = 0;
+            double res = 0;
 
-                for (int j = 0; j < m + 1; j++)
-                    res += b[j] * obs[j];
+            for (int j = 0; j < m + 1; j++)
+                res += b[j] * obs[j];
 
-                System.out.format(Locale.US, "%.9f\n", res);
-            }
+            System.out.format(Locale.US, "%.9f\n", res);
         }
     }
 

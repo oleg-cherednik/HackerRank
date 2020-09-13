@@ -23,12 +23,11 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        try (Scanner scan = new Scanner(System.in)) {
-            int T = scan.nextInt();
+        Scanner scan = new Scanner(System.in);
+        int T = scan.nextInt();
 
-            for (int i = 0; i < T; i++)
-                System.out.println(findDigitSum(scan.nextInt()));
-        }
+        for (int i = 0; i < T; i++)
+            System.out.println(findDigitSum(scan.nextInt()));
     }
 
 //    public static void main(String... args) {
