@@ -49,5 +49,4 @@ public class Solution {
 //        System.out.println(PALINDROMES.iterator().next());  // 906609
 //    }
 
-
 }
