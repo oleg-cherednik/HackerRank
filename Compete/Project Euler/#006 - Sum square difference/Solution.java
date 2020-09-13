@@ -36,4 +36,8 @@ public class Solution {
         }
     }
 
+//    public static void main(String... args) {
+//        System.out.println(sumSquareDifference(100));   // 25164150
+//    }
+
 }
