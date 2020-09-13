@@ -43,4 +43,8 @@ public class Solution {
         }
     }
 
+//    public static void main(String... args) {
+//        System.out.println(findEvenFibonacciSum(4_000_000));    //  4613732
+//    }
+
 }
