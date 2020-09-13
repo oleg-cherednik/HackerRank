@@ -35,4 +35,15 @@ public class Solution {
         }
     }
 
+//    public static void main(String... args) {
+//        try (Scanner scan = new Scanner(Solution.class.getResourceAsStream("./data.txt"))) {
+//            int[][] data = new int[15][];
+//
+//            for (int row = 0; row < data.length; row++)
+//                data[row] = Arrays.stream(scan.nextLine().split("\\s+")).mapToInt(Integer::parseInt).toArray();
+//
+//            System.out.println(findMaxSum(data));   // 1074
+//        }
+//    }
+
 }
