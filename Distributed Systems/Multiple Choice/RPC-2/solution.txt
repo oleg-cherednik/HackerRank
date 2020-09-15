@@ -1,0 +1,2 @@
+Question: RPC works between two processes. These processes may be:
+Answer: both (a) and (b)
