@@ -1,0 +1,2 @@
+Question: ____ is a framework for distributed objects using Borland Delphi.
+Answer: DDObjects
