@@ -1,0 +1,2 @@
+Question: An RPC (remote procedure call) is initiated by the:
+Answer: client
