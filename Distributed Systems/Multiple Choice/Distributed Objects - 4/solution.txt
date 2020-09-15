@@ -1,0 +1,2 @@
+Question: ____ is a Sun specification for a distributed, shared memory.
+Answer: JavaSpaces
