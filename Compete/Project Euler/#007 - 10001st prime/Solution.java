@@ -39,8 +39,4 @@ public class Solution {
         }
     }
 
-//    public static void main(String... args) {
-//        System.out.println(findPrime(10_001));  // 104743
-//    }
-
 }
