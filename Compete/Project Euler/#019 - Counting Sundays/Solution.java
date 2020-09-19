@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class Solution {
 
-    private static int countSundays(long y1, int m1, int d1, long y2, int m2, int d2) {
+    public static int countSundays(long y1, int m1, int d1, long y2, int m2, int d2) {
         int res = 0;
 
         if (d1 != 1) {
