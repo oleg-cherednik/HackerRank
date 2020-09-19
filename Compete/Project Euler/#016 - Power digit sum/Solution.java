@@ -27,8 +27,4 @@ public class Solution {
         }
     }
 
-//    public static void main(String... args) {
-//        System.out.println(powerDigitSum(1_000));   // 1366
-//    }
-
 }
