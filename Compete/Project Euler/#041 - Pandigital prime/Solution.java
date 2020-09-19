@@ -69,14 +69,12 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(getLargestPandigitalPrime(9999999999L));
+        Scanner scan = new Scanner(System.in);
+        int T = scan.nextInt();
 
-//        Scanner scan = new Scanner(System.in);
-//        int T = scan.nextInt();
-//
-//        for (int i = 0; i < T; i++) {
-//            long N = scan.nextLong();
-//            System.out.println(getLargestPandigitalPrime(N));
-//        }
+        for (int i = 0; i < T; i++) {
+            long N = scan.nextLong();
+            System.out.println(getLargestPandigitalPrime(N));
+        }
     }
 }
