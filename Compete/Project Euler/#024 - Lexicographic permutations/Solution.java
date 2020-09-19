@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
+ * <a href="https://en.wikipedia.org/wiki/Factorial_number_system">Factorial number system</a>
+ *
  * @author Oleg Cherednik
  * @since 13.08.2018
  */
 public class Solution {
 
-    private static String lexicographicPermutation(String str, int n) {
+    public static String lexicographicPermutation(String str, int n) {
         long[] fact = new long[str.length()];
         List<Character> letters = new ArrayList<>(str.length());
 
