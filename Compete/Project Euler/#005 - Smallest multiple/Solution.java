@@ -37,8 +37,4 @@ public class Solution {
         }
     }
 
-//    public static void main(String... args) {
-//        System.out.println(smallestMultiple(20));   // 232792560
-//    }
-
 }
