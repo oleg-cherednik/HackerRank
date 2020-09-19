@@ -6,7 +6,7 @@ import java.util.Scanner;
  */
 public class Solution {
 
-    private static int findMaxSum(int[][] data) {
+    public static int findMaxSum(int[][] data) {
         for (int row = data.length - 2; row >= 0; row--)
             for (int col = 0; col < data[row].length; col++)
                 data[row][col] += Math.max(data[row + 1][col], data[row + 1][col + 1]);
@@ -33,16 +33,5 @@ public class Solution {
             System.out.println(findMaxSum(data));
         }
     }
-
-//    public static void main(String... args) {
-//        try (Scanner scan = new Scanner(Solution.class.getResourceAsStream("./data.txt"))) {
-//            int[][] data = new int[15][];
-//
-//            for (int row = 0; row < data.length; row++)
-//                data[row] = Arrays.stream(scan.nextLine().split("\\s+")).mapToInt(Integer::parseInt).toArray();
-//
-//            System.out.println(findMaxSum(data));   // 1074
-//        }
-//    }
 
 }
