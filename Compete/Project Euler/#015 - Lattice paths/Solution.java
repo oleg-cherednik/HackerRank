@@ -27,18 +27,4 @@ public class Solution {
         }
     }
 
-//    private static long latticePathEuler(int N, int M) {
-//        long[] row = new long[M + 1];
-//
-//        for (int i = 0; i <= N; i++)
-//            for (int j = 0; j <= M; j++)
-//                row[j] = i == 0 || j == 0 ? 1 : (row[j] + row[j - 1]);
-//
-//        return row[M];
-//    }
-
-//    public static void main(String... args) {
-//        System.out.println(latticePathEuler(20, 20));   // 137846528820
-//    }
-
 }
