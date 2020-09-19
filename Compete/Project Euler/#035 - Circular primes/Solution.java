@@ -11,14 +11,14 @@ import java.util.function.IntPredicate;
  */
 public class Solution {
 
-    static void countCircularPrimes(int N) {
+    static int countCircularPrimes(int N) {
         int sum = 0;
 
         for (int i = 1; i <= N; i++)
             if (isCircularPrime(i))
                 sum += i;
 
-        System.out.println(sum);
+        return sum;
     }
 
     private static boolean isCircularPrime(int val) {
@@ -64,6 +64,6 @@ public class Solution {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int N = scan.nextInt();
-        countCircularPrimes(N);
+        System.out.println(countCircularPrimes(N));
     }
 }
