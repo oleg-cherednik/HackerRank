@@ -9,7 +9,7 @@ import java.util.function.IntPredicate;
  */
 public class Solution {
 
-    static void findCoefficients(int N) {
+    static int[] findCoefficients(int N) {
         int max = 0;
         int a = 0;
         int b = 0;
@@ -28,7 +28,7 @@ public class Solution {
             }
         }
 
-        System.out.format("%d %d\n", a, b);
+        return new int[] { a, b };
     }
 
     private static int solve(int n, int a, int b) {
@@ -57,7 +57,8 @@ public class Solution {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        int N = scan.nextInt();
-        findCoefficients(N);
+        int[] res = findCoefficients(scan.nextInt());
+        System.out.format("%d %d\n", res[0], res[1]);
     }
+
 }
