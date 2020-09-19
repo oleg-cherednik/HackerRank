@@ -43,8 +43,4 @@ public class Solution {
         }
     }
 
-//    public static void main(String... args) {
-//        System.out.println(largestPrime(600851475143L));    // 6857
-//    }
-
 }
