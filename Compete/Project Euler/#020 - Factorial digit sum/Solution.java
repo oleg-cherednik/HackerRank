@@ -30,7 +30,4 @@ public class Solution {
             System.out.println(findDigitSum(scan.nextInt()));
     }
 
-//    public static void main(String... args) {
-//        System.out.println(findDigitSum(100));  // 648
-//    }
 }
