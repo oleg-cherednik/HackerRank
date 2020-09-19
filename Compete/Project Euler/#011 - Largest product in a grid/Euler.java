@@ -32,7 +32,7 @@ import java.util.Scanner;
 public class Euler {
 
     public static void main(String... args) {
-        try (Scanner scan = new Scanner(Solution.class.getResourceAsStream("./data.txt"))) {
+        try (Scanner scan = new Scanner(Euler.class.getResourceAsStream("./data.txt"))) {
             int[][] grid = new int[20][20];
 
             for (int row = 0; row < 20; row++)
