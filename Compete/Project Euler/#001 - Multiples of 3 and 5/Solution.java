@@ -24,8 +24,4 @@ public class Solution {
         }
     }
 
-//    public static void main(String... args) {
-//        System.out.println(findSum(1_000));  // 233168
-//    }
-
 }
