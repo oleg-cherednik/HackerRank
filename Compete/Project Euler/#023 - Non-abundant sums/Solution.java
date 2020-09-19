@@ -1,8 +1,9 @@
-import java.util.Collections;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.function.IntFunction;
+import java.util.function.IntPredicate;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * @author Oleg Cherednik
@@ -10,10 +11,10 @@ import java.util.function.IntFunction;
  */
 public class Solution {
 
-    private static final Set<Integer> ABUNDANT_NUMBERS;
+    private static final Set<Integer> ABUNDANT_NUMBERS = calcAbundantNumbers();
 
-    static {
-        final IntFunction<Integer> getDivisorsSum = val -> {
+    private static Set<Integer> calcAbundantNumbers() {
+        IntPredicate isAbundantNumber = val -> {
             int sum = 0;
 
             for (int i = 1, sqrt = (int)Math.sqrt(val); i <= sqrt; i++) {
@@ -23,15 +24,13 @@ public class Solution {
                 }
             }
 
-            return sum;
+            return sum > val;
         };
-        Set<Integer> abundantNumbers = new TreeSet<>();
 
-        for (int i = 1; i <= 100_000; i++)
-            if (getDivisorsSum.apply(i) > i)
-                abundantNumbers.add(i);
-
-        ABUNDANT_NUMBERS = Collections.unmodifiableSet(abundantNumbers);
+        return IntStream.rangeClosed(1, 100_000)
+                        .filter(isAbundantNumber)
+                        .boxed()
+                        .collect(Collectors.toCollection(TreeSet::new));
     }
 
     static boolean isAbundantNumbersExpressed(int N) {
