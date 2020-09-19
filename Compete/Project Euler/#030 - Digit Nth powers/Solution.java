@@ -6,7 +6,7 @@ import java.util.Scanner;
  */
 public class Solution {
 
-    private static int calc(int n) {
+    public static int calc(int n) {
         int res = 0;
 
         for (int i = 10; i < 600_000; i++) {
