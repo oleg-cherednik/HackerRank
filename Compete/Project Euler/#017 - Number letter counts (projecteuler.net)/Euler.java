@@ -4,18 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * If the numbers <tt>1</tt> to <tt>5</tt> are written out in words: <tt>one</tt>, <tt>two</tt>, <tt>three</tt>, <tt>four</tt>, <tt>five</tt>,
- * <tt>then</tt> there are <tt>3 + 3 + 5 + 4 + 4 = 19</tt> letters used in total.
- * <p>
- * If all the numbers from <tt>1</tt> to <tt>1000 (one thousand)</tt> inclusive were written out in words, how many letters would be used?
- * <p>
- * <b>NOTE:</b> Do not count spaces or hyphens. For example, <tt>342 (three hundred and forty-two)</tt> contains 23 letters and <tt>115 (one hundred
- * and fifteen)</tt> contains <tt>20</tt> letters. The use of "and" when writing out numbers is in compliance with British usage.
+ * <p>If the numbers 1 to 5 are written out in words: one, two, three, four, five, then there are 3 + 3 + 5 + 4 + 4 = 19 letters used in total.</p>
+ * <p>If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words, how many letters would be used? </p>
+ * <br /><p class="note"><b>NOTE:</b> Do not count spaces or hyphens. For example, 342 (three hundred and forty-two) contains 23 letters and 115 (one
+ * hundred and fifteen) contains 20 letters. The use of "and" when writing out numbers is in compliance with British usage.</p>
  *
  * @author Oleg Cherednik
  * @since 14.09.2020
  */
-public class Solution {
+public class Euler {
 
     private static final Map<Long, String> map = new HashMap<>();
 
@@ -108,7 +105,7 @@ public class Solution {
         for (int i = 1; i <= 1_000; i++)
             res += numberLetterCount(i);
 
-        System.out.println(res);
+        System.out.println(res);    // 21124
     }
 
 }
