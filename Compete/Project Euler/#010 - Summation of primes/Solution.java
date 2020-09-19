@@ -43,8 +43,4 @@ public class Solution {
         }
     }
 
-//    public static void main(String... args) {
-//        System.out.println(sumPrimes(2_000_000));   // 142913828922
-//    }
-
 }
