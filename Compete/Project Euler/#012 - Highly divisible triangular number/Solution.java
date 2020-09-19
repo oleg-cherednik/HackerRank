@@ -14,7 +14,7 @@ public class Solution {
     private static final Map<Long, Integer> MAP = new HashMap<>();
     private static final LongFunction<Long> GET_TRIANGLE = value -> Math.floorDiv(value * (value + 1), 2);
 
-    private static long getHighlyDivisibleTriangularNumber(int N) {
+    public static long getHighlyDivisibleTriangularNumber(int N) {
         long num = 1;
         long triangle = GET_TRIANGLE.apply(num);
         int count = numberOfDivisors(triangle);
@@ -66,9 +66,5 @@ public class Solution {
             System.out.println(getHighlyDivisibleTriangularNumber(N));
         }
     }
-
-//    public static void main(String... args) {
-//        System.out.println(getHighlyDivisibleTriangularNumber(500));
-//    }
 
 }
