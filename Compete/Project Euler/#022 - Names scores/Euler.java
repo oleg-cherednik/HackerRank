@@ -33,7 +33,7 @@ public class Euler {
             for (String name : names)
                 map.put(name, i++);
 
-            long res = 0;
+            int res = 0;
 
             for (String name : names)
                 res += Solution.getNameScore(name, map);
