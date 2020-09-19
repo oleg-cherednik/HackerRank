@@ -6,7 +6,7 @@ import java.util.Scanner;
  */
 public class Solution {
 
-    private static int findMaxPythagoreanTriplet(int n) {
+    public static int findMaxPythagoreanTriplet(int n) {
         int max = -1;
 
         for (int a = 1; a <= n / 3; a++) {
@@ -28,9 +28,5 @@ public class Solution {
             System.out.println(findMaxPythagoreanTriplet(n));
         }
     }
-
-//    public static void main(String... args) {
-//        System.out.println(findMaxPythagoreanTriplet(1000));    // 31875000
-//    }
 
 }
