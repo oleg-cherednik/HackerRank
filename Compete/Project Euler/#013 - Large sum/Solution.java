@@ -28,15 +28,4 @@ public class Solution {
         System.out.println(findFirstDigits(arr));
     }
 
-//    public static void main(String... args) {
-//        try (Scanner scan = new Scanner(Solution.class.getResourceAsStream("./data.txt"))) {
-//            String[] arr = new String[100];
-//
-//            for (int i = 0; i < arr.length; i++)
-//                arr[i] = scan.nextLine();
-//
-//            System.out.println(findFirstDigits(arr));   // 5537376230
-//        }
-//    }
-
 }
