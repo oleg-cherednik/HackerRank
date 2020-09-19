@@ -57,8 +57,4 @@ public class Solution {
             System.out.println(longestCollatz(scan.nextInt()));
     }
 
-//    public static void main(String... args) {
-//        System.out.println(longestCollatz(1_000_000));  // 837799
-//    }
-
 }
