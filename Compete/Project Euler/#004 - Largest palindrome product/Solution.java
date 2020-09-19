@@ -9,7 +9,7 @@ import java.util.TreeSet;
  */
 public class Solution {
 
-    private static final Set<Integer> PALINDROMES = new TreeSet<>(Comparator.reverseOrder());
+    static final Set<Integer> PALINDROMES = new TreeSet<>(Comparator.reverseOrder());
 
     static {
         for (int i = 100; i < 1000; i++)
@@ -44,9 +44,5 @@ public class Solution {
             System.out.println(findLargestPalindromeProduct(n));
         }
     }
-
-//    public static void main(String... args) {
-//        System.out.println(PALINDROMES.iterator().next());  // 906609
-//    }
 
 }
