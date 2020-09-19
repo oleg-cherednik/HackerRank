@@ -8,7 +8,7 @@ import java.util.function.BiFunction;
  */
 public class Solution {
 
-    private static long largestProduct(int[][] grid) {
+    public static long largestProduct(int[][] grid) {
         long max = 0;
 
         final BiFunction<Integer, Integer, Long> horizontal =
@@ -43,17 +43,5 @@ public class Solution {
         }
         System.out.println(largestProduct(grid));
     }
-
-//    public static void main(String... args) {
-//        try (Scanner scan = new Scanner(Solution.class.getResourceAsStream("./data.txt"))) {
-//            int[][] grid = new int[20][20];
-//
-//            for (int row = 0; row < 20; row++)
-//                for (int col = 0; col < 20; col++)
-//                    grid[row][col] = scan.nextInt();
-//
-//            System.out.println(largestProduct(grid));   // 70600674
-//        }
-//    }
 
 }
