@@ -6,6 +6,10 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * @author Oleg Cherednik
+ * @since 14.11.2020
+ */
 @SuppressWarnings({ "rawtypes", "unchecked" })
 class MapReduce {
 
