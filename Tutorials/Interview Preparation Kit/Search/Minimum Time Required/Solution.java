@@ -1,38 +1,37 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Map;
-import java.util.Optional;
 import java.util.Scanner;
-import java.util.TreeMap;
 
 /**
  * @author Oleg Cherednik
- * @since 08.01.2019
+ * @since 07.05.2021
  */
 public class Solution {
 
     static long minTime(long[] machines, long goal) {
-        Map<Long, Long> map = new TreeMap<>();
+        long maxDays = 0;
 
         for (long machine : machines)
-            map.compute(machine, (id, count) -> Optional.ofNullable(count).orElse(0L) + 1);
+            maxDays = Math.max(maxDays, goal * machine);
 
-        long day = 0;
-        long currGoal = 0;
+        return minTime(machines, goal, 0, maxDays, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
 
-        do {
-            day++;
+    private static long minTime(long[] machines, long goal, long minDays, long maxDays, long minGoal, long maxGoal) {
+        if (minGoal == maxGoal)
+            return minDays;
+        if (minDays + 1 == maxDays)
+            return minGoal == goal ? minDays : maxDays;
 
-            final long curDay = day;
+        long days = (minDays + maxDays) / 2;
+        long total = 0;
 
-            currGoal += map.entrySet().stream()
-                           .filter(entry -> curDay % entry.getKey() == 0)
-                           .map(Map.Entry::getValue)
-                           .mapToLong(val -> val)
-                           .sum();
-        } while (currGoal < goal);
+        for (int i = 0; i < machines.length; i++)
+            total += days / machines[i];
 
-        return day;
+        if (total >= goal)
+            return minTime(machines, goal, minDays, days, minGoal, total);
+        return minTime(machines, goal, days, maxDays, total, maxGoal);
     }
 
     private static Scanner scanner;// = new Scanner(System.in);
@@ -41,7 +40,7 @@ public class Solution {
         try {
             // 2 - 82
             // 5 - 304844592
-            scanner = new Scanner(new FileInputStream("h:/input05.txt"));
+            scanner = new Scanner(new FileInputStream("e:/input05.txt"));
         } catch(FileNotFoundException e) {
             e.printStackTrace();
         }
