@@ -1,5 +1,3 @@
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
@@ -34,17 +32,7 @@ public class Solution {
         return minTime(machines, goal, days, maxDays, total, maxGoal);
     }
 
-    private static Scanner scanner;// = new Scanner(System.in);
-
-    static {
-        try {
-            // 2 - 82
-            // 5 - 304844592
-            scanner = new Scanner(new FileInputStream("e:/input05.txt"));
-        } catch(FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         String[] nGoal = scanner.nextLine().split(" ");
