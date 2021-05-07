@@ -7,29 +7,48 @@ import java.util.Scanner;
 public class Solution {
 
     static long minTime(long[] machines, long goal) {
-        long maxDays = 0;
+        long minDays = 0;
+        long maxDays = getMaxDays(machines, goal);
+        long minGoal = 0;
+        long maxGoal = goal;
 
-        for (long machine : machines)
-            maxDays = Math.max(maxDays, goal * machine);
+        while (minGoal != maxGoal) {
+            if (minDays + 1 == maxDays) {
+                minGoal = maxGoal;
+                minDays = maxDays;
+            } else {
+                long days = (minDays + maxDays) / 2;
+                long total = count(machines, days);
 
-        return minTime(machines, goal, 0, maxDays, Long.MIN_VALUE, Long.MAX_VALUE);
+                if (total >= goal) {
+                    maxDays = days;
+                    maxGoal = total;
+                } else {
+                    minDays = days;
+                    minGoal = total;
+                }
+            }
+        }
+
+        return minDays;
     }
 
-    private static long minTime(long[] machines, long goal, long minDays, long maxDays, long minGoal, long maxGoal) {
-        if (minGoal == maxGoal)
-            return minDays;
-        if (minDays + 1 == maxDays)
-            return minGoal == goal ? minDays : maxDays;
+    private static long getMaxDays(long[] machines, long goal) {
+        long res = 0;
 
-        long days = (minDays + maxDays) / 2;
+        for (long machine : machines)
+            res = Math.max(res, goal * machine);
+
+        return res;
+    }
+
+    private static long count(long[] machines, long days) {
         long total = 0;
 
-        for (int i = 0; i < machines.length; i++)
-            total += days / machines[i];
+        for (long machine : machines)
+            total += days / machine;
 
-        if (total >= goal)
-            return minTime(machines, goal, minDays, days, minGoal, total);
-        return minTime(machines, goal, days, maxDays, total, maxGoal);
+        return total;
     }
 
     private static Scanner scanner = new Scanner(System.in);
