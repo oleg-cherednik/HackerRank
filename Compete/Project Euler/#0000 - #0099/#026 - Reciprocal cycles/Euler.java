@@ -1,6 +1,6 @@
 /**
  * @author Oleg Cherednik
- * @since 2-.09.2020
+ * @since 22.09.2020
  */
 public class Euler {
 

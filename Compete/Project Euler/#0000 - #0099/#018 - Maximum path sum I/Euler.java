@@ -3,8 +3,9 @@ import java.util.Scanner;
 
 /**
  * <p>By starting at the top of the triangle below and moving to adjacent numbers on the row below, the maximum total from top to bottom is 23.</p>
- * <p class="monospace center"><span class="red"><b>3</b></span><br /><span class="red"><b>7</b></span> 4<br />
- * 2 <span class="red"><b>4</b></span> 6<br />
+ * <p class="monospace center"><span class="red"><b>3</b></span><br/>
+ * <span class="red"><b>7</b></span> 4<br/>
+ * 2 <span class="red"><b>4</b></span> 6<br/>
  * 8 5 <span class="red"><b>9</b></span> 3</p>
  * <p>That is, 3 + 7 + 4 + 9 = 23.</p>
  * <p>Find the maximum total from top to bottom of the triangle below:</p>
@@ -42,4 +43,5 @@ public class Euler {
             System.out.println(Solution.findMaxSum(data));   // 1074
         }
     }
+
 }
